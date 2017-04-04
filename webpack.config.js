@@ -51,7 +51,7 @@ let config = {
             }, {
                 test: /.(png|jpg|svg|gif|webp)$/,
                 loader: "url-loader?limit=8192"
-            },
+            }
         ]
     },
     postcss: function() {
@@ -62,8 +62,8 @@ let config = {
         new HtmlWebpackPlugin({
             favicon: path.resolve(__dirname, 'app/favicon.ico'),
             template: path.resolve(__dirname, 'app/index.html'),
-        }),
-    ],
+        })
+    ]
 };
 
 module.exports = config;

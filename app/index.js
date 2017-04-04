@@ -8,7 +8,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import 	{Provider} from 'react-redux';
 import {createStore} from 'redux';
-import App from './Root';
+import Root from './Root';
 import Footer from './Footer';
 import todoApp from './reducers';
 
@@ -16,7 +16,7 @@ let store = createStore(todoApp);
 
 render(
 	<Provider store={store}>
-		<App></App>
+		<Root></Root>
 	</Provider>,
     document.getElementById('root')
 );
