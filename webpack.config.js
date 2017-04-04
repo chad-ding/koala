@@ -15,6 +15,7 @@ let config = {
         'webpack-dev-server/client?http://0.0.0.0:9000',
         './app/index.js'
     ], //入口文件
+    devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'), //编译后的位置
         filename: 'static/js/bundle.js',

@@ -1,7 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+/**
+ *@Author: chad.ding
+ *@Copyright: 2008-2016 CHAD | 丁铭锋
+ *@Date: 2017-04-02 14:12:49
+ */
 
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
+import React from 'react';
+import {render} from 'react-dom';
+import 	{Provider} from 'react-redux';
+import {createStore} from 'redux';
+import App from './Root';
+import Footer from './Footer';
+import todoApp from './reducers';
+
+let store = createStore(todoApp);
+
+render(
+	<Provider store={store}>
+		<App></App>
+	</Provider>,
+    document.getElementById('root')
 );
