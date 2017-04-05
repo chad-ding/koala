@@ -40,7 +40,10 @@ let config = {
                 test: /\.(less|css)$/,
                 loaders: ['style', 'css', 'less'], //执行顺序从右到左
                 // loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'less-loader']),
-                include: path.resolve(__dirname, 'app')
+                include: [
+                    path.resolve(__dirname, 'app'),
+                    /node_modules\/antd/
+                ]
             }, {
                 test: /\.jsx?$/,
                 loader: 'babel',
