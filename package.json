@@ -1,7 +1,7 @@
 {
     "name": "koala",
     "version": "1.0.0",
-    "description": "React web project driven by react.",
+    "description": "koala web project driven by react.",
     "main": "index.js",
     "scripts": {
         "dev": "node tasks/dev.js",
