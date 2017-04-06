@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import {Link} from 'react-router';
 import {Layout, Row, Col, Menu, Dropdown, Icon} from 'antd';
 import {connect} from 'react-redux';
 
@@ -27,17 +28,17 @@ const menus = (
 );
 
 const navs = (
-    <Menu mode="horizontal" theme="dark">
-        <Menu.Item>
-            项目接入
+    <Menu mode="horizontal" selectedKeys={['app']} theme="dark">
+        <Menu.Item key="app">
+            <Link to="/app/all">项目接入</Link>
         </Menu.Item>
-        <Menu.Item>
-            环境管理
+        <Menu.Item key="env">
+            <Link to="/env/all">环境管理</Link>
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item key="setting">
             系统设置
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item key="monitor">
             系统监控
         </Menu.Item>
     </Menu>
@@ -54,7 +55,7 @@ class Home extends Component {
                 <Header className="header">
                     <Row gutter={16}>
                         <Col span={4}>
-                            <img src={this.logo} alt=""/>
+                            <Link to="/"><img src={this.logo} alt=""/></Link>
                         </Col>
                         <Col span={18} className="menu">
                             {navs}
@@ -68,7 +69,7 @@ class Home extends Component {
                         </Col>
                     </Row>
                 </Header>
-                <Content>
+                <Content className="content">
                     <Row>
                         <Col span={24}>
                             {React.cloneElement(this.props.children, {

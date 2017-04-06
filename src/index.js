@@ -25,12 +25,19 @@ const appList = (location, callback) => {
     }, 'AppList');
 };
 
+const envList = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/EnvList').default)
+    }, 'EnvList');
+};
+
 render((
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Home}>
                 <IndexRoute getComponent={appList}></IndexRoute>
                 <Route path="app/all" getComponent={appList}></Route>
+                <Route path="env/all" getComponent={envList}></Route>
             </Route>
         </Router>
     </Provider>

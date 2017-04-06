@@ -42,23 +42,23 @@ const columns = [{
 
 const data = [{
     key: '1',
-    name: 'John Brown',
+    name: 'AAAAAA',
     age: 32,
     address: 'New York No. 1 Lake Park',
 }, {
     key: '2',
-    name: 'Jim Green',
+    name: 'BBBB',
     age: 42,
     address: 'London No. 1 Lake Park',
 }, {
     key: '3',
-    name: 'Joe Black',
+    name: 'CCCCCCC',
     age: 32,
     address: 'Sidney No. 1 Lake Park',
 }];
 
 
-export default class AppList extends Component {
+export default class EnvList extends Component {
     constructor(props) {
         super(props);
     }
@@ -73,10 +73,10 @@ export default class AppList extends Component {
                         <Icon type="home" />
                     </Breadcrumb.Item>
                     <Breadcrumb.Item href="">
-                        <span>Application List</span>
+                        <span>Env List</span>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                        Application
+                        Env
                     </Breadcrumb.Item>
                 </Breadcrumb>
                 <br/><br/>
