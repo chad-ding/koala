@@ -1,22 +1,37 @@
 /**
  *@Author: chad.ding
- *@Copyright: 2008-2016 CHAD | 丁铭锋
- *@Date: 2017-04-02 14:12:49
+ *@Copyright: 2008-2018 CHAD | 丁铭锋
+ *@Date: 2017-04-06 10:23:46
  */
 
 import React from 'react';
-import {render} from 'react-dom';
-import 	{Provider} from 'react-redux';
-import {createStore} from 'redux';
-import Root from './Root';
-import Footer from './Footer';
-import todoApp from './reducers';
+import Home from './views/Home';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import configStore from './store/ConfigStore';
 
-let store = createStore(todoApp);
+const store = configStore();
 
-render(
-	<Provider store={store}>
-		<Root></Root>
-	</Provider>,
-    document.getElementById('root')
-);
+const home = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Home').default)
+    }, 'Home');
+};
+
+const appList = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/AppList').default)
+    }, 'AppList');
+};
+
+render((
+    <Provider store={store}>
+        <Router history={browserHistory}>
+            <Route path="/" component={Home}>
+                <IndexRoute getComponent={appList}></IndexRoute>
+                <Route path="app/all" getComponent={appList}></Route>
+            </Route>
+        </Router>
+    </Provider>
+), document.getElementById('root'));

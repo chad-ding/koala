@@ -3,20 +3,18 @@ var path = require('path')
 module.exports = {
     env: process.env.NODE_ENV,
     entry: './src/index.js',
-    devPort: 8080,
+    devPort: 9200,
     assetsSubDirectory: 'assets',
     assetsPublicPath: '/',
-    /*
-     for proxy api
-     proxyTable: {
-     "/api": {
-     target: "http://127.0.0.1:9000",
-     pathRewrite: {
-     // '^/api' : '/',     // rewrite path
-     }
-     },
-     },
-     */
+    //for proxy api
+    proxyTable: {
+        "/api": {
+            target: "http://127.0.0.1:8080",
+            pathRewrite: {
+                // '^/api' : '/',     // rewrite path
+            }
+        },
+    },
     buildIndex: path.resolve(__dirname, '../../dist/index.html'),
     buildRoot: path.resolve(__dirname, '../../dist'),
     // 关闭eslint
