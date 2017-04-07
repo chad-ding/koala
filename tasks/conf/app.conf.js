@@ -9,7 +9,7 @@ module.exports = {
     //for proxy api
     proxyTable: {
         "/api": {
-            target: "http://127.0.0.1:8080",
+            target: "http://localhost:8080/kaleido-webapp/",
             pathRewrite: {
                 // '^/api' : '/',     // rewrite path
             }

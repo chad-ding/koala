@@ -13,63 +13,65 @@ if (!window.Promise) {
     window.Promise = Promise;
 }
 
-let baseUrl = 'http://119.29.57.187/api';
+let baseUrl = 'http://localhost:9200/api';
 // let baseUrl = 'http://192.168.1.103:5000/api';
 
-let data = {
+let config = {
     headers: {
-        "Content-Type": "application/json, text/plain, */*",
-        'Access-Control-Allow-Origin': '*',
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*'
     },
     mode: 'cors',
     cache: 'default',
+    credentials: 'same-origin'
 };
 
 export default function(params) {
     if (params.requests.length > 1) {
-        fetchAllData(params);
+        fetchAllConfig(params);
     } else {
         switch (params.requests[0].method) {
             case 'GET':
                 params.requests[0].query = params.requests[0].query === undefined ? '' : ('?' + dictToString(params.requests[0].query));
-                return fetchData(params, Object.assign({}, {
+                return fetchConfig(params, Object.assign({}, {
                     method: params.requests[0].method,
-                }, data));
+                }, config));
             case 'POST':
             case 'DELETE':
                 params.requests[0].query = params.requests[0].query === undefined ? '' : JSON.stringify(params.requests[0].query)
-                return fetchData(params, Object.assign({}, {
+                return fetchConfig(params, Object.assign({}, {
                     method: params.requests[0].method,
                     body: params.requests[0].query,
-                }, data));
+                }, config));
         }
     }
 }
 
-function fetchAllData(params) {
+function fetchAllConfig(params) {
     //使用Promise.all()
     Promise.all(params.requests.map(request => {
-        return fetch(baseUrl + request.path + '?' + dictToString(request.query), data)
-            .then(res => res.json());
-    }))
-    .then(json => {
-        params.onSuccess(json);
-    })
-    .catch(error => {
-        console.log(error);
-        params.onFail(error);
-    });
+            return fetch(baseUrl + request.path + '?' + dictToString(request.query), config)
+                .then(res => res.json());
+        }))
+        .then(json => {
+            params.onSuccess(json);
+        })
+        .catch(error => {
+            console.log(error);
+            params.onFail(error);
+        });
 }
 
-function fetchData(params, data) {
-    return fetch(baseUrl + params.requests[0].path + (data.method !== 'GET' ? '' : params.requests[0].query), data)
+function fetchConfig(params, config) {
+
+    return fetch(baseUrl + params.requests[0].path + (config.method !== 'GET' ? '' : params.requests[0].query), config)
         .then(res => res.json())
         .then(checkStatus)
         .then(json => {
             params.onSuccess(json);
         })
         .catch((error) => {
-            console.log(error)
+            console.error(error);
             params.onFail(error);
         });
 }

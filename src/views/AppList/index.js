@@ -6,61 +6,42 @@
 
 import React, { Component } from 'react';
 import { Tabs, Breadcrumb, Icon, Table } from 'antd';
+import { fetchData } from '../../actions';
+import { GET_APP_LIST } from '../../consts';
+import { connect } from 'react-redux';
 
 import './style.less';
 
 const TabPane = Tabs.TabPane;
-
 const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a href="#">{text}</a>,
+    title: 'Parent',
+    dataIndex: 'parent',
+    key: 'parent',
+    render: text => <a href="javascript:;">{text}</a>,
 }, {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: 'Value',
+    dataIndex: 'value',
+    key: 'value',
 }, {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'Text',
+    dataIndex: 'text',
+    key: 'text',
 }, {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-        <span>
-      <a href="#">Action 一 {record.name}</a>
-      <span className="ant-divider" />
-      <a href="#">Delete</a>
-      <span className="ant-divider" />
-      <a href="#" className="ant-dropdown-link">
-        More actions <Icon type="down" />
-      </a>
-    </span>
-    ),
+    title: 'Desc',
+    dataIndex: 'desc',
+    key: 'desc',
 }];
 
-const data = [{
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-}, {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-}, {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-}];
-
-
-export default class AppList extends Component {
+class AppList extends Component {
     constructor(props) {
         super(props);
+        const { dispatch } = this.props;
+        dispatch(fetchData({
+            method: 'GET',
+            path: '/meta/getByParent',
+            query: { parent: 'occupation' },
+            category: GET_APP_LIST
+        }));
     }
     callback() {
 
@@ -82,7 +63,7 @@ export default class AppList extends Component {
                 <br/><br/>
                 <Tabs defaultActiveKey="1" onChange={this.callback} type="card">
                     <TabPane tab="频道" key="1">
-                        <Table columns={columns} dataSource={data}></Table>
+                        <Table columns={columns} dataSource={this.props.appList}></Table>
                     </TabPane>
                     <TabPane tab="队列" key="2">Content of Tab Pane 2</TabPane>
                     <TabPane tab="数据表" key="3">Content of Tab Pane 3</TabPane>
@@ -91,3 +72,11 @@ export default class AppList extends Component {
         );
     }
 };
+
+function mapStateToProps(state) {
+    return {
+        appList: state.appReducer.appList
+    };
+}
+
+export default connect(mapStateToProps)(AppList);

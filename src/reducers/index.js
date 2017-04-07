@@ -5,7 +5,7 @@
  */
 
 import { combineReducers } from 'redux';
-import { HOME, USER_LOGINED } from '../consts';
+import { USER_LOGINED, GET_APP_LIST, RECEIVE_DATA} from '../consts';
 
 function homeReducer(state = { userInfo: null }, action) {
     switch (action.type) {
@@ -16,6 +16,16 @@ function homeReducer(state = { userInfo: null }, action) {
     }
 }
 
+function appReducer(state = { appList: [] }, action) {
+    switch (action.type) {
+        case RECEIVE_DATA + GET_APP_LIST:
+            return Object.assign({}, state, { appList: action.data.data });
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
-    homeReducer
+    homeReducer,
+    appReducer
 });

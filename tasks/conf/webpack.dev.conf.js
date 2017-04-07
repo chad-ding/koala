@@ -77,5 +77,6 @@ module.exports = {
             inject: true
         }),
         new FriendlyErrorsPlugin()
-    ]
+    ],
+    devtool: "#inline-source-map"
 }

@@ -47,7 +47,7 @@ if (proxyTable) {
             options = { target: options }
         }
         app.use(proxyMiddleware(options.filter || context, options))
-    })
+    });
 }
 
 // handle fallback for HTML5 history API
