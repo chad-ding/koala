@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import {Link} from 'react-router';
-import {Layout, Row, Col, Menu, Dropdown, Icon} from 'antd';
+import {Layout, Row, Col, Menu, Dropdown, Icon, notification} from 'antd';
 import {connect} from 'react-redux';
 
 import './style.less';
@@ -28,7 +28,7 @@ const menus = (
 );
 
 const navs = (
-    <Menu mode="horizontal" selectedKeys={['app']} theme="dark">
+    <Menu mode="horizontal" defaultSelectedKeys={['app']} theme="dark">
         <Menu.Item key="app">
             <Link to="/app/all">项目接入</Link>
         </Menu.Item>
@@ -48,6 +48,15 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.logo = require('../../../assets/img/logo.png');
+    }
+    componentWillReceiveProps(nextProps){
+         if(this.props.errorInfo.counter !== nextProps.errorInfo.counter){
+             notification.open({
+    message: nextProps.errorInfo.data.cod,
+    description: nextProps.errorInfo.data.msg,
+    icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
+  });
+         }
     }
     render() {
         return (
@@ -92,7 +101,8 @@ class Home extends Component {
 
 function mapStateToProps(state) {
     return {
-        userInfo: state.userInfo
+        userInfo: state.homeReducer.userInfo,
+        errorInfo: state.homeReducer.errorInfo
     };
 }
 

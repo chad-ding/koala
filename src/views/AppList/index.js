@@ -4,7 +4,7 @@
  *@Date: 2017-04-06 16:48:24
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Tabs, Breadcrumb, Icon, Table } from 'antd';
 import { fetchData } from '../../actions';
 import { GET_APP_LIST } from '../../consts';
@@ -61,16 +61,20 @@ class AppList extends Component {
                     </Breadcrumb.Item>
                 </Breadcrumb>
                 <br/><br/>
-                <Tabs defaultActiveKey="1" onChange={this.callback} type="card">
-                    <TabPane tab="频道" key="1">
+                <Tabs defaultActiveKey="channel" onChange={this.callback} type="card">
+                    <TabPane tab="频道" key="channel">
                         <Table columns={columns} dataSource={this.props.appList}></Table>
                     </TabPane>
-                    <TabPane tab="队列" key="2">Content of Tab Pane 2</TabPane>
-                    <TabPane tab="数据表" key="3">Content of Tab Pane 3</TabPane>
+                    <TabPane tab="队列" key="queue">Content of Tab Pane 2</TabPane>
+                    <TabPane tab="数据表" key="table">Content of Tab Pane 3</TabPane>
                 </Tabs>  
             </div>
         );
     }
+};
+
+AppList.propTypes = {
+    appList: PropTypes.array
 };
 
 function mapStateToProps(state) {

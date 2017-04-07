@@ -5,7 +5,7 @@
  */
 import resource from '../resource';
 import {
-    REQUEST_DATA, REQUEST_FAILED, RECEIVE_DATA
+    REQUEST_DATA, REQUEST_FAILED, RECEIVE_DATA, RESPONSE_ERROR
 } from '../consts';
 
 
@@ -24,6 +24,13 @@ function requestData(requests) {
  * $param json 接受的数据
  */
 function receiveData(requests, json) {
+    if(json.data === 'SESSION_TIMEOUT'){
+        return {
+            type: RESPONSE_ERROR,
+            requests,
+            data: json
+        };
+    }
     return {
         type: RECEIVE_DATA + requests.category,
         requests,
