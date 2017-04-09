@@ -15,7 +15,7 @@ import {
 function requestData(requests) {
     return {
         type: REQUEST_DATA + requests.category,
-        requests,
+        requests
     };
 }
 
@@ -34,7 +34,7 @@ function receiveData(requests, json) {
     return {
         type: RECEIVE_DATA + requests.category,
         requests,
-        data: json,
+        data: json
     };
 }
 
@@ -44,7 +44,7 @@ function receiveData(requests, json) {
 function requestFailed(requests) {
     return {
         type: REQUEST_FAILED + requests.category,
-        requests,
+        requests
     };
 }
 

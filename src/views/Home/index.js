@@ -5,13 +5,13 @@
  */
 
 import React, { Component } from 'react';
-import {Link} from 'react-router';
-import {Layout, Row, Col, Menu, Dropdown, Icon, notification} from 'antd';
-import {connect} from 'react-redux';
+import { Link } from 'react-router';
+import { Layout, Row, Col, Menu, Dropdown, Icon, notification } from 'antd';
+import { connect } from 'react-redux';
 
 import './style.less';
 
-const {Header, Sider, Content, Footer} = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 const menus = (
     <Menu>
         <Menu.Item>
@@ -49,14 +49,14 @@ class Home extends Component {
         super(props);
         this.logo = require('../../../assets/img/logo.png');
     }
-    componentWillReceiveProps(nextProps){
-         if(this.props.errorInfo.counter !== nextProps.errorInfo.counter){
-             notification.open({
-    message: nextProps.errorInfo.data.cod,
-    description: nextProps.errorInfo.data.msg,
-    icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
-  });
-         }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.errorInfo.counter !== nextProps.errorInfo.counter) {
+            notification.open({
+                message: nextProps.errorInfo.data.cod,
+                description: nextProps.errorInfo.data.msg,
+                icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
+            });
+        }
     }
     render() {
         return (
@@ -90,7 +90,7 @@ class Home extends Component {
                 <Footer>
                     <Row align="center">
                         <Col span={11}></Col>
-                        <Col span={2}>© 2015 Vesta Beta</Col>
+                        <Col span={2}>© 2015 Koala Web App</Col>
                         <Col span={11}></Col>
                     </Row>
                 </Footer>
