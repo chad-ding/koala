@@ -6,9 +6,10 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Tabs, Breadcrumb, Icon, Table } from 'antd';
-import { fetchData } from '../../actions';
-import { GET_APP_LIST } from '../../consts';
+import { fetchData } from '../../resource';
+import { GET_APP_LIST } from '../../consts/action';
 import { connect } from 'react-redux';
+import {getAppList} from './action';
 
 import './style.less';
 
@@ -36,12 +37,9 @@ class AppList extends Component {
     constructor(props) {
         super(props);
         const { dispatch } = this.props;
-        dispatch(fetchData({
-            method: 'GET',
-            path: '/meta/getByParent',
-            query: { parent: 'occupation' },
-            category: GET_APP_LIST
-        }));
+        if(!this.props.fetched){
+            dispatch(getAppList({ parent: 'occupation' }));
+        }
     }
     callback() {
 
@@ -74,12 +72,14 @@ class AppList extends Component {
 };
 
 AppList.propTypes = {
-    appList: PropTypes.array
+    appList: PropTypes.array.isRequired,
+    fetched: PropTypes.bool.isRequired 
 };
 
 function mapStateToProps(state) {
     return {
-        appList: state.appReducer.appList
+        appList: state.appReducer.appList,
+        fetched: state.appReducer.fetched
     };
 }
 

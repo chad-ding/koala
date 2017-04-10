@@ -7,6 +7,8 @@
 import { dictToString, dictToJson } from './utils';
 import 'whatwg-fetch';
 import Promise from 'promise-polyfill';
+import { REQUEST_DATA, REQUEST_FAILED, RECEIVE_DATA, RESPONSE_ERROR } from './consts/action';
+
 
 //低版本的浏览器不支持promise
 if (!window.Promise) {
@@ -26,7 +28,7 @@ let config = {
     credentials: 'same-origin'
 };
 
-export default function(params) {
+function send(params) {
     if (params.requests.length > 1) {
         fetchAllConfig(params);
     } else {
@@ -37,6 +39,10 @@ export default function(params) {
                     method: params.requests[0].method,
                 }, config));
             case 'POST':
+                return fetchConfig(params, Object.assign({}, {
+                    method: params.requests[0].method,
+                    body: JSON.stringify(params.query)
+                }, config));
             case 'DELETE':
                 params.requests[0].query = params.requests[0].query === undefined ? '' : JSON.stringify(params.requests[0].query)
                 return fetchConfig(params, Object.assign({}, {
@@ -85,3 +91,59 @@ function checkStatus(response) {
         throw error;
     }
 }
+
+/**
+ * 开始请求
+ */
+function requestData(requests) {
+    return {
+        type: REQUEST_DATA + requests.category,
+        requests
+    };
+}
+
+/**
+ * 接受数据
+ * $param json 接受的数据
+ */
+function receiveData(requests, json) {
+    if (json.data === 'SESSION_TIMEOUT') {
+        return {
+            type: RESPONSE_ERROR,
+            requests,
+            data: json
+        };
+    }
+    return {
+        type: RECEIVE_DATA + requests.category,
+        requests,
+        data: json
+    };
+}
+
+/**
+ * 请求失败
+ */
+function requestFailed(requests) {
+    return {
+        type: REQUEST_FAILED + requests.category,
+        requests
+    };
+}
+
+/**
+ * 发送请求的具体方法
+ */
+export function fetchData(...requests) {
+    return dispatch => {
+        dispatch(requestData(requests[0]));
+        return send({
+            // method: requests[0].method,
+            // path: requests[0].path,
+            // query: requests[0].query,
+            requests,
+            onSuccess: json => dispatch(receiveData(requests[0], json)),
+            onFail: error => dispatch(requestFailed(requests[0]))
+        });
+    };
+};

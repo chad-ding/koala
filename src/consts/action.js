@@ -11,4 +11,4 @@ export const RESPONSE_ERROR = 'RESPONSE_ERROR';
 
 export const USER_LOGINED = 'USER_LOGINED';
 
-export const GET_APP_LIST = 'GET_APP_LIST';
+export const APP_LIST = 'APP_LIST';

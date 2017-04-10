@@ -5,7 +5,7 @@
  */
 
 import { combineReducers } from 'redux';
-import { USER_LOGINED, GET_APP_LIST, RECEIVE_DATA, RESPONSE_ERROR} from '../consts';
+import { USER_LOGINED, GET_APP_LIST, RECEIVE_DATA, RESPONSE_ERROR} from '../consts/action';
 
 function homeReducer(state = { userInfo: null, errorInfo: {data: null, counter: 0} }, action) {
     switch (action.type) {
@@ -18,10 +18,10 @@ function homeReducer(state = { userInfo: null, errorInfo: {data: null, counter: 
     }
 }
 
-function appReducer(state = { appList: []}, action) {
+function appReducer(state = { appList: [], fetched: false}, action) {
     switch (action.type) {
         case RECEIVE_DATA + GET_APP_LIST:
-            return Object.assign({}, state, { appList: action.data.data });
+            return Object.assign({}, state, { appList: action.data.data,  fetched: true});
         default:
             return state;
     }
