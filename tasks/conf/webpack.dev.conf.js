@@ -74,6 +74,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html',
+            favicon: './src/favicon.ico',
             inject: true
         }),
         new FriendlyErrorsPlugin()

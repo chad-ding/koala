@@ -98,6 +98,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: appConf.buildIndex,
             template: 'index.html',
+            favicon: './src/favicon.ico',
             inject: true,
             minify: {
                 removeComments: true,
