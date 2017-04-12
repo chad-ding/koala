@@ -64,7 +64,7 @@ class Home extends Component {
                 <Header className="header">
                     <Row gutter={16}>
                         <Col span={4}>
-                            <Link to="/"><img src={this.logo} alt=""/></Link>
+                            <Link to="/"><img src={this.logo} className="logo" alt="image not found"/></Link>
                         </Col>
                         <Col span={18} className="menu">
                             {navs}
