@@ -10,6 +10,13 @@ import Promise from 'promise-polyfill';
 import { REQUEST_DATA, REQUEST_FAILED, RECEIVE_DATA, RESPONSE_ERROR } from './consts/action';
 
 
+const METHOD = {
+    GET: Symbol('GET'),
+    POST: Symbol('POST'),
+    DELETE: Symbol('DELETE')
+};
+
+
 //低版本的浏览器不支持promise
 if (!window.Promise) {
     window.Promise = Promise;
@@ -32,22 +39,22 @@ function send(params) {
     if (params.requests.length > 1) {
         fetchAllConfig(params);
     } else {
-        switch (params.requests[0].method) {
-            case 'GET':
+        switch (METHOD[params.requests[0].method.toUpperCase()]) {
+            case METHOD.GET:
                 params.requests[0].query = params.requests[0].query === undefined ? '' : ('?' + dictToString(params.requests[0].query));
                 return fetchConfig(params, Object.assign({}, {
-                    method: params.requests[0].method,
+                    method: params.requests[0].method
                 }, config));
-            case 'POST':
+            case METHOD.POST:
                 return fetchConfig(params, Object.assign({}, {
                     method: params.requests[0].method,
                     body: JSON.stringify(params.query)
                 }, config));
-            case 'DELETE':
+            case METHOD.DELETE:
                 params.requests[0].query = params.requests[0].query === undefined ? '' : JSON.stringify(params.requests[0].query)
                 return fetchConfig(params, Object.assign({}, {
                     method: params.requests[0].method,
-                    body: params.requests[0].query,
+                    body: params.requests[0].query
                 }, config));
         }
     }
@@ -56,16 +63,16 @@ function send(params) {
 function fetchAllConfig(params) {
     //使用Promise.all()
     Promise.all(params.requests.map(request => {
-            return fetch(baseUrl + request.path + '?' + dictToString(request.query), config)
-                .then(res => res.json());
-        }))
-        .then(json => {
-            params.onSuccess(json);
-        })
-        .catch(error => {
-            console.log(error);
-            params.onFail(error);
-        });
+        return fetch(baseUrl + request.path + '?' + dictToString(request.query), config)
+        .then(res => res.json());
+    }))
+    .then(json => {
+        params.onSuccess(json);
+    })
+    .catch(error => {
+        console.log(error);
+        params.onFail(error);
+    });
 }
 
 function fetchConfig(params, config) {
@@ -138,9 +145,6 @@ export function fetchData(...requests) {
     return dispatch => {
         dispatch(requestData(requests[0]));
         return send({
-            // method: requests[0].method,
-            // path: requests[0].path,
-            // query: requests[0].query,
             requests,
             onSuccess: json => dispatch(receiveData(requests[0], json)),
             onFail: error => dispatch(requestFailed(requests[0]))
