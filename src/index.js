@@ -5,11 +5,11 @@
  */
 
 import React from 'react';
-import Home from './views/Home';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import configStore from './store/ConfigStore';
+import Home from './views/Home';
 
 const store = configStore();
 

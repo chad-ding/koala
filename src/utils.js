@@ -107,7 +107,7 @@ export function getDocumentTop() {
  */
 export function getWindowHeight() {
     let windowHeight = 0;
-    if (document.compatMode === "CSS1Compat") {
+    if (document.compatMode === 'CSS1Compat') {
         windowHeight = document.documentElement.clientHeight;
     } else {
         windowHeight = document.body.clientHeight;
@@ -165,10 +165,10 @@ export function setCookies(dict = {}, days = 1) {
 export function getCookies(name) {
     let result = '';
     if (document.cookie.length > 0) {
-        let start = document.cookie.indexOf(name + "=") //返回某指定值在字符串中首次出现的位置。
+        let start = document.cookie.indexOf(name + '=') //返回某指定值在字符串中首次出现的位置。
         if (start != -1) {
             start = start + name.length + 1;
-            let end = document.cookie.indexOf(";", start) //返回';'在字符串中首次出现的位置。
+            let end = document.cookie.indexOf(';', start) //返回';'在字符串中首次出现的位置。
             if (end == -1)
                 end = document.cookie.length;
             result = unescape(document.cookie.substring(start, end));

@@ -73,7 +73,7 @@ class AppList extends Component {
 
 AppList.propTypes = {
     appList: PropTypes.array.isRequired,
-    fetched: PropTypes.bool.isRequired 
+    fetched: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
