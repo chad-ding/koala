@@ -12,7 +12,7 @@ module.exports = {
             target: 'http://localhost:8080/kaleido-webapp/',
             changeOrigin: true,
             pathRewrite: {
-                '^/api' : '/api',     // rewrite path
+                '^/api' : '/api'     // rewrite path
             }
         }
     },
