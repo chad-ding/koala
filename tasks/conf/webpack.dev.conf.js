@@ -1,11 +1,12 @@
-var path = require('path')
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-var appConf = require('./app.conf')
-var utils = require('../utils')
-var resolve = utils.resolve
-var assetsPath = utils.assetsPath
+var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+var appConf = require('./app.conf');
+var utils = require('../utils');
+
+var resolve = utils.resolve;
+var assetsPath = utils.assetsPath;
 
 module.exports = {
     entry: {
@@ -32,7 +33,7 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             loader: 'eslint-loader',
-            enforce: "pre",
+            enforce: 'pre',
             include: [resolve('src'), resolve('test')]
         }, {
             test: /\.css$/,
@@ -63,7 +64,7 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                // need to pass as "devlopment"
+                // need to pass as 'devlopment'
                 NODE_ENV: `'${appConf.env}'`
             }
         }),
@@ -79,5 +80,5 @@ module.exports = {
         }),
         new FriendlyErrorsPlugin()
     ],
-    devtool: "#inline-source-map"
-}
+    devtool: '#inline-source-map'
+};

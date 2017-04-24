@@ -1,4 +1,4 @@
-var path = require('path')
+var path = require('path');
 
 module.exports = {
     env: process.env.NODE_ENV,
@@ -8,12 +8,13 @@ module.exports = {
     assetsPublicPath: '/',
     //for proxy api
     proxyTable: {
-        "/api": {
-            target: "http://localhost:8080/kaleido-webapp/",
+        '/api': {
+            target: 'http://localhost:8080/kaleido-webapp/',
+            changeOrigin: true,
             pathRewrite: {
-                // '^/api' : '/',     // rewrite path
+                '^/api' : '/api',     // rewrite path
             }
-        },
+        }
     },
     buildIndex: path.resolve(__dirname, '../../dist/index.html'),
     buildRoot: path.resolve(__dirname, '../../dist'),

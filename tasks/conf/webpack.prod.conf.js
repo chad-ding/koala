@@ -1,14 +1,15 @@
 /* eslint-disable */
-var path = require('path')
-var webpack = require('webpack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-var appConf = require('./app.conf')
-var utils = require('../utils')
-var resolve = utils.resolve
-var assetsPath = utils.assetsPath
+var path = require('path');
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var appConf = require('./app.conf');
+var utils = require('../utils');
+
+var resolve = utils.resolve;
+var assetsPath = utils.assetsPath;
 
 module.exports = {
     // Don't attempt to continue if there are any errors.
@@ -47,7 +48,7 @@ module.exports = {
             loader: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
                 use: 'css-loader'
-            }),
+            })
         }, {
             test: /\.less/,
             loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'
@@ -115,13 +116,7 @@ module.exports = {
             name: 'vendor',
             minChunks: function(module, count) {
                 // any required modules inside node_modules are extracted to vendor
-                return (
-                    module.resource &&
-                    /\.js$/.test(module.resource) &&
-                    module.resource.indexOf(
-                        path.join(__dirname, '../../node_modules')
-                    ) === 0
-                )
+                return (module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../../node_modules')) === 0);
             }
         }),
         // extract webpack runtime and module manifest to its own file in order to
@@ -137,4 +132,4 @@ module.exports = {
             ignore: ['.*']
         }])
     ]
-}
+};

@@ -89,9 +89,9 @@ class Home extends Component {
                 </Content>
                 <Footer>
                     <Row align="center">
-                        <Col span={11}></Col>
-                        <Col span={2}>© 2015 Koala Web App</Col>
-                        <Col span={11}></Col>
+                        <Col span={10}></Col>
+                        <Col span={4}>© 2015 Koala Web App</Col>
+                        <Col span={10}></Col>
                     </Row>
                 </Footer>
             </Layout>
