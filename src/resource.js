@@ -9,7 +9,6 @@ import 'whatwg-fetch';
 import Promise from 'promise-polyfill';
 import { REQUEST_DATA, REQUEST_FAILED, RECEIVE_DATA, RESPONSE_ERROR } from './consts/action';
 
-
 const METHOD = {
     GET: Symbol('GET'),
     POST: Symbol('POST'),
@@ -27,7 +26,7 @@ let baseUrl = 'http://localhost:9200/api';
 
 let config = {
     headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
     },
     mode: 'cors',

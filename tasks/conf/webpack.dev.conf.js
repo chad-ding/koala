@@ -24,8 +24,8 @@ module.exports = {
             'node_modules'
         ],
         alias: {
-            'src': resolve('src'),
-            'assets': resolve('assets')
+            src: resolve('src'),
+            assets: resolve('assets')
         }
     },
     module: {
@@ -64,7 +64,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
                 // need to pass as "devlopment"
-                NODE_ENV: `"${appConf.env}"`
+                NODE_ENV: `'${appConf.env}'`
             }
         }),
         // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
