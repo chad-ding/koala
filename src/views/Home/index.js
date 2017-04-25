@@ -13,10 +13,15 @@ import './style.less';
 
 const { Header, Sider, Content, Footer } = Layout;
 const menus = (
-    <Menu>
+    <Menu onClick="{handleMenuClick}">
         <Menu.Item>
             <a target="_blank" rel="noopener noreferrer" href="javascript:;">
                 <Icon type="mail"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;反馈
+            </a>
+        </Menu.Item>
+        <Menu.Item>
+            <a onClick="" rel="noopener noreferrer" href="javascript:;">
+                <Icon type="unlock"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;登录
             </a>
         </Menu.Item>
         <Menu.Item>
@@ -70,11 +75,9 @@ class Home extends Component {
                             {navs}
                         </Col>
                         <Col span={2}>
-                            <Dropdown overlay={menus}>
-                                <a className="ant-dropdown-link out" href="#">
-                                    百立荣<Icon type="down" />
-                                </a>
-                            </Dropdown>
+                            <Dropdown.Button overlay={menus}>
+                                <Icon type="laptop"></Icon>操作
+                            </Dropdown.Button>
                         </Col>
                     </Row>
                 </Header>
