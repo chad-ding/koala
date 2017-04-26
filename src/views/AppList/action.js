@@ -6,12 +6,11 @@
 
 import {GET_APP_LIST} from '../../consts/action';
 import {fetchData} from '../../resource';
+import {APP_LIST_PATH} from '../../consts/path';
 
 export function getAppList(params){
-    return fetchData({
-        method: 'GET',
-        path: '/meta/getByParent',
+    return fetchData(Object.assign({
         category: GET_APP_LIST,
         query: params
-    });
+    }, APP_LIST_PATH));
 };

@@ -78,8 +78,8 @@ AppList.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        appList: state.appReducer.appList,
-        fetched: state.appReducer.fetched
+        appList: state.appListReducer.appList,
+        fetched: state.appListReducer.fetched
     };
 }
 

@@ -10,7 +10,7 @@ module.exports = {
     proxyTable: {
         '/api': {
             target: 'http://localhost:8080/kaleido-webapp/',
-            changeOrigin: true,
+            cookieDomainRewrite: true,
             pathRewrite: {
                 '^/api' : '/api'     // rewrite path
             }

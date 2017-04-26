@@ -4,7 +4,12 @@
  *@Date: 2017-04-10 16:39:49
  */
 
-export const GET_APP_LIST = {
-    method: 'GET',
-    path: '/meta/getByParent'
+export const APP_LIST_PATH = {
+    path: '/api/meta/getByParent',
+    method: 'GET'
+};
+
+export const LOGIN_PATH = {
+    path: '/api/user/login',
+    method: 'GET'
 };

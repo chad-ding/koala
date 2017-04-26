@@ -21,7 +21,7 @@ if (!window.Promise) {
     window.Promise = Promise;
 }
 
-let baseUrl = 'http://localhost:9200/api';
+let baseUrl = 'http://localhost:9200';
 // let baseUrl = 'http://192.168.1.103:5000/api';
 
 let config = {
@@ -31,7 +31,7 @@ let config = {
     },
     mode: 'cors',
     cache: 'default',
-    credentials: 'same-origin'
+    credentials: 'include'
 };
 
 function send(params) {

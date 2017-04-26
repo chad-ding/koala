@@ -8,51 +8,55 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Layout, Row, Col, Menu, Dropdown, Icon, notification } from 'antd';
 import { connect } from 'react-redux';
+import Login from '../Login';
+import {SHOW_LOGIN_MODAL} from '../../consts/action';
 
 import './style.less';
 
 const { Header, Sider, Content, Footer } = Layout;
-const menus = (
-    <Menu onClick="{handleMenuClick}">
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="javascript:;">
-                <Icon type="mail"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;反馈
-            </a>
-        </Menu.Item>
-        <Menu.Item>
-            <a onClick="" rel="noopener noreferrer" href="javascript:;">
-                <Icon type="unlock"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;登录
-            </a>
-        </Menu.Item>
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="javascript:;">
-                <Icon type="logout"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;退出
-            </a>
-        </Menu.Item>
-    </Menu>
-);
-
-const navs = (
-    <Menu mode="horizontal" defaultSelectedKeys={['app']} theme="dark">
-        <Menu.Item key="app">
-            <Link to="/app/all">项目接入</Link>
-        </Menu.Item>
-        <Menu.Item key="env">
-            <Link to="/env/all">环境管理</Link>
-        </Menu.Item>
-        <Menu.Item key="setting">
-            系统设置
-        </Menu.Item>
-        <Menu.Item key="monitor">
-            系统监控
-        </Menu.Item>
-    </Menu>
-);
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.logo = require('../../../assets/img/logo.png');
+        this.showLoginModal = this.showLoginModal.bind(this);
+
+        this.menus = (
+            <Menu>
+                <Menu.Item>
+                    <a target="_blank" rel="noopener noreferrer" href="javascript:;">
+                        <Icon type="mail"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;反馈
+                    </a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a onClick={this.showLoginModal} rel="noopener noreferrer" href="javascript:;">
+                        <Icon type="unlock"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;登录
+                    </a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_blank" rel="noopener noreferrer" href="javascript:;">
+                        <Icon type="logout"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;退出
+                    </a>
+                </Menu.Item>
+            </Menu>
+        );
+
+        this.navs = (
+            <Menu mode="horizontal" defaultSelectedKeys={['app']} theme="dark">
+                <Menu.Item key="app">
+                    <Link to="/app/all">项目接入</Link>
+                </Menu.Item>
+                <Menu.Item key="env">
+                    <Link to="/env/all">环境管理</Link>
+                </Menu.Item>
+                <Menu.Item key="setting">
+                    系统设置
+                </Menu.Item>
+                <Menu.Item key="monitor">
+                    系统监控
+                </Menu.Item>
+            </Menu>
+        );
     }
     componentWillReceiveProps(nextProps) {
         if (this.props.errorInfo.counter !== nextProps.errorInfo.counter) {
@@ -63,6 +67,10 @@ class Home extends Component {
             });
         }
     }
+    showLoginModal(){
+        const {dispatch} = this.props;
+        dispatch({type: SHOW_LOGIN_MODAL, showLoginModal: true});
+    }
     render() {
         return (
             <Layout className="vesta">
@@ -72,10 +80,10 @@ class Home extends Component {
                             <Link to="/"><img src={this.logo} className="logo" alt="image not found"/></Link>
                         </Col>
                         <Col span={18} className="menu">
-                            {navs}
+                            {this.navs}
                         </Col>
                         <Col span={2}>
-                            <Dropdown.Button overlay={menus}>
+                            <Dropdown.Button overlay={this.menus}>
                                 <Icon type="laptop"></Icon>操作
                             </Dropdown.Button>
                         </Col>
@@ -97,6 +105,7 @@ class Home extends Component {
                         <Col span={10}></Col>
                     </Row>
                 </Footer>
+                <Login></Login>
             </Layout>
         );
     }
