@@ -21,7 +21,7 @@ if (!window.Promise) {
     window.Promise = Promise;
 }
 
-let baseUrl = 'http://localhost:9200';
+let baseUrl = 'http://localhost:9200/kaleido-webapp';
 // let baseUrl = 'http://192.168.1.103:5000/api';
 
 let config = {

@@ -8,12 +8,9 @@ module.exports = {
     assetsPublicPath: '/',
     //for proxy api
     proxyTable: {
-        '/api': {
-            target: 'http://localhost:8080/kaleido-webapp/',
-            cookieDomainRewrite: true,
-            pathRewrite: {
-                '^/api' : '/api'     // rewrite path
-            }
+        '/kaleido-webapp/api/': {
+            target: 'http://localhost:8080/',
+            changeOrigin: true
         }
     },
     buildIndex: path.resolve(__dirname, '../../dist/index.html'),
