@@ -69,7 +69,7 @@ class Home extends Component {
     }
     showLoginModal(){
         const {dispatch} = this.props;
-        dispatch({type: SHOW_LOGIN_MODAL, showLoginModal: true});
+        dispatch({type: SHOW_LOGIN_MODAL, visible: true});
     }
     render() {
         return (
