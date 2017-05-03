@@ -62,23 +62,23 @@ function send(params) {
 function fetchAllConfig(params) {
     //使用Promise.all()
     Promise.all(params.requests.map(request => {
-        return fetch(baseUrl + request.path + '?' + dictToString(request.query), config)
-        .then(res => res.json());
-    }))
-    .then(json => {
-        params.onSuccess(json);
-    })
-    .catch(error => {
-        console.log(error);
-        params.onFail(error);
-    });
+            return fetch(baseUrl + request.path + '?' + dictToString(request.query), config)
+                .then(res => res.json());
+        }))
+        .then(json => {
+            params.onSuccess(json);
+        })
+        .catch(error => {
+            console.error(error);
+            params.onFail(error);
+        });
 }
 
 function fetchConfig(params, config) {
 
     return fetch(baseUrl + params.requests[0].path + (config.method !== 'GET' ? '' : params.requests[0].query), config)
-        .then(res => res.json())
         .then(checkStatus)
+        .then(res => res.json())
         .then(json => {
             params.onSuccess(json);
         })
@@ -89,11 +89,11 @@ function fetchConfig(params, config) {
 }
 
 function checkStatus(response) {
-    if (response.code >= 200 && response.code <= 304) {
+    if (response.status >= 200 && response.status <= 304) {
         return response;
     } else {
-        var error = new Error(response.message);
-        error.response = response;
+        var error = new Error(response.status);
+        error.description = response.statusText;
         throw error;
     }
 }
@@ -130,10 +130,13 @@ function receiveData(requests, json) {
 /**
  * 请求失败
  */
-function requestFailed(requests) {
+function requestFailed(requests, error) {
     return {
-        type: REQUEST_FAILED + requests.category,
-        requests
+        type: REQUEST_FAILED,
+        data: {
+            code: error.message,
+            msg: error.description
+        }
     };
 }
 
@@ -146,7 +149,7 @@ export function fetchData(...requests) {
         return send({
             requests,
             onSuccess: json => dispatch(receiveData(requests[0], json)),
-            onFail: error => dispatch(requestFailed(requests[0]))
+            onFail: error => dispatch(requestFailed(requests[0], error))
         });
     };
 };

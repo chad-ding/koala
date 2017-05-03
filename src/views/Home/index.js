@@ -61,7 +61,7 @@ class Home extends Component {
     componentWillReceiveProps(nextProps) {
         if (this.props.errorInfo.counter !== nextProps.errorInfo.counter) {
             notification.open({
-                message: nextProps.errorInfo.data.cod,
+                message: nextProps.errorInfo.data.code,
                 description: nextProps.errorInfo.data.msg,
                 icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
             });
@@ -114,7 +114,7 @@ class Home extends Component {
 function mapStateToProps(state) {
     return {
         userInfo: state.homeReducer.userInfo,
-        errorInfo: state.homeReducer.errorInfo
+        errorInfo: state.requestReducer.errorInfo
     };
 }
 
