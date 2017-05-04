@@ -24,7 +24,7 @@ class LoginModal extends Component {
         dispatch({type: SHOW_LOGIN_MODAL, visible: false})
     }
     handleSubmit(){
-        console.log(this.props.form.getFieldValue('userName'));
+        
         this.props.form.validateFields((error, values) => {
             if(error){
                 return;
@@ -35,6 +35,7 @@ class LoginModal extends Component {
             loginName: this.props.form.getFieldValue('userName'),
             loginPassword: md5(this.props.form.getFieldValue('password'))
         };
+        console.log(this.randomCode.validate());
 
         dispatch(login(params));
         this.handleCancel();
@@ -66,7 +67,7 @@ class LoginModal extends Component {
                             )}
                         </FormItem>
                         <FormItem>
-                            <RandomCode></RandomCode>
+                            <RandomCode ref={(randomCode) => {this.randomCode = randomCode;}}></RandomCode>
                         </FormItem>
                         <FormItem>
                             {getFieldDecorator('remember', {

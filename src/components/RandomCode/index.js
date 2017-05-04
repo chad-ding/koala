@@ -18,10 +18,13 @@ export default class RandomCode extends Component {
         }
 
         this.state = {
-            nums
+            nums,
+            randomCode: ''
         };
 
         this.refresh = this.refresh.bind(this);
+        this.validate = this.validate.bind(this);
+        this.inputChange = this.inputChange.bind(this);
     }
     refresh(){
         let nums = [];
@@ -33,12 +36,21 @@ export default class RandomCode extends Component {
             nums
         });
     }
+    validate(){
+        const {nums, randomCode} = this.state;
+        return nums.join('') === randomCode;
+    }
+    inputChange(event){
+        this.setState({
+            randomCode: event.target.value
+        });
+    }
     render(){
         return (
             <div>
                 <Row gutter={16}>
                    <Col span={10}>
-                        <Input placeholder="请输入验证码"></Input>
+                        <Input value={this.state.randomCode} onChange={this.inputChange} placeholder="请输入验证码"></Input>
                    </Col>
                    <Col span={10}>
                         <ul className="random-code">
