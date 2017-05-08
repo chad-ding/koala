@@ -5,7 +5,7 @@
  */
 
 export const APP_LIST_PATH = {
-    path: '/api/meta/getByParent1',
+    path: '/api/meta/getByParent',
     method: 'GET'
 };
 

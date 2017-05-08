@@ -94,14 +94,14 @@ function checkStatus(response) {
     } else {
 
         let error, deffered;
-        try{
+        if(response.status === 503){
             deffered = response.json().then( json => {
                 error = new Error(json.code);
                 error.msg = json.msg;
 
                 return error;
             });
-        }catch(e){
+        }else{
 
             error = new Error(response.status);
             error.msg = response.statusText;
