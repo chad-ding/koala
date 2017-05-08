@@ -59,13 +59,11 @@ class Home extends Component {
         );
     }
     componentWillReceiveProps(nextProps) {
-        if (this.props.errorInfo.counter !== nextProps.errorInfo.counter) {
-            notification.open({
-                message: nextProps.errorInfo.data.code,
-                description: nextProps.errorInfo.data.msg,
-                icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
-            });
-        }
+        notification.open({
+            message: nextProps.errorInfo.data.code,
+            description: nextProps.errorInfo.data.msg,
+            icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
+        });       
     }
     showLoginModal(){
         const {dispatch} = this.props;

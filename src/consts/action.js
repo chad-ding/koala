@@ -7,7 +7,6 @@
 export const REQUEST_DATA = 'REQUEST_DATA#';
 export const RECEIVE_DATA = 'RECEIVE_DATA#';
 export const REQUEST_FAILED = 'REQUEST_FAILED';
-export const RESPONSE_ERROR = 'RESPONSE_ERROR';
 
 export const USER_LOGINED = 'USER_LOGINED';
 export const SHOW_LOGIN_MODAL = 'SHOW_LOGIN_MODAL';

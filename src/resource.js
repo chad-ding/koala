@@ -7,7 +7,7 @@
 import { dictToString, dictToJson } from './utils';
 import 'whatwg-fetch';
 import Promise from 'promise-polyfill';
-import { REQUEST_DATA, REQUEST_FAILED, RECEIVE_DATA, RESPONSE_ERROR } from './consts/action';
+import { REQUEST_DATA, REQUEST_FAILED, RECEIVE_DATA } from './consts/action';
 
 const METHOD = {
     GET: Symbol('GET'),
@@ -92,9 +92,29 @@ function checkStatus(response) {
     if (response.status >= 200 && response.status <= 304) {
         return response;
     } else {
-        var error = new Error(response.status);
-        error.description = response.statusText;
-        throw error;
+
+        let error, deffered;
+        try{
+            deffered = response.json().then( json => {
+                error = new Error(json.code);
+                error.msg = json.msg;
+
+                return error;
+            });
+        }catch(e){
+
+            error = new Error(response.status);
+            error.msg = response.statusText;
+
+            deffered = new Promise((resolve, reject) => {
+                resolve(error);
+            });
+
+        }
+        
+        return deffered.then(function(error){
+            throw error;
+        });
     }
 }
 
@@ -113,13 +133,6 @@ function requestData(requests) {
  * $param json 接受的数据
  */
 function receiveData(requests, json) {
-    if (json.data === 'SESSION_TIMEOUT') {
-        return {
-            type: RESPONSE_ERROR,
-            requests,
-            data: json
-        };
-    }
     return {
         type: RECEIVE_DATA + requests.category,
         requests,
@@ -135,7 +148,7 @@ function requestFailed(requests, error) {
         type: REQUEST_FAILED,
         data: {
             code: error.message,
-            msg: error.description
+            msg: error.msg
         }
     };
 }
