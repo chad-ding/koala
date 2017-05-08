@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 import { Layout, Row, Col, Menu, Dropdown, Icon, notification } from 'antd';
 import { connect } from 'react-redux';
 import Login from '../Login';
-import {SHOW_LOGIN_MODAL} from '../../consts/action';
+import { SHOW_LOGIN_MODAL } from '../../consts/action';
 
 import './style.less';
 
@@ -59,15 +59,17 @@ class Home extends Component {
         );
     }
     componentWillReceiveProps(nextProps) {
-        notification.open({
-            message: nextProps.errorInfo.data.code,
-            description: nextProps.errorInfo.data.msg,
-            icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
-        });       
+        if (this.props.errorInfo.counter !== nextProps.errorInfo.counter) {
+            notification.open({
+                message: nextProps.errorInfo.data.code,
+                description: nextProps.errorInfo.data.msg,
+                icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
+            });
+        }
     }
-    showLoginModal(){
-        const {dispatch} = this.props;
-        dispatch({type: SHOW_LOGIN_MODAL, visible: true});
+    showLoginModal() {
+        const { dispatch } = this.props;
+        dispatch({ type: SHOW_LOGIN_MODAL, visible: true });
     }
     render() {
         return (

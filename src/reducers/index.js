@@ -14,7 +14,7 @@ function requestReducer(state = { errorInfo: { data: null, counter: 0} }, action
 
     switch (action.type) {
         case REQUEST_FAILED:
-            return Object.assign({}, state, { errorInfo: { data: action.data, counter: ++state.errorInfo.counter } });
+            return Object.assign({}, state, { errorInfo: { data: action.data, counter: state.errorInfo.counter++ } });
         default:
             return state;
     }
