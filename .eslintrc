@@ -4,6 +4,9 @@
         "browser": true,
         "node": true
     },
+    "ecmaFeatures": {
+        "jsx": true
+    },
     "rules": {
         "quotes": [2, "single"],
         "eol-last": [0],
@@ -26,7 +29,7 @@
         "no-self-compare":2,
         "no-sequences":2,
         "no-unmodified-loop-condition":2,
-        "radix":2,
+        "radix":0,
         "wrap-iife": [2,"any"],
         "no-undef":2,
         "no-undef-init":2,
@@ -54,6 +57,10 @@
         "no-trailing-spaces": 0,
         "no-alert": 0,
         "no-new-symbol":2,
-        "jsx-quotes": 1
-    }
+        "jsx-quotes": 1,
+        "react/jsx-uses-vars": [1]
+    },
+    "plugins": [
+        "eslint-plugin-react"
+    ]
 }

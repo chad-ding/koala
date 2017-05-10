@@ -13,21 +13,15 @@ import Home from './views/Home';
 
 const store = configStore();
 
-const home = (location, callback) => {
-    require.ensure([], require => {
-        callback(null, require('./views/Home').default)
-    }, 'Home');
-};
-
 const appList = (location, callback) => {
     require.ensure([], require => {
-        callback(null, require('./views/AppList').default)
+        callback(null, require('./views/AppList').default);
     }, 'AppList');
 };
 
 const envList = (location, callback) => {
     require.ensure([], require => {
-        callback(null, require('./views/EnvList').default)
+        callback(null, require('./views/EnvList').default);
     }, 'EnvList');
 };
 
