@@ -4,6 +4,8 @@
  *@Date: 2017-04-06 16:48:24
  */
 
+import {JSEncrypt} from 'jsencrypt';
+
 export function isEmpty(obj) {
     return Object.getOwnPropertyNames(obj).length <= 0;
 }
@@ -15,7 +17,7 @@ export function readUTF(word) {
     let arr = word.trim().split('%');
     // arr = arr.map(parseInt(word,16));
     for (let index = 1; index < arr.length; index++) {
-        arr[index] = parseInt(arr[index], 16)
+        arr[index] = parseInt(arr[index], 16);
     }
     let UTF = '';
     // let arr = this.init(arr);
@@ -26,12 +28,12 @@ export function readUTF(word) {
             let bytesLength = v[0].length;
             let store = arr[i].toString(2).slice(7 - bytesLength);
             for (let st = 1; st < bytesLength; st++) {
-                store += arr[st + i].toString(2).slice(2)
+                store += arr[st + i].toString(2).slice(2);
             }
             UTF += String.fromCharCode(parseInt(store, 2));
-            i += bytesLength - 1
+            i += bytesLength - 1;
         } else {
-            UTF += String.fromCharCode(arr[i])
+            UTF += String.fromCharCode(arr[i]);
         }
     }
     return UTF;
@@ -155,7 +157,7 @@ export function setCookies(dict = {}, days = 1) {
     let time = new Date();
     time.setTime(time.getTime() + (days * 24 * 60 * 60 * 1000));
     for (let key in dict) {
-        document.cookie = `${key}=${dict[key]}; expires=${time.toUTCString()}`
+        document.cookie = `${key}=${dict[key]}; expires=${time.toUTCString()}`;
     }
 }
 
@@ -165,12 +167,13 @@ export function setCookies(dict = {}, days = 1) {
 export function getCookies(name) {
     let result = '';
     if (document.cookie.length > 0) {
-        let start = document.cookie.indexOf(name + '=') //返回某指定值在字符串中首次出现的位置。
+        let start = document.cookie.indexOf(name + '='); //返回某指定值在字符串中首次出现的位置。
         if (start != -1) {
             start = start + name.length + 1;
-            let end = document.cookie.indexOf(';', start) //返回';'在字符串中首次出现的位置。
-            if (end == -1)
+            let end = document.cookie.indexOf(';', start);//返回';'在字符串中首次出现的位置。
+            if (end == -1){
                 end = document.cookie.length;
+            }
             result = unescape(document.cookie.substring(start, end));
         }
     }
@@ -185,7 +188,7 @@ export function checkPhone(phone) {
     if (phone === '') {
         return false;
     }
-    let reg = new RegExp('^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$')
-    let result = reg.exec(phone)
+    let reg = new RegExp('^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$');
+    let result = reg.exec(phone);
     return result.length > 0;
 }

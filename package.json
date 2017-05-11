@@ -1,6 +1,7 @@
 {
   "name": "koala",
   "version": "1.0.0",
+  "repository": "git@github.com:chad-ding/koala.git",
   "description": "koala web project driven by react.",
   "main": "index.js",
   "scripts": {
@@ -63,6 +64,7 @@
   "dependencies": {
     "antd": "^2.9.0",
     "js-md5": "^0.4.2",
+    "jsencrypt": "^2.3.1",
     "promise-polyfill": "^6.0.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
