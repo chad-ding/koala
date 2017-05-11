@@ -2,7 +2,8 @@
     "parser": "babel-eslint",
     "env": {
         "browser": true,
-        "node": true
+        "node": true,
+        "es6": true
     },
     "ecmaFeatures": {
         "jsx": true
@@ -33,7 +34,7 @@
         "wrap-iife": [2,"any"],
         "no-undef":2,
         "no-undef-init":2,
-        "no-unused-vars": [2, {"vars":"all","args":"none"}],
+        "no-unused-vars": [1, {"vars":"all","args":"none"}],
         "no-use-before-define":0,
         "array-bracket-spacing": [2,"never"],
         "block-spacing":[1,"never"],
