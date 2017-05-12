@@ -4,7 +4,7 @@
  *@Date: 2017-04-06 16:48:24
  */
 
-import { dictToString, dictToJson } from './utils';
+import { dictToString } from './utils';
 import 'whatwg-fetch';
 import Promise from 'promise-polyfill';
 import { REQUEST_DATA, REQUEST_FAILED, RECEIVE_DATA } from './consts/action';
@@ -62,16 +62,16 @@ function send(params) {
 function fetchAllConfig(params) {
     //使用Promise.all()
     Promise.all(params.requests.map(request => {
-            return fetch(baseUrl + request.path + '?' + dictToString(request.query), config)
-                .then(res => res.json());
-        }))
-        .then(json => {
-            params.onSuccess(json);
-        })
-        .catch(error => {
-            console.error(error);
-            params.onFail(error);
-        });
+        let promise = fetch(baseUrl + request.path + '?' + dictToString(request.query), config);
+        return promise.then(res => res.json());
+    }))
+    .then(json => {
+        params.onSuccess(json);
+    })
+    .catch(error => {
+        console.error(error);
+        params.onFail(error);
+    });
 }
 
 function fetchConfig(params, config) {

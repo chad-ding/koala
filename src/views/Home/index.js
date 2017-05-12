@@ -13,7 +13,7 @@ import { SHOW_LOGIN_MODAL } from '../../consts/action';
 
 import './style.less';
 
-const { Header, Sider, Content, Footer } = Layout;
+const { Header, Content, Footer } = Layout;
 
 class Home extends Component {
     constructor(props) {
@@ -63,7 +63,7 @@ class Home extends Component {
             notification.open({
                 message: nextProps.errorInfo.data.code,
                 description: nextProps.errorInfo.data.msg,
-                icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
+                icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />
             });
         }
     }

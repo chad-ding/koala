@@ -59,7 +59,8 @@
         "no-alert": 0,
         "no-new-symbol":2,
         "jsx-quotes": 1,
-        "react/jsx-uses-vars": [1]
+        "react/jsx-uses-react": 1,
+        "react/jsx-uses-vars": 1
     },
     "plugins": [
         "eslint-plugin-react"

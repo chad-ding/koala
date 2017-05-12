@@ -42,17 +42,17 @@ const data = [{
     key: '1',
     name: 'AAAAAA',
     age: 32,
-    address: 'New York No. 1 Lake Park',
+    address: 'New York No. 1 Lake Park'
 }, {
     key: '2',
     name: 'BBBB',
     age: 42,
-    address: 'London No. 1 Lake Park',
+    address: 'London No. 1 Lake Park'
 }, {
     key: '3',
     name: 'CCCCCCC',
     age: 32,
-    address: 'Sidney No. 1 Lake Park',
+    address: 'Sidney No. 1 Lake Park'
 }];
 
 

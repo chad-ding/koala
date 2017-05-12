@@ -21,7 +21,7 @@ class LoginModal extends Component {
     }
     handleCancel(){
         const {dispatch} = this.props;
-        dispatch({type: SHOW_LOGIN_MODAL, visible: false})
+        dispatch({type: SHOW_LOGIN_MODAL, visible: false});
     }
     handleSubmit(){
         
@@ -72,7 +72,7 @@ class LoginModal extends Component {
                         <FormItem>
                             {getFieldDecorator('remember', {
                                 valuePropName: 'checked',
-                                initialValue: true,
+                                initialValue: true
                             })(
                                 <Checkbox>记住账号</Checkbox>
                             )}

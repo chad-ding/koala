@@ -18,19 +18,19 @@ const columns = [{
     title: 'Parent',
     dataIndex: 'parent',
     key: 'parent',
-    render: text => <a href="javascript:;">{text}</a>,
+    render: text => <a href="javascript:;">{text}</a>
 }, {
     title: 'Value',
     dataIndex: 'value',
-    key: 'value',
+    key: 'value'
 }, {
     title: 'Text',
     dataIndex: 'text',
-    key: 'text',
+    key: 'text'
 }, {
     title: 'Desc',
     dataIndex: 'desc',
-    key: 'desc',
+    key: 'desc'
 }];
 
 class AppList extends Component {
