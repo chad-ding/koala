@@ -50,7 +50,7 @@ function send(params) {
                     body: JSON.stringify(params.query)
                 }, config));
             case METHOD.DELETE:
-                params.requests[0].query = params.requests[0].query === undefined ? '' : JSON.stringify(params.requests[0].query)
+                params.requests[0].query = params.requests[0].query === undefined ? '' : JSON.stringify(params.requests[0].query);
                 return fetchConfig(params, Object.assign({}, {
                     method: params.requests[0].method,
                     body: params.requests[0].query
