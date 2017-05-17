@@ -25,13 +25,29 @@ const envList = (location, callback) => {
     }, 'EnvList');
 };
 
+const envItem = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/EnvItem').default);
+    }, 'EnvItem');
+};
+
+const envAdd = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/EnvAdd').default);
+    }, 'EnvAdd');
+};
+
 render((
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Home}>
                 <IndexRoute getComponent={appList}></IndexRoute>
                 <Route path="app/all" getComponent={appList}></Route>
-                <Route path="env/all" getComponent={envList}></Route>
+                <Route path="env" getComponent={envList}>
+                    <IndexRoute getComponent={envItem}></IndexRoute>
+                    <Route path="item" getComponent={envItem}></Route>
+                    <Route path="add" getComponent={envAdd}></Route>
+                </Route>
             </Route>
         </Router>
     </Provider>

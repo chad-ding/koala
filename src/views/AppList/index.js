@@ -13,7 +13,6 @@ import {getAppList} from './action';
 
 import './style.less';
 
-const TabPane = Tabs.TabPane;
 const columns = [{
     title: 'Parent',
     dataIndex: 'parent',
@@ -36,15 +35,16 @@ const columns = [{
 class AppList extends Component {
     constructor(props) {
         super(props);
+    }
+    componentDidMount(){
         const { dispatch } = this.props;
         if(!this.props.fetched){
             dispatch(getAppList({ parent: 'occupation' }));
         }
     }
-    callback() {
-
-    }
     render() {
+        const TabPane = Tabs.TabPane;
+
         return (
             <div className="container">
                 <Breadcrumb>

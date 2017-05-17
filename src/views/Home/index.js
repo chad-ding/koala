@@ -6,14 +6,12 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Layout, Row, Col, Menu, Dropdown, Icon, notification } from 'antd';
+import { Layout, Row, Col, Menu, Dropdown, Icon, notification, Input } from 'antd';
 import { connect } from 'react-redux';
 import Login from '../Login';
 import { SHOW_LOGIN_MODAL } from '../../consts/action';
 
 import './style.less';
-
-const { Header, Content, Footer } = Layout;
 
 class Home extends Component {
     constructor(props) {
@@ -47,7 +45,7 @@ class Home extends Component {
                     <Link to="/app/all">项目接入</Link>
                 </Menu.Item>
                 <Menu.Item key="env">
-                    <Link to="/env/all">环境管理</Link>
+                    <Link to="/env/item">环境管理</Link>
                 </Menu.Item>
                 <Menu.Item key="setting">
                     系统设置
@@ -72,15 +70,21 @@ class Home extends Component {
         dispatch({ type: SHOW_LOGIN_MODAL, visible: true });
     }
     render() {
+        const Search = Input.Search;
+        const { Header, Content, Footer } = Layout;
+
         return (
-            <Layout className="vesta">
+            <Layout className="koala">
                 <Header className="header">
                     <Row gutter={16}>
                         <Col span={4}>
                             <Link to="/"><img src={this.logo} className="logo" alt="image not found"/></Link>
                         </Col>
-                        <Col span={18} className="menu">
+                        <Col span={14} className="menu">
                             {this.navs}
+                        </Col>
+                        <Col span={4}>
+                            <Search placeholder="请输入关键字"></Search>
                         </Col>
                         <Col span={2}>
                             <Dropdown.Button overlay={this.menus}>

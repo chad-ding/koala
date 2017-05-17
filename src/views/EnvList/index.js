@@ -5,86 +5,63 @@
  */
 
 import React, { Component } from 'react';
-import { Tabs, Breadcrumb, Icon, Table } from 'antd';
+import { Row, Col, Menu, Badge, Breadcrumb, Icon, Tag } from 'antd';
+import { Link } from 'react-router';
 
 import './style.less';
-
-const TabPane = Tabs.TabPane;
-
-const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a href="#">{text}</a>
-}, {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age'
-}, {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address'
-}, {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-        <span>
-            <a href="javascript:;">Action 一 {record.name}</a>
-            <span className="ant-divider" />
-            <a href="javascript:;">Delete</a>
-            <span className="ant-divider" />
-            <a href="javascript:;" className="ant-dropdown-link"> More actions <Icon type="down" /></a>
-        </span>
-    )
-}];
-
-const data = [{
-    key: '1',
-    name: 'AAAAAA',
-    age: 32,
-    address: 'New York No. 1 Lake Park'
-}, {
-    key: '2',
-    name: 'BBBB',
-    age: 42,
-    address: 'London No. 1 Lake Park'
-}, {
-    key: '3',
-    name: 'CCCCCCC',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park'
-}];
-
 
 export default class EnvList extends Component {
     constructor(props) {
         super(props);
     }
-    callback() {
-
-    }
     render() {
         return (
             <div className="container">
-                <Breadcrumb>
-                    <Breadcrumb.Item href="">
-                        <Icon type="home" />
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item href="">
-                        <span>Env List</span>
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item>
-                        Env
-                    </Breadcrumb.Item>
-                </Breadcrumb>
-                <br/><br/>
-                <Tabs defaultActiveKey="1" onChange={this.callback} type="card">
-                    <TabPane tab="频道" key="1">
-                        <Table columns={columns} dataSource={data}></Table>
-                    </TabPane>
-                    <TabPane tab="队列" key="2">Content of Tab Pane 2</TabPane>
-                    <TabPane tab="数据表" key="3">Content of Tab Pane 3</TabPane>
-                </Tabs>  
+                <Row gutter={24}>
+                    <Col span={6}>
+                        <Menu mode="inline" defaultSelectedKeys={['qa']} className="env-container">
+                            <Menu.Item key="qa">
+                                <Tag color="green">1</Tag>
+                                <Link to="/env/item" className="env-item">QA</Link>
+                                <Badge count={200} overflowCount={999} className="env-badge"></Badge>
+                            </Menu.Item>
+                            <Menu.Item key="staging">
+                                <Tag color="green">2</Tag>
+                                <Link to="/env/item" className="env-item">STAGING</Link>
+                                <Badge count={200} overflowCount={999} className="env-badge"></Badge>
+                            </Menu.Item>
+                            <Menu.Item key="live">
+                                <Tag color="green">3</Tag>
+                                <Link to="/env/item" className="env-item">LIVE</Link>
+                                <Badge count={200} overflowCount={999} className="env-badge"></Badge>
+                            </Menu.Item>
+                            <Menu.Item key="prelive">
+                                <Tag color="green">4</Tag>
+                                <Link to="/env/item" className="env-item">PRELIVE</Link>
+                                <Badge count={200} overflowCount={999} className="env-badge"></Badge>
+                            </Menu.Item>
+                            <Menu.Item key="addEnv">
+                                <Tag color="green">+</Tag>
+                                <Link to="/env/add" className="env-item">添加环境</Link>
+                            </Menu.Item>
+                        </Menu>
+                    </Col>
+                    <Col span={18}>
+                        <Breadcrumb>
+                            <Breadcrumb.Item href="">
+                                <Icon type="home" />
+                            </Breadcrumb.Item>
+                            <Breadcrumb.Item href="">
+                                <span>EnvList</span>
+                            </Breadcrumb.Item>
+                            <Breadcrumb.Item>QA</Breadcrumb.Item>
+                        </Breadcrumb>
+                        <br/>
+                        {React.cloneElement(this.props.children, {
+                            key: this.props.location.pathname
+                        })}
+                    </Col>
+                </Row>
             </div>
         );
     }
