@@ -5,7 +5,7 @@
  */
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Modal, Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Modal, Form, Icon, Input, Checkbox } from 'antd';
 import RandomCode from '../../components/RandomCode';
 import {SHOW_LOGIN_MODAL} from '../../consts/action';
 import {login} from './action';

@@ -14,12 +14,15 @@ export default class EnvList extends Component {
     constructor(props) {
         super(props);
     }
+    tabChange(key){
+
+    }
     render() {
         return (
             <div className="container">
                 <Row gutter={24}>
                     <Col span={6}>
-                        <Menu mode="inline" defaultSelectedKeys={['qa']} className="env-container">
+                        <Menu onChange={this.tabChange} mode="inline" defaultSelectedKeys={['qa']} className="env-container">
                             <Menu.Item key="qa">
                                 <Tag color="green">1</Tag>
                                 <Link to="/env/item" className="env-item">QA</Link>
@@ -52,7 +55,7 @@ export default class EnvList extends Component {
                                 <Icon type="home" />
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <span>EnvList</span>
+                                <span>环境管理</span>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item>QA</Breadcrumb.Item>
                         </Breadcrumb>

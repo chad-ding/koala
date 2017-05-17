@@ -6,10 +6,8 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Tabs, Breadcrumb, Icon, Table } from 'antd';
-import { fetchData } from '../../resource';
-import { GET_APP_LIST } from '../../consts/action';
 import { connect } from 'react-redux';
-import {getAppList} from './action';
+import {getAppList, changeTab} from './action';
 
 import './style.less';
 
@@ -32,15 +30,26 @@ const columns = [{
     key: 'desc'
 }];
 
+const tabMap = {
+    channel: '频道',
+    queue: '队列',
+    table: '数据表'
+};
+
 class AppList extends Component {
     constructor(props) {
         super(props);
+        this.tabChange = this.tabChange.bind(this);
     }
     componentDidMount(){
         const { dispatch } = this.props;
         if(!this.props.fetched){
             dispatch(getAppList({ parent: 'occupation' }));
         }
+    }
+    tabChange(key){
+        const { dispatch } = this.props;
+        dispatch(changeTab(key));
     }
     render() {
         const TabPane = Tabs.TabPane;
@@ -52,14 +61,14 @@ class AppList extends Component {
                         <Icon type="home" />
                     </Breadcrumb.Item>
                     <Breadcrumb.Item href="">
-                        <span>Application List</span>
+                        <span>项目接入</span>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                        Application
+                        {tabMap[this.props.tab]}
                     </Breadcrumb.Item>
                 </Breadcrumb>
                 <br/><br/>
-                <Tabs defaultActiveKey="channel" onChange={this.callback} type="card">
+                <Tabs defaultActiveKey="channel" onChange={this.tabChange} type="card">
                     <TabPane tab="频道" key="channel">
                         <Table columns={columns} dataSource={this.props.appList}></Table>
                     </TabPane>
@@ -73,13 +82,19 @@ class AppList extends Component {
 
 AppList.propTypes = {
     appList: PropTypes.array.isRequired,
-    fetched: PropTypes.bool.isRequired
+    fetched: PropTypes.bool.isRequired,
+    tab: PropTypes.string.isRequired
+};
+
+AppList.defaultProps = {
+    tab: 'channel'
 };
 
 function mapStateToProps(state) {
     return {
         appList: state.appListReducer.appList,
-        fetched: state.appListReducer.fetched
+        fetched: state.appListReducer.fetched,
+        tab: state.appListReducer.tab
     };
 }
 

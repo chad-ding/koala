@@ -84,10 +84,10 @@ class Home extends Component {
                             {this.navs}
                         </Col>
                         <Col span={4}>
-                            <Search placeholder="请输入关键字"></Search>
+                            <Search size="large" placeholder="请输入关键字"></Search>
                         </Col>
                         <Col span={2}>
-                            <Dropdown.Button overlay={this.menus}>
+                            <Dropdown.Button size="large" overlay={this.menus}>
                                 <Icon type="laptop"></Icon>操作
                             </Dropdown.Button>
                         </Col>
