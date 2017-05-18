@@ -9,6 +9,7 @@ import homeReducer from '../views/Home/reducer';
 import appListReducer from '../views/AppList/reducer';
 import envListReducer from '../views/EnvList/reducer';
 import envAddReducer from '../views/EnvAdd/reducer';
+import channelFormReducer from '../views/ChannelForm/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
 
@@ -28,5 +29,6 @@ export default combineReducers({
     homeReducer,
     appListReducer,
     envListReducer,
-    envAddReducer
+    envAddReducer,
+    channelFormReducer
 });

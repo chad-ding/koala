@@ -23,3 +23,5 @@ export const PORTAL_MODAL_SHOW = Symbol('PORTAL_MODAL_SHOW');
 export const ADD_PORTAL = Symbol('ADD_PORTAL');
 //删除Portal
 export const DEL_PORTAL = Symbol('DEL_PORTAL');
+//新增Channel
+export const ADD_CHANNEL = Symbol('ADD_CHANNEL');

@@ -37,12 +37,19 @@ const envAdd = (location, callback) => {
     }, 'EnvAdd');
 };
 
+const channelForm = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/ChannelForm').default);
+    }, 'ChannelForm');
+};
+
 render((
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Home}>
                 <IndexRoute getComponent={appList}></IndexRoute>
                 <Route path="app/all" getComponent={appList}></Route>
+                <Route path="channel/new" getComponent={channelForm}></Route>
                 <Route path="env" getComponent={envList}>
                     <IndexRoute getComponent={envItem}></IndexRoute>
                     <Route path="item" getComponent={envItem}></Route>

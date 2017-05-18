@@ -7,6 +7,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Tabs, Breadcrumb, Icon, Table, Row, Col, Button, Input } from 'antd';
 import { connect } from 'react-redux';
+import {Link} from 'react-router';
 import {getAppList, changeTab} from './action';
 
 import './style.less';
@@ -79,7 +80,7 @@ class AppList extends Component {
                                 &nbsp;&nbsp;<Button size="large" type="primary">搜索</Button>
                            </Col>
                            <Col span={4} offset={12}>
-                                <Button size="large" type="primary">申请频道</Button>
+                                <Link to="/channel/new"><Button size="large" type="primary">申请频道</Button></Link>
                            </Col>
                         </Row>
                         <Table columns={columns} dataSource={this.props.appList}></Table>

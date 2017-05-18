@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { handleModal } from './action';
 import PortalModalForm from './portalModal';
 
-import './index.less';
+import './style.less';
 
 class EnvAdd extends Component {
     constructor(props) {
@@ -20,9 +20,6 @@ class EnvAdd extends Component {
     handleModal(){
         const {dispatch} = this.props;
         dispatch(handleModal(true));
-    }
-    componentWillReceiveProps(nextProps){
-        console.log(nextProps);
     }
     render() {
         const formItemLayout = {

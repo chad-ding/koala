@@ -7,7 +7,7 @@
 import React, {Component} from 'react';
 import {Layout, Tabs, Icon, Alert, Input} from 'antd';
 
-import './index.less';
+import './style.less';
 
 export default class EnvItem extends Component {
     constructor(props){
