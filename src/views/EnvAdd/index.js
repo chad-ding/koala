@@ -16,10 +16,14 @@ class EnvAdd extends Component {
     constructor(props) {
         super(props);
         this.handleModal = this.handleModal.bind(this);
+        this.delPortal = this.delPortal.bind(this);
     }
-    handleModal(){
-        const {dispatch} = this.props;
+    handleModal() {
+        const { dispatch } = this.props;
         dispatch(handleModal(true));
+    }
+    delPortal(env, index, arg) {
+        console.log(index);
     }
     render() {
         const formItemLayout = {
@@ -72,9 +76,9 @@ class EnvAdd extends Component {
         }, {
             title: '操作',
             key: 'action',
-            render: (text, record) => (
+            render: (text, record, index) => (
                 <span>
-                    <a href="javascript:;">删除</a>
+                    <a href="javascript:;" onClick={(proxy, env, index) => this.delPortal(proxy, env, index)}>删除{index}</a>
                 </span>
             )
         }];
@@ -154,7 +158,7 @@ class EnvAdd extends Component {
                     <Button onClick={this.handleModal} type="primary" htmlType="button" size="large" style={{float: 'right'}}>添加</Button>
                 </FormItem>
                 <FormItem {...formItemLayout} colon={false} label=" ">
-                    <Table columns={columns} dataSource={this.props.portalList}></Table>
+                    <Table size="small" rowKey="name" columns={columns} dataSource={this.props.portalList}></Table>
                 </FormItem>
                 <FormItem {...tailFormItemLayout}>
                     <Button type="default" htmlType="button" size="large">取消</Button>&nbsp;&nbsp;&nbsp;
@@ -169,8 +173,9 @@ class EnvAdd extends Component {
 const EnvForm = Form.create()(EnvAdd);
 
 function mapStateToProps(state) {
+
     return {
-        ...state.envAddReducer
+        portalList: state.envAddReducer.portalList.slice()
     };
 }
 
