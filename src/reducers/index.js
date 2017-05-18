@@ -7,6 +7,7 @@
 import { combineReducers } from 'redux';
 import homeReducer from '../views/Home/reducer';
 import appListReducer from '../views/AppList/reducer';
+import envListReducer from '../views/EnvList/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
 
@@ -24,5 +25,6 @@ function requestReducer(state = { errorInfo: { data: null, counter: 0} }, action
 export default combineReducers({
     requestReducer,
     homeReducer,
-    appListReducer
+    appListReducer,
+    envListReducer
 });

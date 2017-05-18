@@ -4,25 +4,37 @@
  *@Date: 2017-04-06 16:48:24
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Row, Col, Menu, Badge, Breadcrumb, Icon, Tag } from 'antd';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import {changeTab} from './action';
 
 import './style.less';
 
-export default class EnvList extends Component {
+const tabMap = {
+    qa: 'QA',
+    staging: 'STAGING',
+    live: 'LIVE',
+    prelive: 'PRELIVE',
+    addEnv: '添加环境'
+};
+
+class EnvList extends Component {
     constructor(props) {
         super(props);
+        this.tabChange = this.tabChange.bind(this);
     }
-    tabChange(key){
-
+    tabChange(item, key, keyPath) {
+        const {dispatch} = this.props;
+        dispatch(changeTab(item.key));
     }
     render() {
         return (
             <div className="container">
                 <Row gutter={24}>
                     <Col span={6}>
-                        <Menu onChange={this.tabChange} mode="inline" defaultSelectedKeys={['qa']} className="env-container">
+                        <Menu onClick={this.tabChange} mode="inline" defaultSelectedKeys={['qa']} className="env-container">
                             <Menu.Item key="qa">
                                 <Tag color="green">1</Tag>
                                 <Link to="/env/item" className="env-item">QA</Link>
@@ -57,7 +69,7 @@ export default class EnvList extends Component {
                             <Breadcrumb.Item href="">
                                 <span>环境管理</span>
                             </Breadcrumb.Item>
-                            <Breadcrumb.Item>QA</Breadcrumb.Item>
+                            <Breadcrumb.Item>{tabMap[this.props.tab]}</Breadcrumb.Item>
                         </Breadcrumb>
                         <br/>
                         {React.cloneElement(this.props.children, {
@@ -69,3 +81,19 @@ export default class EnvList extends Component {
         );
     }
 };
+
+EnvList.propTypes = {
+    tab: PropTypes.string.isRequired
+};
+
+EnvList.defaultProps = {
+    tab: 'qa'
+};
+
+function mapStateToProps(state) {
+    return {
+        tab: state.envListReducer.tab
+    };
+}
+
+export default connect(mapStateToProps)(EnvList);
