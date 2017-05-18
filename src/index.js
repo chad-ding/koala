@@ -43,6 +43,19 @@ const channelForm = (location, callback) => {
     }, 'ChannelForm');
 };
 
+const sysConfig = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/SysConfig').default);
+    }, 'SysConfig');
+};
+
+const baseInfo = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/BaseInfo').default);
+    }, 'BaseInfo');
+};
+
+
 render((
     <Provider store={store}>
         <Router history={browserHistory}>
@@ -54,6 +67,10 @@ render((
                     <IndexRoute getComponent={envItem}></IndexRoute>
                     <Route path="item" getComponent={envItem}></Route>
                     <Route path="add" getComponent={envAdd}></Route>
+                </Route>
+                <Route path="sys" getComponent={sysConfig}>
+                    <IndexRoute getComponent={baseInfo}></IndexRoute>
+                    <Route path="baseInfo" getComponent={baseInfo}></Route>
                 </Route>
             </Route>
         </Router>

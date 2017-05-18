@@ -48,7 +48,7 @@ class Home extends Component {
                     <Link to="/env/item">环境管理</Link>
                 </Menu.Item>
                 <Menu.Item key="setting">
-                    系统设置
+                    <Link to="/sys/baseInfo">系统设置</Link>
                 </Menu.Item>
                 <Menu.Item key="monitor">
                     系统监控
