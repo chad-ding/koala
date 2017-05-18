@@ -204,7 +204,7 @@ class Channel extends Component {
                             valuePropName: 'checked'
                         })( 
                             <div>
-                                <InputNumber min={1} max={10} defaultValue={3} />
+                                <InputNumber min={1} defaultValue={100} />
                                 <Select defaultValue="1">
                                     <Option value="1">QPS(请求/秒)</Option>
                                     <Option value="2">QPM(请求/分)</Option>
