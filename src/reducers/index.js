@@ -8,6 +8,7 @@ import { combineReducers } from 'redux';
 import homeReducer from '../views/Home/reducer';
 import appListReducer from '../views/AppList/reducer';
 import envListReducer from '../views/EnvList/reducer';
+import envAddReducer from '../views/EnvAdd/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
 
@@ -26,5 +27,6 @@ export default combineReducers({
     requestReducer,
     homeReducer,
     appListReducer,
-    envListReducer
+    envListReducer,
+    envAddReducer
 });

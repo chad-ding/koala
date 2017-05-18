@@ -5,13 +5,24 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Checkbox, Button } from 'antd';
+import { Form, Input, Checkbox, Button, Table } from 'antd';
+import { connect } from 'react-redux';
+import { handleModal } from './action';
+import PortalModalForm from './portalModal';
 
 import './index.less';
 
 class EnvAdd extends Component {
     constructor(props) {
         super(props);
+        this.handleModal = this.handleModal.bind(this);
+    }
+    handleModal(){
+        const {dispatch} = this.props;
+        dispatch(handleModal(true));
+    }
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps);
     }
     render() {
         const formItemLayout = {
@@ -25,22 +36,51 @@ class EnvAdd extends Component {
             }
         };
 
-         const tailFormItemLayout = {
+        const tailFormItemLayout = {
             wrapperCol: {
                 xs: {
-                  span: 24,
-                  offset: 0
+                    span: 24,
+                    offset: 0
                 },
                 sm: {
-                  span: 14,
-                  offset: 6
+                    span: 14,
+                    offset: 6
                 }
             }
         };
 
-        //const { getFieldDecorator } = this.props.form;
         const FormItem = Form.Item;
         const { getFieldDecorator } = this.props.form;
+
+        const columns = [{
+            title: '名称',
+            dataIndex: 'name',
+            key: 'name'
+        }, {
+            title: 'URL',
+            dataIndex: 'url',
+            key: 'url'
+        }, {
+            title: '公共账户',
+            dataIndex: 'account',
+            key: 'account'
+        }, {
+            title: 'BO',
+            dataIndex: 'bo',
+            key: 'bo'
+        }, {
+            title: '存储节点',
+            dataIndex: 'node',
+            key: 'node'
+        }, {
+            title: '操作',
+            key: 'action',
+            render: (text, record) => (
+                <span>
+                    <a href="javascript:;">删除</a>
+                </span>
+            )
+        }];
 
         return (
             <Form onSubmit={this.handleSubmit}>
@@ -113,14 +153,28 @@ class EnvAdd extends Component {
                         <Checkbox></Checkbox>
                     )}
                 </FormItem>
-                <FormItem {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="button" size="large">保存</Button>&nbsp;&nbsp;&nbsp;
-                    <Button type="default" htmlType="button" size="large">取消</Button>
+                <FormItem {...formItemLayout} label="Portals">
+                    <Button onClick={this.handleModal} type="primary" htmlType="button" size="large" style={{float: 'right'}}>添加</Button>
                 </FormItem>
+                <FormItem {...formItemLayout} colon={false} label=" ">
+                    <Table columns={columns} dataSource={this.props.portalList}></Table>
+                </FormItem>
+                <FormItem {...tailFormItemLayout}>
+                    <Button type="default" htmlType="button" size="large">取消</Button>&nbsp;&nbsp;&nbsp;
+                    <Button type="primary" htmlType="button" size="large">保存</Button>  
+                </FormItem>
+                <PortalModalForm></PortalModalForm>
             </Form>
         );
     }
 };
 
 const EnvForm = Form.create()(EnvAdd);
-export default EnvForm;
+
+function mapStateToProps(state) {
+    return {
+        ...state.envAddReducer
+    };
+}
+
+export default connect(mapStateToProps)(EnvForm);
