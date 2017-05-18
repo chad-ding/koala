@@ -5,7 +5,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { Tabs, Breadcrumb, Icon, Table } from 'antd';
+import { Tabs, Breadcrumb, Icon, Table, Row, Col, Button, Input } from 'antd';
 import { connect } from 'react-redux';
 import {getAppList, changeTab} from './action';
 
@@ -53,6 +53,7 @@ class AppList extends Component {
     }
     render() {
         const TabPane = Tabs.TabPane;
+        const Search = Input.Search;
 
         return (
             <div className="container">
@@ -70,10 +71,45 @@ class AppList extends Component {
                 <br/><br/>
                 <Tabs defaultActiveKey="channel" onChange={this.tabChange} type="card">
                     <TabPane tab="频道" key="channel">
+                        <Row>
+                           <Col span={6}>
+                                <Search size="large"></Search>
+                           </Col>
+                           <Col span={2}>
+                                &nbsp;&nbsp;<Button size="large" type="primary">搜索</Button>
+                           </Col>
+                           <Col span={4} offset={12}>
+                                <Button size="large" type="primary">申请频道</Button>
+                           </Col>
+                        </Row>
                         <Table columns={columns} dataSource={this.props.appList}></Table>
                     </TabPane>
-                    <TabPane tab="队列" key="queue">Content of Tab Pane 2</TabPane>
-                    <TabPane tab="数据表" key="table">Content of Tab Pane 3</TabPane>
+                    <TabPane tab="队列" key="queue">
+                        <Row>
+                           <Col span={6}>
+                                <Search size="large"></Search>
+                           </Col>
+                           <Col span={2}>
+                                &nbsp;&nbsp;<Button size="large" type="primary">搜索</Button>
+                           </Col>
+                           <Col span={4} offset={12}>
+                                <Button size="large" type="primary">申请队列</Button>
+                           </Col>
+                        </Row>
+                    </TabPane>
+                    <TabPane tab="数据表" key="table">
+                        <Row>
+                           <Col span={6}>
+                                <Search size="large"></Search>
+                           </Col>
+                           <Col span={2}>
+                                &nbsp;&nbsp;<Button size="large" type="primary">搜索</Button>
+                           </Col>
+                           <Col span={4} offset={12}>
+                                <Button size="large" type="primary">申请数据表</Button>
+                           </Col>
+                        </Row>
+                    </TabPane>
                 </Tabs>  
             </div>
         );
