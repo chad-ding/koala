@@ -8,7 +8,7 @@ import React, { Component, PropTypes } from 'react';
 import { Row, Col, Menu, Badge, Breadcrumb, Icon, Tag } from 'antd';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import {changeTab} from './action';
+import { changeTab } from './action';
 
 import './style.less';
 
@@ -26,15 +26,19 @@ class EnvList extends Component {
         this.tabChange = this.tabChange.bind(this);
     }
     tabChange(item, key, keyPath) {
-        const {dispatch} = this.props;
+        const { dispatch } = this.props;
         dispatch(changeTab(item.key));
+    }
+    componentWillUnmount() {
+        const {dispatch} = this.props;
+        dispatch(changeTab('qa'));
     }
     render() {
         return (
             <div className="container">
                 <Row gutter={24}>
                     <Col span={6}>
-                        <Menu onClick={this.tabChange} mode="inline" defaultSelectedKeys={['qa']} className="env-container">
+                        <Menu onClick={this.tabChange} mode="inline" selectedKeys={[this.props.tab]} defaultSelectedKeys={['qa']} className="env-container">
                             <Menu.Item key="qa">
                                 <Tag color="green">1</Tag>
                                 <Link to="/env/item" className="env-item">QA</Link>

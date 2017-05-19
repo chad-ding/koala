@@ -55,6 +55,35 @@ const baseInfo = (location, callback) => {
     }, 'BaseInfo');
 };
 
+const dataDic = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/DataDic').default);
+    }, 'DataDic');
+};
+
+const codeGen = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/CodeGen').default);
+    }, 'CodeGen');
+};
+
+const note = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Note').default);
+    }, 'Note');
+};
+
+const role = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Role').default);
+    }, 'Role');
+};
+
+const domain = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Domain').default);
+    }, 'Domain');
+};
 
 render((
     <Provider store={store}>
@@ -71,6 +100,11 @@ render((
                 <Route path="sys" getComponent={sysConfig}>
                     <IndexRoute getComponent={baseInfo}></IndexRoute>
                     <Route path="baseInfo" getComponent={baseInfo}></Route>
+                    <Route path="dataDic" getComponent={dataDic}></Route>
+                    <Route path="codeGen" getComponent={codeGen}></Route>
+                    <Route path="note" getComponent={note}></Route>
+                    <Route path="role" getComponent={role}></Route>
+                    <Route path="domain" getComponent={domain}></Route>
                 </Route>
             </Route>
         </Router>

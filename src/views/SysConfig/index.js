@@ -7,50 +7,65 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Row, Col, Menu, Badge, Breadcrumb, Icon, Tag } from 'antd';
+import { Row, Col, Menu, Breadcrumb, Icon } from 'antd';
+import {changeTab} from './action';
+
+import './style.less';
 
 const tabMap = {
     baseInfo: '基本信息',
     dataDic: '数据字典',
     codeGen: '代码生成',
-    noteSetting: '通知设置',
-    roleSetting: '角色设置',
-    domainSetting: '域设置'
+    note: '通知设置',
+    role: '角色设置',
+    domain: '域设置'
 };
 
-export default class SysConfig extends Component {
+class SysConfig extends Component {
     constructor(props) {
         super(props);
+        this.tabChange = this.tabChange.bind(this);
+    }
+    tabChange(item, key, keyPath){
+        const {dispatch} = this.props;
+        dispatch(changeTab(item.key));
+    }
+    componentDidMount(){
+        console.log('hahhahhaa');
+    }
+    componentWillUnmount() {
+        const {dispatch} = this.props;
+        dispatch(changeTab('baseInfo'));
     }
     render() {
         return (
-            <div class="container">
+            <div className="container">
                 <Row gutter={24}>
                     <Col span={6}>
-                        <Menu onClick={this.tabChange} mode="inline" defaultSelectedKeys={['qa']} className="env-container">
-                            <Menu.Item key="qa">
-                                <Tag color="green">1</Tag>
-                                <Link to="/env/item" className="env-item">QA</Link>
-                                <Badge count={200} overflowCount={999} className="env-badge"></Badge>
+                        <Menu onClick={this.tabChange} mode="inline" selectedKeys={[this.props.tab]} defaultSelectedKeys={['baseInfo']} className="sys-container">
+                            <Menu.Item key="baseInfo">
+                                <Link to="/sys/baseInfo" className="sys-item">基本信息</Link>
+                                <Icon className="env-icon" type="right"></Icon>
                             </Menu.Item>
-                            <Menu.Item key="staging">
-                                <Tag color="green">2</Tag>
-                                <Link to="/env/item" className="env-item">STAGING</Link>
-                                <Badge count={200} overflowCount={999} className="env-badge"></Badge>
+                            <Menu.Item key="dataDic">
+                                <Link to="/sys/dataDic" className="sys-item">数据字典</Link>
+                                <Icon className="env-icon" type="right"></Icon>
                             </Menu.Item>
-                            <Menu.Item key="live">
-                                <Tag color="green">3</Tag>
-                                <Link to="/env/item" className="env-item">LIVE</Link>
-                                <Badge count={200} overflowCount={999} className="env-badge"></Badge>
+                            <Menu.Item key="codeGen">
+                                <Link to="/sys/codeGen" className="sys-item">代码生成</Link>
+                                <Icon className="env-icon" type="right"></Icon>
                             </Menu.Item>
-                            <Menu.Item key="prelive">
-                                <Tag color="green">4</Tag>
-                                <Link to="/env/item" className="env-item">PRELIVE</Link>
-                                <Badge count={200} overflowCount={999} className="env-badge"></Badge>
+                            <Menu.Item key="note">
+                                <Link to="/sys/note" className="sys-item">通知设置</Link>
+                                <Icon className="env-icon" type="right"></Icon>
                             </Menu.Item>
-                            <Menu.Item key="addEnv">
-                                <Tag color="green">+</Tag>
-                                <Link to="/env/add" className="env-item">添加环境</Link>
+                            <Menu.Item key="role">
+                                <Link to="/sys/role" className="sys-item">角色设置</Link>
+                                <Icon className="env-icon" type="right"></Icon>
+                            </Menu.Item>
+                            <Menu.Item key="domain">
+                                <Link to="/sys/domain" className="sys-item">域设置</Link>
+                                <Icon className="env-icon" type="right"></Icon>
                             </Menu.Item>
                         </Menu>
                     </Col>
@@ -74,3 +89,11 @@ export default class SysConfig extends Component {
         );
     }
 }
+
+function mapStateToProps(state){
+    return {
+        tab: state.sysConfigReducer.tab
+    };
+}
+
+export default connect(mapStateToProps)(SysConfig);

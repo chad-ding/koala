@@ -56,6 +56,9 @@ class Home extends Component {
             </Menu>
         );
     }
+    componentDidMount(){
+        console.info('koala app startup...');
+    }
     componentWillReceiveProps(nextProps) {
         if (this.props.errorInfo.counter !== nextProps.errorInfo.counter) {
             notification.open({
