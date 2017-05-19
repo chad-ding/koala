@@ -4,7 +4,7 @@
  *@Date: 2017-05-18 19:13:43
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Row, Col, Menu, Breadcrumb, Icon } from 'antd';
@@ -31,11 +31,11 @@ class SysConfig extends Component {
         dispatch(changeTab(item.key));
     }
     componentDidMount(){
-        console.log('hahhahhaa');
+        console.log('sys config startup...');
     }
     componentWillUnmount() {
         const {dispatch} = this.props;
-        dispatch(changeTab('baseInfo'));
+        //dispatch(changeTab('baseInfo'));
     }
     render() {
         return (
@@ -95,5 +95,13 @@ function mapStateToProps(state){
         tab: state.sysConfigReducer.tab
     };
 }
+
+SysConfig.propTypes = {
+    tab: PropTypes.string.isRequired
+};
+
+SysConfig.defaultProps = {
+    tab: 'baseInfo'
+};
 
 export default connect(mapStateToProps)(SysConfig);

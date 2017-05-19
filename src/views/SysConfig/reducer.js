@@ -4,11 +4,11 @@
  *@Date: 2017-05-19 10:43:08
  */
 
-import {TAB_CHANGE} from '../../consts/action';
+import {TAB_CHANGE_SYS} from '../../consts/action';
 
 export default function sysConfigReducer(state = {tab: 'baseInfo'}, action){
     switch(action.type){
-        case TAB_CHANGE:
+        case TAB_CHANGE_SYS:
             return Object.assign({}, state, {tab: action.tab});
         default:
             return state;

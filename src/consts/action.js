@@ -15,8 +15,10 @@ export const SHOW_LOGIN_MODAL = 'SHOW_LOGIN_MODAL';
 export const LOGIN = 'LOGIN';
 //登录完成
 export const USER_LOGINED = 'USER_LOGINED';
-//Tab变更
-export const TAB_CHANGE = Symbol('TAB_CHANGE');
+//环境管理Tab变更
+export const TAB_CHANGE_ENV = Symbol('TAB_CHANGE_ENV');
+//系统设置Tab变更
+export const TAB_CHANGE_SYS = Symbol('TAB_CHANGE_SYS');
 //显示Portal modal
 export const PORTAL_MODAL_SHOW = Symbol('PORTAL_MODAL_SHOW');
 //添加Portal

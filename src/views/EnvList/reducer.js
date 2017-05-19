@@ -4,11 +4,11 @@
  *@Date: 2017-05-18 09:57:08
  */
 
-import { TAB_CHANGE } from '../../consts/action';
+import { TAB_CHANGE_ENV } from '../../consts/action';
 
 export default function envListReducer(state = { tab: 'qa' }, action) {
     switch (action.type) {
-        case TAB_CHANGE:
+        case TAB_CHANGE_ENV:
             return Object.assign({}, state, { tab: action.tab });
         default:
             return state;
