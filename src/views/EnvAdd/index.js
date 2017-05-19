@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import { Form, Input, Checkbox, Button, Table } from 'antd';
 import { connect } from 'react-redux';
-import { handleModal } from './action';
+import { handleModal, delPortal } from './action';
 import PortalModalForm from './portalModal';
 
 import './style.less';
@@ -22,8 +22,9 @@ class EnvAdd extends Component {
         const { dispatch } = this.props;
         dispatch(handleModal(true));
     }
-    delPortal(env, index, arg) {
-        console.log(index);
+    delPortal(index) {
+        const { dispatch } = this.props;
+        dispatch(delPortal(index));
     }
     render() {
         const formItemLayout = {
@@ -78,7 +79,7 @@ class EnvAdd extends Component {
             key: 'action',
             render: (text, record, index) => (
                 <span>
-                    <a href="javascript:;" onClick={(proxy, env, index) => this.delPortal(proxy, env, index)}>删除{index}</a>
+                    <a href="javascript:;" onClick={() => this.delPortal(index)}>删除</a>
                 </span>
             )
         }];
@@ -175,7 +176,7 @@ const EnvForm = Form.create()(EnvAdd);
 function mapStateToProps(state) {
 
     return {
-        portalList: state.envAddReducer.portalList.slice()
+        portalList: state.envAddReducer.portalList
     };
 }
 
