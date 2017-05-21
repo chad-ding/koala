@@ -4,17 +4,14 @@
  *@Date: 2017-04-06 11:01:45
  */
 
-export const REQUEST_DATA = 'REQUEST_DATA#';
-export const RECEIVE_DATA = 'RECEIVE_DATA#';
-export const REQUEST_FAILED = 'REQUEST_FAILED';
+export const RECEIVE_DATA = Symbol('RECEIVE_DATA');
+export const REQUEST_FAILED = Symbol('REQUEST_FAILED');
 
-export const GET_APP_LIST = 'GET_APP_LIST';
+export const GET_APP_LIST = Symbol('GET_APP_LIST');
 //显示登录Modal
-export const SHOW_LOGIN_MODAL = 'SHOW_LOGIN_MODAL';
+export const SHOW_LOGIN_MODAL = Symbol('SHOW_LOGIN_MODAL');
 //登录
-export const LOGIN = 'LOGIN';
-//登录完成
-export const USER_LOGINED = 'USER_LOGINED';
+export const LOGIN = Symbol('LOGIN');
 //环境管理Tab变更
 export const TAB_CHANGE_ENV = Symbol('TAB_CHANGE_ENV');
 //系统设置Tab变更

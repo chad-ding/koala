@@ -120,7 +120,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
     return {
-        userInfo: state.homeReducer.userInfo,
+        userInfo: state.loginReducer.userInfo,
         errorInfo: state.requestReducer.errorInfo
     };
 }

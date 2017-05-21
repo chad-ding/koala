@@ -6,6 +6,7 @@
 
 import { combineReducers } from 'redux';
 import homeReducer from '../views/Home/reducer';
+import loginReducer from '../views/Login/reducer';
 import appListReducer from '../views/AppList/reducer';
 import envListReducer from '../views/EnvList/reducer';
 import envAddReducer from '../views/EnvAdd/reducer';
@@ -28,6 +29,7 @@ function requestReducer(state = { errorInfo: { data: null, counter: 0} }, action
 export default combineReducers({
     requestReducer,
     homeReducer,
+    loginReducer,
     appListReducer,
     envListReducer,
     envAddReducer,

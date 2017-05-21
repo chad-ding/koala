@@ -7,7 +7,7 @@
 import { dictToString } from './utils';
 import 'whatwg-fetch';
 import Promise from 'promise-polyfill';
-import { REQUEST_DATA, REQUEST_FAILED, RECEIVE_DATA } from './consts/action';
+import { REQUEST_FAILED } from './consts/action';
 
 const METHOD = {
     GET: Symbol('GET'),
@@ -62,16 +62,16 @@ function send(params) {
 function fetchAllConfig(params) {
     //使用Promise.all()
     Promise.all(params.requests.map(request => {
-        let promise = fetch(baseUrl + request.path + '?' + dictToString(request.query), config);
-        return promise.then(res => res.json());
-    }))
-    .then(json => {
-        params.onSuccess(json);
-    })
-    .catch(error => {
-        console.error(error);
-        params.onFail(error);
-    });
+            let promise = fetch(baseUrl + request.path + '?' + dictToString(request.query), config);
+            return promise.then(res => res.json());
+        }))
+        .then(json => {
+            params.onSuccess(json);
+        })
+        .catch(error => {
+            console.error(error);
+            params.onFail(error);
+        });
 }
 
 function fetchConfig(params, config) {
@@ -94,14 +94,14 @@ function checkStatus(response) {
     } else {
 
         let error, deffered;
-        if(response.status === 503){
-            deffered = response.json().then( json => {
+        if (response.status === 503) {
+            deffered = response.json().then(json => {
                 error = new Error(json.code);
                 error.msg = json.msg;
 
                 return error;
             });
-        }else{
+        } else {
 
             error = new Error(response.status);
             error.msg = response.statusText;
@@ -111,21 +111,11 @@ function checkStatus(response) {
             });
 
         }
-        
-        return deffered.then(function(error){
+
+        return deffered.then(function(error) {
             throw error;
         });
     }
-}
-
-/**
- * 开始请求
- */
-function requestData(requests) {
-    return {
-        type: REQUEST_DATA + requests.category,
-        requests
-    };
 }
 
 /**
@@ -134,7 +124,7 @@ function requestData(requests) {
  */
 function receiveData(requests, json) {
     return {
-        type: RECEIVE_DATA + requests.category,
+        type: requests.category,
         requests,
         data: json
     };
@@ -157,12 +147,10 @@ function requestFailed(requests, error) {
  * 发送请求的具体方法
  */
 export function fetchData(...requests) {
-    return dispatch => {
-        dispatch(requestData(requests[0]));
-        return send({
-            requests,
-            onSuccess: json => dispatch(receiveData(requests[0], json)),
-            onFail: error => dispatch(requestFailed(requests[0], error))
-        });
-    };
+    return dispatch => send({
+        requests,
+        onSuccess: json => dispatch(receiveData(requests[0], json)),
+        onFail: error => dispatch(requestFailed(requests[0], error))
+    });
+
 };

@@ -4,11 +4,11 @@
  *@Date: 2017-04-25 22:54:03
  */
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Modal, Form, Icon, Input, Checkbox } from 'antd';
 import RandomCode from '../../components/RandomCode';
-import {SHOW_LOGIN_MODAL} from '../../consts/action';
-import {login} from './action';
+import { SHOW_LOGIN_MODAL } from '../../consts/action';
+import { login } from './action';
 import md5 from 'js-md5';
 
 const FormItem = Form.Item;
@@ -19,23 +19,24 @@ class LoginModal extends Component {
         this.handleCancel = this.handleCancel.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleCancel(){
-        const {dispatch} = this.props;
-        dispatch({type: SHOW_LOGIN_MODAL, visible: false});
+    handleCancel() {
+        const { dispatch } = this.props;
+        dispatch({ type: SHOW_LOGIN_MODAL, visible: false });
     }
-    handleSubmit(){
-        
+    handleSubmit() {
+
         this.props.form.validateFields((error, values) => {
-            if(error){
+            if (error) {
                 return;
             }
         });
-        const {dispatch} = this.props;
+
         let params = {
             loginName: this.props.form.getFieldValue('userName'),
             loginPassword: md5(this.props.form.getFieldValue('password'))
         };
-        console.log(this.randomCode.validate());
+
+        const { dispatch } = this.props;
 
         dispatch(login(params));
         this.handleCancel();
@@ -44,8 +45,8 @@ class LoginModal extends Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <div>
-				<Modal title="登录" key={this.props.counter} visible={this.props.visible} maskClosable={false} onOk={this.handleSubmit} onCancel={this.handleCancel}>
-          			<Form className="login-form">
+                <Modal title="登录" key={this.props.counter} visible={this.props.visible} maskClosable={false} onOk={this.handleSubmit} onCancel={this.handleCancel}>
+                    <Form className="login-form">
                         <FormItem>
                             {getFieldDecorator('userName', {
                                 rules: [
@@ -79,15 +80,15 @@ class LoginModal extends Component {
                             <a className="login-form-forgot" href="">忘记密码</a>
                         </FormItem>
                     </Form>
-        		</Modal>
-			</div>
+                </Modal>
+            </div>
         );
     }
 };
 
 const Login = Form.create()(LoginModal);
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         ...state.homeReducer.loginModal
     };
