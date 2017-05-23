@@ -9,9 +9,14 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import configStore from './store/ConfigStore';
-import Home from './views/Home';
 
 const store = configStore();
+
+const home = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Home').default);
+    }, 'Home');
+};
 
 const appList = (location, callback) => {
     require.ensure([], require => {
@@ -88,7 +93,7 @@ const domain = (location, callback) => {
 render((
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path="/" component={Home}>
+            <Route path="/" getComponent={home}>
                 <IndexRoute getComponent={appList}></IndexRoute>
                 <Route path="app/all" getComponent={appList}></Route>
                 <Route path="channel/new" getComponent={channelForm}></Route>

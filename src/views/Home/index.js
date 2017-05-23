@@ -18,8 +18,11 @@ class Home extends Component {
         super(props);
         this.showLoginModal = this.showLoginModal.bind(this);
     }
-    componentDidMount(){
-        console.info('koala app startup...');
+    componentDidMount() {
+        console.info('%ckoala app startup...', 'color:rgba(187, 0, 0, 1);');
+    }
+    componentWillUnmount() {
+        console.info('%ckoala app shutdown..', 'color:rgba(187, 0, 0, 1);');
     }
     componentWillReceiveProps(nextProps) {
         if (this.props.errorInfo.counter !== nextProps.errorInfo.counter) {
