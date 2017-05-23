@@ -4,11 +4,12 @@
  *@Date: 2017-05-18 19:13:43
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Row, Col, Menu, Breadcrumb, Icon } from 'antd';
-import {changeTab} from './action';
+import { changeTab } from './action';
 
 import './style.less';
 
@@ -26,15 +27,20 @@ class SysConfig extends Component {
         super(props);
         this.tabChange = this.tabChange.bind(this);
     }
-    tabChange(item, key, keyPath){
-        const {dispatch} = this.props;
+    tabChange(item, key, keyPath) {
+        const { dispatch } = this.props;
         dispatch(changeTab(item.key));
     }
-    componentDidMount(){
+    routerWillLeave(nextLocation) {
+        if (!this.state.isSaved){
+            return 'Your work is not saved! Are you sure you want to leave?';
+        }
+    }
+    componentDidMount() {
         console.log('sys config startup...');
     }
     componentWillUnmount() {
-        const {dispatch} = this.props;
+        const { dispatch } = this.props;
         //dispatch(changeTab('baseInfo'));
     }
     render() {
@@ -90,7 +96,7 @@ class SysConfig extends Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         tab: state.sysConfigReducer.tab
     };

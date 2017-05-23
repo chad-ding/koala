@@ -10,6 +10,12 @@ export default class Note extends Component {
     constructor(props) {
         super(props);
     }
+    componentDidMount(){
+        console.log('note module did mount...');
+    }
+    componentWillUnmount(){
+        console.log('note module will unmount...');
+    }
     render() {
         return (
             <div>

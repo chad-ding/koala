@@ -4,7 +4,8 @@
  *@Date: 2017-04-06 16:48:24
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Tabs, Breadcrumb, Icon, Table, Row, Col, Button, Input } from 'antd';
 import { connect } from 'react-redux';
 import {Link} from 'react-router';
