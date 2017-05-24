@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Form, Icon, Input, Checkbox } from 'antd';
 import RandomCode from '../../components/RandomCode';
-import { SHOW_LOGIN_MODAL } from '../../consts/action';
+import { LOGIN_MODAL_SHOW } from '../../consts/action';
 import { login } from './action';
 import md5 from 'js-md5';
 
@@ -21,7 +21,7 @@ class LoginModal extends Component {
     }
     handleCancel() {
         const { dispatch } = this.props;
-        dispatch({ type: SHOW_LOGIN_MODAL, visible: false });
+        dispatch({ type: LOGIN_MODAL_SHOW, visible: false });
     }
     handleSubmit() {
 

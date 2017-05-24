@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Button, Checkbox, Select, Radio, Slider, InputNumber, Breadcrumb, Icon } from 'antd';
+import { Form, Input, Button, Checkbox, Select, Radio, Slider, InputNumber, Breadcrumb, Icon, Row, Col } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
@@ -41,6 +41,21 @@ class Channel extends Component {
                     span: 14,
                     offset: 6
                 }
+            }
+        };
+
+        const marks = {
+            1: {
+                style: {
+                  color: '#f50'
+                },
+                label: <strong>1KB</strong>
+            },
+            900: {
+                style: {
+                  color: '#f50'
+                },
+                label: <strong>900KB</strong>
             }
         };
 
@@ -191,30 +206,35 @@ class Channel extends Component {
                     <FormItem {...formItemLayout} label="消息体预估" hasFeedback>
                         {getFieldDecorator('email', {
                             valuePropName: 'checked'
-                        })(
-                             <Slider range defaultValue={[20, 50]} />
+                        })( 
+                           <Slider marks={marks} range min={1} max={900} defaultValue={[1, 50]} />
+            
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="应用规划数" hasFeedback>
                         {getFieldDecorator('email', {
                             valuePropName: 'checked'
                         })(
-                            <InputNumber min={1} max={10} defaultValue={3} />
+                            <InputNumber min={1} max={10} defaultValue={3} style={{width: '100%'}} />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="总流量预估" hasFeedback>
                         {getFieldDecorator('email', {
                             valuePropName: 'checked'
                         })( 
-                            <div>
-                                <InputNumber min={1} defaultValue={100} />
-                                <Select defaultValue="1">
-                                    <Option value="1">QPS(请求/秒)</Option>
-                                    <Option value="2">QPM(请求/分)</Option>
-                                    <Option value="3">QPH(请求/小时)</Option>
-                                    <Option value="4">QPD(请求/天)</Option>
-                                </Select>
-                            </div> 
+                            <Row>
+                                <Col span={20}>
+                                    <InputNumber min={1} defaultValue={100} style={{width: '95%'}} />
+                                </Col>
+                                <Col span={4}>
+                                    <Select defaultValue="1">
+                                        <Option value="1">QPS(请求/秒)</Option>
+                                        <Option value="2">QPM(请求/分)</Option>
+                                        <Option value="3">QPH(请求/小时)</Option>
+                                        <Option value="4">QPD(请求/天)</Option>
+                                    </Select>
+                                </Col>
+                            </Row> 
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>

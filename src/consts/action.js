@@ -4,12 +4,12 @@
  *@Date: 2017-04-06 11:01:45
  */
 
+//请求成功获取数据
 export const RECEIVE_DATA = Symbol('RECEIVE_DATA');
+//请求失败
 export const REQUEST_FAILED = Symbol('REQUEST_FAILED');
-
-export const GET_APP_LIST = Symbol('GET_APP_LIST');
 //显示登录Modal
-export const SHOW_LOGIN_MODAL = Symbol('SHOW_LOGIN_MODAL');
+export const LOGIN_MODAL_SHOW = Symbol('LOGIN_MODAL_SHOW');
 //登录
 export const LOGIN = Symbol('LOGIN');
 //环境管理Tab变更
@@ -26,3 +26,5 @@ export const DEL_PORTAL = Symbol('DEL_PORTAL');
 export const ADD_CHANNEL = Symbol('ADD_CHANNEL');
 //显示Channel modal
 export const CHANNEL_MODAL_SHOW = Symbol('CHANNEL_MODAL_SHOW');
+
+export const GET_APP_LIST = Symbol('GET_APP_LIST');

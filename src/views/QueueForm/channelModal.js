@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Input, Button, Select } from 'antd';
-import { handleModal, addPortal } from './action';
+import { handleModal } from './action';
 
 class ChannelModal extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class ChannelModal extends Component {
         const form = this.props.form;
         const portal = form.getFieldsValue();
         const {dispatch} = this.props;
-        dispatch(addPortal(portal));
+
         this.handleCancel();
     }
     render() {

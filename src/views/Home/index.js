@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 import { Layout, Row, Col, Menu, Dropdown, Icon, notification, Input } from 'antd';
 import { connect } from 'react-redux';
 import Login from '../Login';
-import { SHOW_LOGIN_MODAL } from '../../consts/action';
+import { LOGIN_MODAL_SHOW } from '../../consts/action';
 
 import './style.less';
 
@@ -35,7 +35,7 @@ class Home extends Component {
     }
     showLoginModal() {
         const { dispatch } = this.props;
-        dispatch({ type: SHOW_LOGIN_MODAL, visible: true });
+        dispatch({ type: LOGIN_MODAL_SHOW, visible: true });
     }
     render() {
         const Search = Input.Search;

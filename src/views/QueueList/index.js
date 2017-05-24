@@ -73,10 +73,10 @@ class QueueList extends Component {
                         &nbsp;&nbsp;<Button size="large" type="primary">搜索</Button>
                     </Col>
                     <Col span={4} offset={12}>
-                        {   this.props.path === 'application' ? 
+                        {   this.props.path === 'approval' ? '' : 
                             <Button size="large" type="primary">
                                 <Link to="/queue/new">申请队列</Link>
-                            </Button> : ''
+                            </Button>
                         }
                     </Col>
                 </Row>
