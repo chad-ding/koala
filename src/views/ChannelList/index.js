@@ -84,6 +84,7 @@ class ChannelList extends Component {
                         }
                     </Col>
                 </Row>
+                <br/>
                 <Table columns={columns} dataSource={this.props.appList}></Table>
             </div>
         );

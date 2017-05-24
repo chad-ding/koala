@@ -62,7 +62,7 @@ class QueueList extends Component {
         }];
 
         const Search = Input.Search;
-        
+
         return (
             <div>
                 <Row>
@@ -80,6 +80,7 @@ class QueueList extends Component {
                         }
                     </Col>
                 </Row>
+                <br/>
                 <Table columns={columns} dataSource={this.props.appList}></Table>
             </div>
         );

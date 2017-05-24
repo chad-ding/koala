@@ -18,24 +18,6 @@ const home = (location, callback) => {
     }, 'Home');
 };
 
-const channelList = (location, callback) => {
-    require.ensure([], require => {
-        callback(null, require('./views/ChannelList').default);
-    }, 'ChannelList');
-};
-
-const queueList = (location, callback) => {
-    require.ensure([], require => {
-        callback(null, require('./views/QueueList').default);
-    }, 'QueueList');
-};
-
-const vdpList = (location, callback) => {
-    require.ensure([], require => {
-        callback(null, require('./views/VdpList').default);
-    }, 'VdpList');
-};
-
 const application = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Application').default);

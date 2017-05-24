@@ -18,7 +18,7 @@ const tabMap = {
     dataDic: '数据字典',
     codeGen: '代码生成',
     note: '通知设置',
-    role: '角色设置',
+    role: '角色设置', 
     domain: '域设置'
 };
 
