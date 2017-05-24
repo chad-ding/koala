@@ -18,10 +18,34 @@ const home = (location, callback) => {
     }, 'Home');
 };
 
-const appList = (location, callback) => {
+const channelList = (location, callback) => {
     require.ensure([], require => {
-        callback(null, require('./views/AppList').default);
-    }, 'AppList');
+        callback(null, require('./views/ChannelList').default);
+    }, 'ChannelList');
+};
+
+const queueList = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/QueueList').default);
+    }, 'QueueList');
+};
+
+const vdpList = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/VdpList').default);
+    }, 'VdpList');
+};
+
+const application = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Application').default);
+    }, 'Application');
+};
+
+const approval = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Approval').default);
+    }, 'Approval');
 };
 
 const envList = (location, callback) => {
@@ -46,6 +70,18 @@ const channelForm = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/ChannelForm').default);
     }, 'ChannelForm');
+};
+
+const queueForm = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/QueueForm').default);
+    }, 'QueueForm');
+};
+
+const vdpForm = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/VdpForm').default);
+    }, 'VdpForm');
 };
 
 const sysConfig = (location, callback) => {
@@ -94,9 +130,12 @@ render((
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" getComponent={home}>
-                <IndexRoute getComponent={appList}></IndexRoute>
-                <Route path="app/all" getComponent={appList}></Route>
+                <IndexRoute getComponent={application}></IndexRoute>
+                <Route path="application" getComponent={application}></Route>
+                <Route path="approval" getComponent={approval}></Route>
                 <Route path="channel/new" getComponent={channelForm}></Route>
+                <Route path="queue/new" getComponent={queueForm}></Route>
+                <Route path="vdp/new" getComponent={vdpForm}></Route>
                 <Route path="env" getComponent={envList}>
                     <IndexRoute getComponent={envItem}></IndexRoute>
                     <Route path="item" getComponent={envItem}></Route>

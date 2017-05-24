@@ -5,11 +5,11 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Button, Checkbox, Select, Radio, Slider, InputNumber, Breadcrumb, Icon } from 'antd';
+import { Form, Input, Button, Checkbox, Select, Radio, InputNumber, Breadcrumb, Icon, Table } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-class Channel extends Component {
+class Queue extends Component {
     constructor(props) {
         super(props);
     }
@@ -44,6 +44,24 @@ class Channel extends Component {
             }
         };
 
+        const columns = [{
+            title: '频道名称',
+            dataIndex: 'name',
+            key: 'name'
+        }, {
+            title: '路由',
+            dataIndex: 'url',
+            key: 'url'
+        }, {
+            title: '操作',
+            key: 'action',
+            render: (text, record, index) => (
+                <span>
+                    <a href="javascript:;" onClick={() => this.delPortal(index)}>删除</a>
+                </span>
+            )
+        }];
+
         return (
             <div className="container">
                 <Breadcrumb>
@@ -56,12 +74,12 @@ class Channel extends Component {
                         </span>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                        申请频道
+                        申请队列
                     </Breadcrumb.Item>
                 </Breadcrumb>
                 <br/><br/>
                 <Form onSubmit={this.handleSubmit}>
-                    <FormItem {...formItemLayout} label="频道名称" hasFeedback>
+                    <FormItem {...formItemLayout} label="队列名称" hasFeedback>
                         {getFieldDecorator('channelName', {
                             rules: [{
                                 type: 'string', message: '输入不合法!'
@@ -69,7 +87,21 @@ class Channel extends Component {
                                 required: true, message: '请输入环境名称!'
                             }]
                         })(
-                            <Input placeholder="必须以channel开头，包含数字，字母，'_'和'.'，如channel.cfg_2d" />
+                            <Input placeholder="必须以queue开头，包含数字，字母，'_'和'.'，如queue.cfg_2d" />
+                        )}
+                    </FormItem>
+                    <FormItem {...formItemLayout} label="组内广播" hasFeedback>
+                        {getFieldDecorator('sharding', {
+                            rules: [{
+                                type: 'string', message: '输入不合法!'
+                            }, {
+                                required: true, message: '请输入环境名称!'
+                            }]
+                        })(
+                            <RadioGroup>
+                                <Radio value={true}>是</Radio>
+                                <Radio value={false}>否</Radio>
+                            </RadioGroup>
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="存储引擎" hasFeedback>
@@ -84,34 +116,6 @@ class Channel extends Component {
                                 <Option value="消息堆积(Kafka)">消息堆积(Kafka)</Option>
                                 <Option value="任务事件(RabbitMQ)">任务事件(RabbitMQ)</Option>
                             </Select>
-                        )}
-                    </FormItem>
-                    <FormItem {...formItemLayout} label="路由策略" hasFeedback>
-                        {getFieldDecorator('mode', {
-                            rules: [{
-                                type: 'string', message: '输入不合法!'
-                            }, {
-                                required: true, message: '请输入环境名称!'
-                            }]
-                        })(
-                            <RadioGroup>
-                                <Radio value="direct">direct</Radio>
-                                <Radio value="topic">topic</Radio>
-                            </RadioGroup>
-                        )}
-                    </FormItem>
-                    <FormItem {...formItemLayout} label="是否分片" hasFeedback>
-                        {getFieldDecorator('sharding', {
-                            rules: [{
-                                type: 'string', message: '输入不合法!'
-                            }, {
-                                required: true, message: '请输入环境名称!'
-                            }]
-                        })(
-                            <RadioGroup>
-                                <Radio value={true}>是</Radio>
-                                <Radio value={false}>否</Radio>
-                            </RadioGroup>
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="项目名称" hasFeedback>
@@ -188,13 +192,6 @@ class Channel extends Component {
                             </div>
                         )}
                     </FormItem>
-                    <FormItem {...formItemLayout} label="消息体预估" hasFeedback>
-                        {getFieldDecorator('email', {
-                            valuePropName: 'checked'
-                        })(
-                             <Slider range defaultValue={[20, 50]} />
-                        )}
-                    </FormItem>
                     <FormItem {...formItemLayout} label="应用规划数" hasFeedback>
                         {getFieldDecorator('email', {
                             valuePropName: 'checked'
@@ -202,20 +199,11 @@ class Channel extends Component {
                             <InputNumber min={1} max={10} defaultValue={3} />
                         )}
                     </FormItem>
-                    <FormItem {...formItemLayout} label="总流量预估" hasFeedback>
-                        {getFieldDecorator('email', {
-                            valuePropName: 'checked'
-                        })( 
-                            <div>
-                                <InputNumber min={1} defaultValue={100} />
-                                <Select defaultValue="1">
-                                    <Option value="1">QPS(请求/秒)</Option>
-                                    <Option value="2">QPM(请求/分)</Option>
-                                    <Option value="3">QPH(请求/小时)</Option>
-                                    <Option value="4">QPD(请求/天)</Option>
-                                </Select>
-                            </div> 
-                        )}
+                    <FormItem {...formItemLayout} label="订阅频道">
+                        <Button onClick={this.handleModal} type="primary" htmlType="button" size="large" style={{float: 'right'}}>添加订阅</Button>
+                    </FormItem>
+                    <FormItem {...formItemLayout} colon={false} label=" ">
+                        <Table size="small" rowKey="name" columns={columns} dataSource={this.props.portalList}></Table>
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>
                         {getFieldDecorator('email', {
@@ -240,6 +228,6 @@ function mapStateToProps(state) {
     };
 }
 
-const ChannelForm = Form.create()(Channel);
+const QueueForm = Form.create()(Queue);
 
-export default connect(mapStateToProps)(ChannelForm);
+export default connect(mapStateToProps)(QueueForm);

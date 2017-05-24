@@ -63,9 +63,12 @@ class Home extends Component {
         );
 
         const navs = (
-            <Menu mode="horizontal" defaultSelectedKeys={['app']} theme="dark">
-                <Menu.Item key="app">
-                    <Link to="/app/all">项目接入</Link>
+            <Menu mode="horizontal" defaultSelectedKeys={['application']} theme="dark">
+                <Menu.Item key="application">
+                    <Link to="/application">我的申请</Link>
+                </Menu.Item>
+                <Menu.Item key="approval">
+                    <Link to="/approval">我的审批</Link>
                 </Menu.Item>
                 <Menu.Item key="env">
                     <Link to="/env/item">环境管理</Link>
