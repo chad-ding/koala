@@ -8,10 +8,17 @@ import React, { Component } from 'react';
 import { Form, Input, Button, Checkbox, Select, Radio, InputNumber, Breadcrumb, Icon, Table } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import ChannelModal from './ChannelModal';
+import { handleModal } from './action';
 
 class Queue extends Component {
     constructor(props) {
         super(props);
+        this.handleModal = this.handleModal.bind(this);
+    }
+    handleModal() {
+        const { dispatch } = this.props;
+        dispatch(handleModal(true));
     }
     render() {
 
@@ -217,6 +224,7 @@ class Queue extends Component {
                         <Button type="primary" htmlType="button" size="large">保存</Button>  
                     </FormItem>
                 </Form>
+                <ChannelModal></ChannelModal>
             </div>
         );
     }

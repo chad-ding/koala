@@ -24,3 +24,5 @@ export const ADD_PORTAL = Symbol('ADD_PORTAL');
 export const DEL_PORTAL = Symbol('DEL_PORTAL');
 //新增Channel
 export const ADD_CHANNEL = Symbol('ADD_CHANNEL');
+//显示Channel modal
+export const CHANNEL_MODAL_SHOW = Symbol('CHANNEL_MODAL_SHOW');

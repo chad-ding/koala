@@ -13,6 +13,9 @@ class ChannelList extends Component {
     constructor(props) {
         super(props);
     }
+    componentDidMount() {
+
+    }
     render() {
 
         const columns = [{
@@ -74,9 +77,11 @@ class ChannelList extends Component {
                         &nbsp;&nbsp;<Button size="large" type="primary">搜索</Button>
                     </Col>
                     <Col span={4} offset={12}>
-                        <Button size="large" type="primary">
-                            <Link to="/channel/new">申请频道</Link>
-                        </Button>
+                        {   this.props.path === 'application' ? 
+                            <Button size="large" type="primary">
+                                <Link to="/channel/new">申请频道</Link>
+                            </Button> : ''
+                        }
                     </Col>
                 </Row>
                 <Table columns={columns} dataSource={this.props.appList}></Table>

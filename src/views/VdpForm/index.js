@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Button, Checkbox, Select, Radio, InputNumber, Breadcrumb, Icon, Table } from 'antd';
+import { Form, Input, Button, Checkbox, Select, InputNumber, Breadcrumb, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
@@ -18,7 +18,6 @@ class Vdp extends Component {
         const FormItem = Form.Item;
         const { getFieldDecorator } = this.props.form;
         const { Option, OptGroup } = Select;
-        const RadioGroup = Radio.Group;
 
         const formItemLayout = {
             labelCol: {
@@ -43,24 +42,6 @@ class Vdp extends Component {
                 }
             }
         };
-
-        const columns = [{
-            title: '频道名称',
-            dataIndex: 'name',
-            key: 'name'
-        }, {
-            title: '路由',
-            dataIndex: 'url',
-            key: 'url'
-        }, {
-            title: '操作',
-            key: 'action',
-            render: (text, record, index) => (
-                <span>
-                    <a href="javascript:;" onClick={() => this.delPortal(index)}>删除</a>
-                </span>
-            )
-        }];
 
         return (
             <div className="container">

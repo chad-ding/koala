@@ -55,13 +55,13 @@ class Approval extends Component {
                 <br/><br/>
                 <Tabs defaultActiveKey="channel" onChange={this.tabChange} type="card">
                     <TabPane tab="频道" key="channel">
-                        <ChannelList></ChannelList>
+                        <ChannelList path={this.props.route.path}></ChannelList>
                     </TabPane>
                     <TabPane tab="队列" key="queue">
-                        <QueueList></QueueList>
+                        <QueueList path={this.props.route.path}></QueueList>
                     </TabPane>
                     <TabPane tab="数据表" key="table">
-                        <VdpList></VdpList>
+                        <VdpList path={this.props.route.path}></VdpList>
                     </TabPane>
                 </Tabs>  
             </div>
@@ -83,7 +83,7 @@ function mapStateToProps(state) {
     return {
         appList: state.applicationReducer.appList,
         fetched: state.applicationReducer.fetched,
-        tab: state.appListReducer.tab
+        tab: state.applicationReducer.tab
     };
 }
 
