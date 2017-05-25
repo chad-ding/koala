@@ -108,6 +108,24 @@ const domain = (location, callback) => {
     }, 'Domain');
 };
 
+const channel = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Channel').default);
+    }, 'Channel');
+};
+
+const queue = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Queue').default);
+    }, 'Queue');
+};
+
+const vdp = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Vdp').default);
+    }, 'Vdp');
+};
+
 render((
     <Provider store={store}>
         <Router history={browserHistory}>
@@ -117,6 +135,9 @@ render((
                 <Route path="approval" getComponent={approval}></Route>
                 <Route path="channel/new" getComponent={channelForm}></Route>
                 <Route path="queue/new" getComponent={queueForm}></Route>
+                <Route path="channel/:id" getComponent={channel}></Route>
+                <Route path="queue/:id" getComponent={queue}></Route>
+                <Route path="vdp/:id" getComponent={vdp}></Route>
                 <Route path="vdp/new" getComponent={vdpForm}></Route>
                 <Route path="env" getComponent={envList}>
                     <IndexRoute getComponent={envItem}></IndexRoute>

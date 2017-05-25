@@ -14,6 +14,7 @@ app = Flask(__name__)
 @app.route('/api/channel/list', methods=['GET', 'OPTIONS'])
 @cors(headers='Origin, X-Requested-With, Content-Type, Accept')
 def get_channel_list():
+    keyword = request.args.get('keyword')
     rsp = {
         'code': 0,
         'data': data_source.channel_list,

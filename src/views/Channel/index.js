@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { connect } from 'react-router';
+import { connect } from 'react-redux';
 
 class Channel extends Component {
     constructor(props) {

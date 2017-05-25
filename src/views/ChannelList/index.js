@@ -23,7 +23,7 @@ class ChannelList extends Component {
             title: '名称',
             dataIndex: 'name',
             key: 'name',
-            render: text => <a href="javascript:;">{text}</a>
+            render: (text, record, index) => <Link to={`/channel/${record.id}`}>{text}</Link>
         }, {
             title: '项目',
             dataIndex: 'project',
@@ -86,7 +86,7 @@ class ChannelList extends Component {
                     </Col>
                 </Row>
                 <br/>
-                <Table columns={columns} dataSource={this.props.appList}></Table>
+                <Table rowKey={record => record.id} columns={columns} dataSource={this.props.channelList}></Table>
             </div>
         );
     }
@@ -94,7 +94,7 @@ class ChannelList extends Component {
 
 function mapStateToProps(state) {
     return {
-        channelList: state.channelList
+        channelList: state.channelListReducer.channelList
     };
 }
 
