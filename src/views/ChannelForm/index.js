@@ -5,9 +5,10 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Switch, Button, Checkbox, Select, Radio, Slider, InputNumber, Breadcrumb, Icon, Row, Col } from 'antd';
+import { Form, Input, Switch, Tooltip, Button, Checkbox, Select, Radio, Slider, InputNumber, Breadcrumb, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import InputSelect from '../../components/InputSelect';
 
 class Channel extends Component {
     constructor(props) {
@@ -20,6 +21,13 @@ class Channel extends Component {
                 console.log('Received values of form: ', values);
             }
         });
+    }
+    checkFlow = (rule, value, callback) => {
+        if (value.number > 0) {
+            callback();
+            return;
+        }
+        callback('总流量预估必须大于0!');
     }
     render() {
 
@@ -66,6 +74,13 @@ class Channel extends Component {
                 label: <strong>900KB</strong>
             }
         };
+
+        const unitMap = [
+            { value: '1', text: 'QPS(请求/秒)' },
+            { value: '2', text: 'QPM(请求/分)' },
+            { value: '3', text: 'QPH(请求/小时)' },
+            { value: '4', text: 'QPD(请求/天)' }
+        ];
 
         return (
             <div className="container">
@@ -223,34 +238,15 @@ class Channel extends Component {
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="总流量预估" hasFeedback>
-                        <Row>
-                            <Col span={18}>
-                                {getFieldDecorator('flow', {
-                                    rules: [
-                                        {type: 'number', message: '只能输入数字!'},
-                                        {required: true, message: '请输入总流量预估!'}
-                                    ],
-                                    initialValue: 100
-                                })(
-                                    <InputNumber min={1} style={{width: '95%'}} />
-                                )}
-                            </Col>
-                            <Col span={6}>
-                                {getFieldDecorator('unit', {
-                                    rules: [
-                                        {required: true, message: '请选择单位!'}
-                                    ],
-                                    initialValue: '4'
-                                })(
-                                    <Select defaultValue="3">
-                                        <Option value="1">QPS(请求/秒)</Option>
-                                        <Option value="2">QPM(请求/分)</Option>
-                                        <Option value="3">QPH(请求/小时)</Option>
-                                        <Option value="4">QPD(请求/天)</Option>
-                                    </Select>
-                                )}
-                            </Col>
-                        </Row>
+                        {getFieldDecorator('flow', {
+                            initialValue: { number: 1, unit: '1' },
+                            rules: [
+                                {required: true, message: '请输入总流量预估'},
+                                {validator: this.checkFlow }
+                            ]
+                        })(
+                            <InputSelect unitMap={unitMap}></InputSelect>
+                        )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>
                         {getFieldDecorator('useage', {
