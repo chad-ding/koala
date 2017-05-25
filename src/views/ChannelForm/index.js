@@ -13,6 +13,14 @@ class Channel extends Component {
     constructor(props) {
         super(props);
     }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
+    }
     render() {
 
         const FormItem = Form.Item;
@@ -47,13 +55,13 @@ class Channel extends Component {
         const marks = {
             1: {
                 style: {
-                  color: '#f50'
+                    color: '#f50'
                 },
                 label: <strong>1KB</strong>
             },
             900: {
                 style: {
-                  color: '#f50'
+                    color: '#f50'
                 },
                 label: <strong>900KB</strong>
             }
@@ -79,7 +87,8 @@ class Channel extends Component {
                     <FormItem {...formItemLayout} label="频道名称" hasFeedback>
                         {getFieldDecorator('channelName', {
                             rules: [{
-                                type: 'string', message: '输入不合法!'
+                                type: 'string', message: '输入不合法!',
+                                pattern: /^channel.\w+/
                             }, {
                                 required: true, message: '请输入频道名称!'
                             }]
@@ -118,7 +127,7 @@ class Channel extends Component {
                     <FormItem {...formItemLayout} label="是否分片" hasFeedback>
                         {getFieldDecorator('sharding', {
                             rules: [{
-                                required: true, message: '请选择是否分片'
+                                required: true, message: '请选择是否分片!'
                             }],
                             valuePropName: 'checked',
                             initialValue: false
@@ -131,7 +140,7 @@ class Channel extends Component {
                             rules: [{
                                 type: 'string', message: '输入不合法!'
                             }, {
-                                required: true, message: '请输入环境名称!'
+                                required: true, message: '请输入项目名称名称!'
                             }]
                         })(
                             <Input />
@@ -142,7 +151,7 @@ class Channel extends Component {
                             rules: [{
                                 type: 'string', message: '输入不合法!'
                             }, {
-                                required: true, message: '请输入环境名称!'
+                                required: true, message: '请输入App ID!'
                             }]
                         })(
                             <Input />
@@ -150,6 +159,9 @@ class Channel extends Component {
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途" hasFeedback>
                         {getFieldDecorator('purpose', {
+                            rules: [
+                                {required: true, message: '请选择用途!'}
+                            ],
                             initialValue: '1'
                         })(
                             <Select>
@@ -164,6 +176,9 @@ class Channel extends Component {
                     </FormItem>
                     <FormItem {...formItemLayout} label="存活时间" hasFeedback>
                         {getFieldDecorator('liveTime', {
+                            rules: [
+                                {required: true, message: '请选择存活时间!'}
+                            ],
                             initialValue: '1'
                         })(
                             <Select>
@@ -180,10 +195,7 @@ class Channel extends Component {
                     </FormItem>
                     <FormItem {...formItemLayout} label="开发语言" hasFeedback>
                         {getFieldDecorator('language', {
-                            valuePropName: 'checked',
-                            rules: [{
-                                required: true, message: '请输入环境名称!'
-                            }]
+                            valuePropName: 'checked'
                         })(
                             <div>
                                 <Checkbox>Java</Checkbox>
@@ -201,41 +213,50 @@ class Channel extends Component {
                     </FormItem>
                     <FormItem {...formItemLayout} label="应用规划数" hasFeedback>
                         {getFieldDecorator('program', {
+                            rules: [
+                                {type: 'number', message: '只能输入数字!'},
+                                {required: true, message: '请输入应用规划数!'}
+                            ],
                             initialValue: 30
                         })(
                             <InputNumber min={1} max={10} style={{width: '100%'}} />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="总流量预估" hasFeedback>
-                        
-                            <Row>
-                                <Col span={20}>
-                                    {getFieldDecorator('flow', {
-                                        initialValue: 100
-                                    })(
-                                        <InputNumber min={1} style={{width: '95%'}} />
-                                    )}
-                                </Col>
-                                <Col span={4}>
-                                    {getFieldDecorator('unit', {
-                                        rules: [
-                                            {required: true, message: '请输入环境名称!'}
-                                        ],
-                                        initialValue: '4'
-                                    })(
-                                        <Select defaultValue="3">
-                                            <Option value="1">QPS(请求/秒)</Option>
-                                            <Option value="2">QPM(请求/分)</Option>
-                                            <Option value="3">QPH(请求/小时)</Option>
-                                            <Option value="4">QPD(请求/天)</Option>
-                                        </Select>
-                                    )}
-                                </Col>
-                            </Row> 
-                        
+                        <Row>
+                            <Col span={18}>
+                                {getFieldDecorator('flow', {
+                                    rules: [
+                                        {type: 'number', message: '只能输入数字!'},
+                                        {required: true, message: '请输入总流量预估!'}
+                                    ],
+                                    initialValue: 100
+                                })(
+                                    <InputNumber min={1} style={{width: '95%'}} />
+                                )}
+                            </Col>
+                            <Col span={6}>
+                                {getFieldDecorator('unit', {
+                                    rules: [
+                                        {required: true, message: '请选择单位!'}
+                                    ],
+                                    initialValue: '4'
+                                })(
+                                    <Select defaultValue="3">
+                                        <Option value="1">QPS(请求/秒)</Option>
+                                        <Option value="2">QPM(请求/分)</Option>
+                                        <Option value="3">QPH(请求/小时)</Option>
+                                        <Option value="4">QPD(请求/天)</Option>
+                                    </Select>
+                                )}
+                            </Col>
+                        </Row>
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>
                         {getFieldDecorator('useage', {
+                            rules: [
+                                {required: true, message: '请输入用途说明'}
+                            ],
                             valuePropName: 'checked'
                         })(
                             <Input type="textarea" rows={10}></Input>
@@ -243,7 +264,7 @@ class Channel extends Component {
                     </FormItem>
                     <FormItem {...tailFormItemLayout}>
                         <Button type="default" htmlType="button" size="large">取消</Button>&nbsp;&nbsp;&nbsp;
-                        <Button type="primary" htmlType="button" size="large">保存</Button>  
+                        <Button type="primary" htmlType="submit" size="large">保存</Button>  
                     </FormItem>
                 </Form>
             </div>
