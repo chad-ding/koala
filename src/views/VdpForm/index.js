@@ -12,6 +12,15 @@ import { Link } from 'react-router';
 class Vdp extends Component {
     constructor(props) {
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
     }
     render() {
 
@@ -46,10 +55,10 @@ class Vdp extends Component {
         return (
             <div className="container">
                 <Breadcrumb>
-                    <Breadcrumb.Item href="javascript:;">
+                    <Breadcrumb.Item>
                         <Icon type="home" />
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item href="javascript:;">
+                    <Breadcrumb.Item>
                         <span>
                             <Link to="/application">接入申请</Link>
                         </span>
@@ -61,47 +70,46 @@ class Vdp extends Component {
                 <br/><br/>
                 <Form onSubmit={this.handleSubmit}>
                     <FormItem {...formItemLayout} label="订阅表" hasFeedback>
-                        {getFieldDecorator('channelName', {
+                        {getFieldDecorator('tableName', {
                             rules: [{
                                 type: 'string', message: '输入不合法!'
                             }, {
-                                required: true, message: '请输入环境名称!'
+                                required: true, message: '请输入订阅表名称!'
                             }]
                         })(
                             <Input />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="项目名称" hasFeedback>
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('project', {
                             rules: [{
                                 type: 'string', message: '输入不合法!'
                             }, {
-                                required: true, message: '请输入环境名称!'
+                                required: true, message: '请输入项目名称!'
                             }]
                         })(
                             <Input />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="App ID" hasFeedback>
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('appId', {
                             rules: [{
                                 type: 'string', message: '输入不合法!'
                             }, {
-                                required: true, message: '请输入环境名称!'
+                                required: true, message: '请输入App ID!'
                             }]
                         })(
                             <Input />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途" hasFeedback>
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('useage', {
                             rules: [{
-                                type: 'string', message: '输入不合法!'
-                            }, {
-                                required: true, message: '请输入环境名称!'
-                            }]
+                                required: true, message: '请输选择用途!'
+                            }],
+                            initialValue: '1'
                         })(
-                            <Select defaultValue="1">
+                            <Select>
                                 <OptGroup label="线上">
                                     <Option value="1">数据统计</Option>
                                     <Option value="2">数据同步</Option>
@@ -112,12 +120,11 @@ class Vdp extends Component {
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="存活时间" hasFeedback>
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('live', {
                             rules: [{
-                                type: 'string', message: '输入不合法!'
-                            }, {
-                                required: true, message: '请输入环境名称!'
-                            }]
+                                required: true, message: '请输选择存活时间!'
+                            }],
+                            initialValue: '1'
                         })(
                             <Select defaultValue="1">
                                 <Option value="1">1天</Option>
@@ -132,12 +139,11 @@ class Vdp extends Component {
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="消费形态" hasFeedback>
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('form', {
                             rules: [{
-                                type: 'string', message: '输入不合法!'
-                            }, {
-                                required: true, message: '请输入环境名称!'
-                            }]
+                                required: true, message: '请输选择消费形态!'
+                            }],
+                            initialValue: '1'
                         })(
                             <Select defaultValue="1">
                                 <Option value="1">保障并行</Option>
@@ -146,11 +152,8 @@ class Vdp extends Component {
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="开发语言" hasFeedback>
-                        {getFieldDecorator('email', {
-                            valuePropName: 'checked',
-                            rules: [{
-                                required: true, message: '请输入环境名称!'
-                            }]
+                        {getFieldDecorator('language', {
+                            valuePropName: 'checked'
                         })(
                             <div>
                                 <Checkbox>Java</Checkbox>
@@ -160,22 +163,33 @@ class Vdp extends Component {
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="应用规划数" hasFeedback>
-                        {getFieldDecorator('email', {
-                            valuePropName: 'checked'
+                        {getFieldDecorator('program', {
+                            rules: [
+                                {type: 'number', message: '只能输入数字!'},
+                                {required: true, message: '请输入应用规划数!'}
+                            ],
+                            initialValue: 30
                         })(
-                            <InputNumber min={1} max={10} defaultValue={3} />
+                            <InputNumber min={1} max={10} style={{width: '100%'}} />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>
-                        {getFieldDecorator('email', {
-                            valuePropName: 'checked'
+                        {getFieldDecorator('purpose', {
+                            rules: [{
+                                type: 'string', message: '输入不合法!'
+                            },{
+                                required: true, message: '请输选择消费形态!'
+                            }]
                         })(
                             <Input type="textarea" rows={10}></Input>
                         )}
                     </FormItem>
                     <FormItem {...tailFormItemLayout}>
-                        <Button type="default" htmlType="button" size="large">取消</Button>&nbsp;&nbsp;&nbsp;
-                        <Button type="primary" htmlType="button" size="large">保存</Button>  
+                        <Link to="/application">
+                            <Button type="default" htmlType="button" size="large">取消</Button>
+                        </Link>
+                        &nbsp;&nbsp;&nbsp;
+                        <Button type="primary" htmlType="submit" size="large">保存</Button>  
                     </FormItem>
                 </Form>
             </div>

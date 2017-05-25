@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Button, Checkbox, Select, Radio, InputNumber, Breadcrumb, Icon, Table } from 'antd';
+import { Form, Input, Button, Switch, Checkbox, Select, Radio, InputNumber, Breadcrumb, Icon, Table } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import ChannelModal from './ChannelModal';
@@ -15,17 +15,25 @@ class Queue extends Component {
     constructor(props) {
         super(props);
         this.handleModal = this.handleModal.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleModal() {
         const { dispatch } = this.props;
         dispatch(handleModal(true));
+    }
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
     }
     render() {
 
         const FormItem = Form.Item;
         const { getFieldDecorator } = this.props.form;
         const { Option, OptGroup } = Select;
-        const RadioGroup = Radio.Group;
 
         const formItemLayout = {
             labelCol: {
@@ -72,10 +80,10 @@ class Queue extends Component {
         return (
             <div className="container">
                 <Breadcrumb>
-                    <Breadcrumb.Item href="javascript:;">
+                    <Breadcrumb.Item>
                         <Icon type="home" />
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item href="javascript:;">
+                    <Breadcrumb.Item>
                         <span>
                             <Link to="/application">接入申请</Link>
                         </span>
@@ -87,75 +95,71 @@ class Queue extends Component {
                 <br/><br/>
                 <Form onSubmit={this.handleSubmit}>
                     <FormItem {...formItemLayout} label="队列名称" hasFeedback>
-                        {getFieldDecorator('channelName', {
+                        {getFieldDecorator('queueName', {
                             rules: [{
-                                type: 'string', message: '输入不合法!'
+                                type: 'string', message: '输入不合法!',
+                                pattern: /^queue.\w+/
                             }, {
-                                required: true, message: '请输入环境名称!'
+                                required: true, message: '请输入频道名称!'
                             }]
                         })(
-                            <Input placeholder="必须以queue开头，包含数字，字母，'_'和'.'，如queue.cfg_2d" />
+                            <Input placeholder="必须以queue开头，包含数字，字母，'_'和'.'，如channel.cfg_2d" />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="组内广播" hasFeedback>
-                        {getFieldDecorator('sharding', {
+                        {getFieldDecorator('broadcast', {
                             rules: [{
-                                type: 'string', message: '输入不合法!'
-                            }, {
-                                required: true, message: '请输入环境名称!'
-                            }]
+                                required: true, message: '请选择是否组内广播!'
+                            }],
+                            valuePropName: 'checked',
+                            initialValue: false
                         })(
-                            <RadioGroup>
-                                <Radio value={true}>是</Radio>
-                                <Radio value={false}>否</Radio>
-                            </RadioGroup>
+                            <Switch checkedChildren={'是'} unCheckedChildren={'否'} />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="存储引擎" hasFeedback>
                         {getFieldDecorator('cluster', {
                             rules: [{
-                                type: 'string', message: '输入不合法!'
-                            }, {
-                                required: true, message: '请输入环境名称!'
-                            }]
+                                required: true, message: '请选择存储引擎!'
+                            }],
+                            initialValue: '消息堆积(Kafka)'
                         })(
-                            <Select defaultValue="消息堆积(Kafka)">
+                            <Select>
                                 <Option value="消息堆积(Kafka)">消息堆积(Kafka)</Option>
                                 <Option value="任务事件(RabbitMQ)">任务事件(RabbitMQ)</Option>
                             </Select>
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="项目名称" hasFeedback>
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('project', {
                             rules: [{
                                 type: 'string', message: '输入不合法!'
                             }, {
-                                required: true, message: '请输入环境名称!'
+                                required: true, message: '请输入项目名称!'
                             }]
                         })(
                             <Input />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="App ID" hasFeedback>
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('appId', {
                             rules: [{
                                 type: 'string', message: '输入不合法!'
                             }, {
-                                required: true, message: '请输入环境名称!'
+                                required: true, message: '请输入App Id!'
                             }]
                         })(
                             <Input />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途" hasFeedback>
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('purpose', {
                             rules: [{
-                                type: 'string', message: '输入不合法!'
-                            }, {
-                                required: true, message: '请输入环境名称!'
-                            }]
+                                required: true, message: '请选择用途!'
+                            }],
+                            initialValue: '1'
                         })(
-                            <Select defaultValue="1">
+                            <Select>
                                 <OptGroup label="线上">
                                     <Option value="1">数据统计</Option>
                                     <Option value="2">数据同步</Option>
@@ -166,14 +170,13 @@ class Queue extends Component {
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="存活时间" hasFeedback>
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('liveTime', {
                             rules: [{
-                                type: 'string', message: '输入不合法!'
-                            }, {
-                                required: true, message: '请输入环境名称!'
-                            }]
+                                required: true, message: '请选择存活时间!'
+                            }],
+                            initialValue: '1'
                         })(
-                            <Select defaultValue="1">
+                            <Select>
                                 <Option value="1">1天</Option>
                                 <Option value="2">5天</Option>
                                 <Option value="3">1周</Option>
@@ -186,11 +189,8 @@ class Queue extends Component {
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="开发语言" hasFeedback>
-                        {getFieldDecorator('email', {
-                            valuePropName: 'checked',
-                            rules: [{
-                                required: true, message: '请输入环境名称!'
-                            }]
+                        {getFieldDecorator('language', {
+                            valuePropName: 'checked'
                         })(
                             <div>
                                 <Checkbox>Java</Checkbox>
@@ -200,10 +200,15 @@ class Queue extends Component {
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="应用规划数" hasFeedback>
-                        {getFieldDecorator('email', {
-                            valuePropName: 'checked'
+                        {getFieldDecorator('program', {
+                            rules: [{
+                                type: 'number', message: '只能输入数字!'
+                            },{
+                                required: true, message: '请输入应用规划数!'
+                            }],
+                            initialValue: 30
                         })(
-                            <InputNumber min={1} max={10} defaultValue={3} />
+                            <InputNumber min={1} max={10} style={{width: '100%'}} />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="订阅频道">
@@ -213,15 +218,20 @@ class Queue extends Component {
                         <Table size="small" rowKey="name" columns={columns} dataSource={this.props.portalList}></Table>
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>
-                        {getFieldDecorator('email', {
-                            valuePropName: 'checked'
+                        {getFieldDecorator('useage', {
+                            rules: [{
+                                required: true, message: '请输入用途说明'
+                            }]
                         })(
                             <Input type="textarea" rows={10}></Input>
                         )}
                     </FormItem>
                     <FormItem {...tailFormItemLayout}>
-                        <Button type="default" htmlType="button" size="large">取消</Button>&nbsp;&nbsp;&nbsp;
-                        <Button type="primary" htmlType="button" size="large">保存</Button>  
+                        <Link to="/application">
+                            <Button type="default" htmlType="button" size="large">取消</Button>
+                        </Link>
+                        &nbsp;&nbsp;&nbsp;
+                        <Button type="primary" htmlType="submit" size="large">保存</Button>  
                     </FormItem>
                 </Form>
                 <ChannelModal></ChannelModal>

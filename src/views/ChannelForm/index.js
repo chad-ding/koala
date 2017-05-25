@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Switch, Tooltip, Button, Checkbox, Select, Radio, Slider, InputNumber, Breadcrumb, Icon } from 'antd';
+import { Form, Input, Switch, Button, Checkbox, Select, Radio, Slider, InputNumber, Breadcrumb, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import InputSelect from '../../components/InputSelect';
@@ -13,8 +13,10 @@ import InputSelect from '../../components/InputSelect';
 class Channel extends Component {
     constructor(props) {
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.checkFlow = this.checkFlow.bind(this);
     }
-    handleSubmit = (e) => {
+    handleSubmit(e){
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
@@ -22,7 +24,7 @@ class Channel extends Component {
             }
         });
     }
-    checkFlow = (rule, value, callback) => {
+    checkFlow(rule, value, callback){
         if (value.number > 0) {
             callback();
             return;
@@ -85,10 +87,10 @@ class Channel extends Component {
         return (
             <div className="container">
                 <Breadcrumb>
-                    <Breadcrumb.Item href="javascript:;">
+                    <Breadcrumb.Item>
                         <Icon type="home" />
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item href="javascript:;">
+                    <Breadcrumb.Item>
                         <span>
                             <Link to="/application">接入申请</Link>
                         </span>
@@ -174,9 +176,9 @@ class Channel extends Component {
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途" hasFeedback>
                         {getFieldDecorator('purpose', {
-                            rules: [
-                                {required: true, message: '请选择用途!'}
-                            ],
+                            rules: [{
+                                required: true, message: '请选择用途!'
+                            }],
                             initialValue: '1'
                         })(
                             <Select>
@@ -191,9 +193,9 @@ class Channel extends Component {
                     </FormItem>
                     <FormItem {...formItemLayout} label="存活时间" hasFeedback>
                         {getFieldDecorator('liveTime', {
-                            rules: [
-                                {required: true, message: '请选择存活时间!'}
-                            ],
+                            rules: [{
+                                required: true, message: '请选择存活时间!'
+                            }],
                             initialValue: '1'
                         })(
                             <Select>
@@ -228,10 +230,11 @@ class Channel extends Component {
                     </FormItem>
                     <FormItem {...formItemLayout} label="应用规划数" hasFeedback>
                         {getFieldDecorator('program', {
-                            rules: [
-                                {type: 'number', message: '只能输入数字!'},
-                                {required: true, message: '请输入应用规划数!'}
-                            ],
+                            rules: [{
+                                type: 'number', message: '只能输入数字!'
+                            },{
+                                required: true, message: '请输入应用规划数!'
+                            }],
                             initialValue: 30
                         })(
                             <InputNumber min={1} max={10} style={{width: '100%'}} />
@@ -239,27 +242,30 @@ class Channel extends Component {
                     </FormItem>
                     <FormItem {...formItemLayout} label="总流量预估" hasFeedback>
                         {getFieldDecorator('flow', {
-                            initialValue: { number: 1, unit: '1' },
-                            rules: [
-                                {required: true, message: '请输入总流量预估'},
-                                {validator: this.checkFlow }
-                            ]
+                            rules: [{
+                                required: true, message: '请输入总流量预估'
+                            },{
+                                validator: this.checkFlow
+                            }],
+                            initialValue: { number: 1, unit: '1' }
                         })(
                             <InputSelect unitMap={unitMap}></InputSelect>
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>
                         {getFieldDecorator('useage', {
-                            rules: [
-                                {required: true, message: '请输入用途说明'}
-                            ],
-                            valuePropName: 'checked'
+                            rules: [{
+                                required: true, message: '请输入用途说明'
+                            }]
                         })(
                             <Input type="textarea" rows={10}></Input>
                         )}
                     </FormItem>
                     <FormItem {...tailFormItemLayout}>
-                        <Button type="default" htmlType="button" size="large">取消</Button>&nbsp;&nbsp;&nbsp;
+                        <Link to="/application">
+                            <Button type="default" htmlType="button" size="large">取消</Button>
+                        </Link>
+                        &nbsp;&nbsp;&nbsp;
                         <Button type="primary" htmlType="submit" size="large">保存</Button>  
                     </FormItem>
                 </Form>
