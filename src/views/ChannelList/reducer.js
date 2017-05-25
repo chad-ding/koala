@@ -9,7 +9,7 @@ import { GET_CHANNEL_LIST } from '../../consts/action';
 export default function channelListReducer(state = { channelList: [], fetched: false }, action) {
     switch (action.type) {
         case GET_CHANNEL_LIST:
-            return Object.assign({}, state, { channelList: action.data.data });
+            return Object.assign({}, state, { channelList: action.data });
         default:
             return state;
     }
