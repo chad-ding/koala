@@ -8,8 +8,8 @@ module.exports = {
     assetsPublicPath: '/',
     //for proxy api
     proxyTable: {
-        '/kaleido-webapp/api/': {
-            target: 'http://localhost:8080/',
+        '/api/': {
+            target: 'http://localhost:80/',
             changeOrigin: true
         }
     },

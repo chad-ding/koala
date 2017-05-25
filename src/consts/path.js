@@ -4,8 +4,8 @@
  *@Date: 2017-04-10 16:39:49
  */
 
-export const APP_LIST_PATH = {
-    path: '/api/meta/getByParent',
+export const CHANNEL_LIST_PATH = {
+    path: '/channel/list',
     method: 'GET'
 };
 

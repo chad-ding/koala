@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Breadcrumb, Icon } from 'antd';
 import { connect } from 'react-redux';
-import { getAppList, changeTab } from './action';
+import { changeTab } from './action';
 import ChannelList from '../ChannelList';
 import QueueList from '../QueueList';
 import VdpList from '../VdpList';
@@ -27,10 +27,6 @@ class Approval extends Component {
         this.tabChange = this.tabChange.bind(this);
     }
     componentDidMount() {
-        const { dispatch } = this.props;
-        if (!this.props.fetched) {
-            dispatch(getAppList({ parent: 'occupation' }));
-        }
     }
     tabChange(key) {
         const { dispatch } = this.props;
@@ -42,10 +38,10 @@ class Approval extends Component {
         return (
             <div className="container">
                 <Breadcrumb>
-                    <Breadcrumb.Item href="">
+                    <Breadcrumb.Item>
                         <Icon type="home" />
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item href="">
+                    <Breadcrumb.Item>
                         <span>接入审批</span>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>

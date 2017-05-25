@@ -26,5 +26,5 @@ export const DEL_PORTAL = Symbol('DEL_PORTAL');
 export const ADD_CHANNEL = Symbol('ADD_CHANNEL');
 //显示Channel modal
 export const CHANNEL_MODAL_SHOW = Symbol('CHANNEL_MODAL_SHOW');
-
-export const GET_APP_LIST = Symbol('GET_APP_LIST');
+//拉取Channel列表
+export const GET_CHANNEL_LIST = Symbol('GET_CHANNEL_LIST');

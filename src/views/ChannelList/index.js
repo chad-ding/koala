@@ -8,16 +8,17 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Input, Table } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { getChannelList } from './action';
 
 class ChannelList extends Component {
     constructor(props) {
         super(props);
     }
     componentDidMount() {
-
+        const { dispatch } = this.props;
+        dispatch(getChannelList());
     }
     render() {
-
         const columns = [{
             title: '名称',
             dataIndex: 'name',
@@ -93,7 +94,7 @@ class ChannelList extends Component {
 
 function mapStateToProps(state) {
     return {
-
+        channelList: state.channelList
     };
 }
 
