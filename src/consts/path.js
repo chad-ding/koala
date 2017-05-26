@@ -21,7 +21,7 @@ export const VDP_LIST_PATH = {
 
 export const SUBSCRIBE_LIST_PATH = {
     path: '/subscribe/list',
-    meghod: 'GET'
+    method: 'GET'
 };
 
 export const LOGIN_PATH = {
