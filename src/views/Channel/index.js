@@ -6,7 +6,8 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Breadcrumb, Icon, Row, Col, Button, Steps } from 'antd';
+import { Breadcrumb, Icon, Row, Col, Steps } from 'antd';
+import { Link } from 'react-router';
 
 import './style.less';
 
@@ -25,7 +26,7 @@ class Channel extends Component {
                         <Icon type="home" />
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                        <span>接入申请</span>
+                        <Link to="/application">接入申请</Link>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
                         <span>频道</span>

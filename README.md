@@ -16,5 +16,8 @@ KOALA
 -----------------
     2.1、安装node，已安装请跳过。
     2.2、npm install安装package.json中定义的node模块到本地，其中包括webpack等各类开发工具以及组件库。
-    2.3、npm run dev启动本地开发环境。
-    2.4、npm run build对项目进行打包。
+    2.3、启动数据模拟服务
+        2.3.1、进入simulator_node目录打开命令行工具，输入node index.js命令启动node web服务。
+        2.3.2、如果没有安装python请先进行安装，进入simulator_python目录，输入python index.py命令启动python web服务。
+    2.4、npm run dev启动本地开发环境。
+    2.5、npm run build对项目进行打包。
