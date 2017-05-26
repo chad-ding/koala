@@ -67,6 +67,7 @@ class VdpList extends Component {
                     </Col>
                     <Col span={4} offset={12}>
                         {   
+                            
                             this.props.path === 'approval' ? '' : 
                             <Button size="large" type="primary">
                                 <Link to="/vdp/new">申请数据表</Link>

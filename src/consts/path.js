@@ -9,6 +9,11 @@ export const CHANNEL_LIST_PATH = {
     method: 'GET'
 };
 
+export const QUEUE_LIST_PATH = {
+    path: '/queue/list',
+    method: 'GET'
+};
+
 export const LOGIN_PATH = {
     path: '/api/user/login',
     method: 'GET'

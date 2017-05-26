@@ -8,17 +8,22 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Input, Table } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { getQueueList } from './action';
 
 class QueueList extends Component {
     constructor(props) {
         super(props);
+    }
+    componentDidMount(){
+        const { dispatch } = this.props;
+        dispatch(getQueueList());
     }
     render() {
         const columns = [{
             title: '名称',
             dataIndex: 'name',
             key: 'name',
-            render: text => <a href="javascript:;">{text}</a>
+            render: (text, record, index) => <Link to={`/queue/${record.id}`}>{text}</Link>
         }, {
             title: '项目',
             dataIndex: 'project',
@@ -52,6 +57,10 @@ class QueueList extends Component {
             dataIndex: 'language',
             key: 'language'
         }, {
+            title: '组内广播',
+            dataIndex: 'broadcast',
+            key: 'broadcast'
+        }, {
             title: '流程进度',
             dataIndex: 'state',
             key: 'state'
@@ -73,7 +82,8 @@ class QueueList extends Component {
                         &nbsp;&nbsp;<Button size="large" type="primary">搜索</Button>
                     </Col>
                     <Col span={4} offset={12}>
-                        {   this.props.path === 'approval' ? '' : 
+                        {   
+                            this.props.path === 'approval' ? '' : 
                             <Button size="large" type="primary">
                                 <Link to="/queue/new">申请队列</Link>
                             </Button>
@@ -81,7 +91,7 @@ class QueueList extends Component {
                     </Col>
                 </Row>
                 <br/>
-                <Table columns={columns} dataSource={this.props.appList}></Table>
+                <Table columns={columns} dataSource={this.props.queueList}></Table>
             </div>
         );
     }
@@ -89,7 +99,7 @@ class QueueList extends Component {
 
 function mapStateToProps(state) {
     return {
-
+        queueList: state.queueListReducer.queueList
     };
 }
 

@@ -28,3 +28,5 @@ export const ADD_CHANNEL = Symbol('ADD_CHANNEL');
 export const CHANNEL_MODAL_SHOW = Symbol('CHANNEL_MODAL_SHOW');
 //拉取Channel列表
 export const GET_CHANNEL_LIST = Symbol('GET_CHANNEL_LIST');
+//拉取Queue列表
+export const GET_QUEUE_LIST = Symbol('GET_QUEUE_LIST');

@@ -13,6 +13,7 @@ import envAddReducer from '../views/EnvAdd/reducer';
 import channelFormReducer from '../views/ChannelForm/reducer';
 import channelListReducer from '../views/ChannelList/reducer';
 import queueFormReducer from '../views/QueueForm/reducer';
+import queueListReducer from '../views/QueueList/reducer';
 import sysConfigReducer from '../views/SysConfig/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
@@ -38,5 +39,6 @@ export default combineReducers({
     channelFormReducer,
     channelListReducer,
     queueFormReducer,
+    queueListReducer,
     sysConfigReducer
 });

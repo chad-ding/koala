@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "queue.vis.manualreturn.batch",
+    "project": "批量转RI效率提升",
+    "engine": "任务事件(RabbitMQ)",
+    "form": "保障并行",
+    "channel": "channel.deferred5.23.*",
+    "purpose": 1,
+    "date": "2017-05-25",
+    "expire": "3 天 前",
+    "language": "java",
+    "broadcast": "是",
+    "state": 2,
+    "status": 1
+  },
+  {
+    "id": 2,
+    "name": "queue.vis.manualreturn.batch",
+    "project": "批量转RI效率提升",
+    "engine": "任务事件(RabbitMQ)",
+    "form": "保障并行",
+    "channel": "channel.deferred5.23.*",
+    "purpose": 1,
+    "date": "2017-05-25",
+    "expire": "3 天 前",
+    "language": "java",
+    "broadcast": "是",
+    "state": 2,
+    "status": 1
+  },
+  {
+    "id": 3,
+    "name": "queue.vis.manualreturn.batch",
+    "project": "批量转RI效率提升",
+    "engine": "任务事件(RabbitMQ)",
+    "form": "保障并行",
+    "channel": "channel.deferred5.23.*",
+    "purpose": 1,
+    "date": "2017-05-25",
+    "expire": "3 天 前",
+    "language": "java",
+    "broadcast": "是",
+    "state": 2,
+    "status": 1
+  },
+  {
+    "id": 4,
+    "name": "queue.vis.manualreturn.batch",
+    "project": "批量转RI效率提升",
+    "engine": "任务事件(RabbitMQ)",
+    "form": "保障并行",
+    "channel": "channel.deferred5.23.*",
+    "purpose": 1,
+    "date": "2017-05-25",
+    "expire": "3 天 前",
+    "language": "java",
+    "broadcast": "是",
+    "state": 2,
+    "status": 1
+  }
+]
