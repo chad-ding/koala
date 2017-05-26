@@ -9,47 +9,52 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Input, Table } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { getVdpList } from './action';
 
 class VdpList extends Component {
     constructor(props) {
         super(props);
     }
+    componentDidMount(){
+        const { dispatch } = this.props;
+        dispatch(getVdpList());
+    }
     render() {
         const columns = [{
-            title: '队列名称',
+            title: '名称',
             dataIndex: 'name',
             key: 'name',
-            render: text => <a href="javascript:;">{text}</a>
+            render: (text, record, index) => <Link to={`/vdp/${record.id}`}>{text}</Link>
         }, {
-            title: '订阅目标',
+            title: '项目',
             dataIndex: 'project',
             key: 'project'
         }, {
-            title: '消费形态',
-            dataIndex: 'engine',
-            key: 'engine'
+            title: 'BO',
+            dataIndex: 'bo',
+            key: 'bo'
+        }, {
+            title: '部门',
+            dataIndex: 'department',
+            key: 'department'
         }, {
             title: '用途',
             dataIndex: 'purpose',
             key: 'purpose'
         }, {
             title: '申请',
-            dataIndex: 'date',
-            key: 'date'
+            dataIndex: 'apply',
+            key: 'apply'
         }, {
             title: '预约期限',
             dataIndex: 'expire',
             key: 'expire'
         }, {
-            title: '流程进度',
-            dataIndex: 'state',
-            key: 'state'
-        }, {
-            title: '最后审批人',
+            title: '开发语言',
             dataIndex: 'language',
             key: 'language'
         }, {
-            title: '操作状态',
+            title: '流程进度',
             dataIndex: 'status',
             key: 'status'
         }];
@@ -76,15 +81,15 @@ class VdpList extends Component {
                     </Col>
                 </Row>
                 <br/>
-                <Table columns={columns} dataSource={this.props.appList}></Table>
+                <Table columns={columns} dataSource={this.props.vdpList}></Table>
             </div>
         );
     }
 }
 
-function mapStateToProps() {
+function mapStateToProps(state) {
     return {
-
+        vdpList: state.vdpListReducer.vdpList
     };
 }
 

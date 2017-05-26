@@ -1,5 +1,4 @@
-[
-  {
+[{
     "id": 1,
     "name": "queue.vis.manualreturn.batch",
     "project": "批量转RI效率提升",
@@ -13,8 +12,7 @@
     "broadcast": "是",
     "state": 2,
     "status": 1
-  },
-  {
+}, {
     "id": 2,
     "name": "queue.vis.manualreturn.batch",
     "project": "批量转RI效率提升",
@@ -28,8 +26,7 @@
     "broadcast": "是",
     "state": 2,
     "status": 1
-  },
-  {
+}, {
     "id": 3,
     "name": "queue.vis.manualreturn.batch",
     "project": "批量转RI效率提升",
@@ -43,8 +40,7 @@
     "broadcast": "是",
     "state": 2,
     "status": 1
-  },
-  {
+}, {
     "id": 4,
     "name": "queue.vis.manualreturn.batch",
     "project": "批量转RI效率提升",
@@ -58,5 +54,4 @@
     "broadcast": "是",
     "state": 2,
     "status": 1
-  }
-]
+}]

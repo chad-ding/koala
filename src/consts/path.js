@@ -14,6 +14,11 @@ export const QUEUE_LIST_PATH = {
     method: 'GET'
 };
 
+export const VDP_LIST_PATH = {
+    path: '/vdp/list',
+    method: 'GET'
+};
+
 export const LOGIN_PATH = {
     path: '/api/user/login',
     method: 'GET'

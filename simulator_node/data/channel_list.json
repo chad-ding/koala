@@ -1,5 +1,4 @@
-[
-  {
+[{
     "id": 1,
     "name": "channel.vis.manualreturn.batch",
     "project": "批量转RI效率提升",
@@ -12,8 +11,7 @@
     "language": "java",
     "state": 2,
     "status": 1
-  },
-  {
+}, {
     "id": 2,
     "name": "channel.test_deferred5.22",
     "project": "重庆海淘报关信息",
@@ -26,8 +24,7 @@
     "language": "java",
     "state": 2,
     "status": 1
-  },
-  {
+}, {
     "id": 3,
     "name": "channel.test.topic.szy04",
     "project": "tps接收从ROME、PJD发送的位置信息",
@@ -40,8 +37,7 @@
     "language": "java",
     "state": 2,
     "status": 1
-  },
-  {
+}, {
     "id": 4,
     "name": "channel.rabbitmq.xfd.opened",
     "project": "唯品指数电商数据传输",
@@ -54,5 +50,4 @@
     "language": "java",
     "state": 2,
     "status": 1
-  }
-]
+}]

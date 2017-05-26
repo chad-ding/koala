@@ -15,6 +15,7 @@ import channelListReducer from '../views/ChannelList/reducer';
 import queueFormReducer from '../views/QueueForm/reducer';
 import queueListReducer from '../views/QueueList/reducer';
 import sysConfigReducer from '../views/SysConfig/reducer';
+import vdpListReducer from '../views/VdpList/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
 
@@ -40,5 +41,6 @@ export default combineReducers({
     channelListReducer,
     queueFormReducer,
     queueListReducer,
-    sysConfigReducer
+    sysConfigReducer,
+    vdpListReducer
 });
