@@ -6,7 +6,6 @@
 
 import { TAB_CHANGE } from '../../consts/action';
 import { fetchData } from '../../resource';
-import { APP_LIST_PATH } from '../../consts/path';
 
 export function changeTab(key) {
     return {

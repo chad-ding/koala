@@ -1,0 +1,31 @@
+[{
+    "id": 1,
+    "name": "channel.mapi1shop.special",
+    "subscribeNum": 1,
+    "desc": "EEEEEEEEEEEEEEEEEEE",
+    "status": 1
+},{
+    "id": 2,
+    "name": "channel.mapishop.special",
+    "subscribeNum": 5,
+    "desc": "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+    "status": 1
+},{
+    "id": 3,
+    "name": "channel.aaaa.special",
+    "subscribeNum": 0,
+    "desc": "CCCCCCCCCCCCCCCC",
+    "status": 1
+},{
+    "id": 4,
+    "name": "channel.2222.special",
+    "subscribeNum": 1,
+    "desc": "BBBBBBBBBBBBBBBBBBBB",
+    "status": 1
+},{
+    "id": 5,
+    "name": "channel.maddddpishop.special",
+    "subscribeNum": 11,
+    "desc": "AAAAAAAAAAAAAAAAA",
+    "status": 1
+}]

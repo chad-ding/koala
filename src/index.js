@@ -135,10 +135,10 @@ render((
                 <Route path="approval" getComponent={approval}></Route>
                 <Route path="channel/new" getComponent={channelForm}></Route>
                 <Route path="queue/new" getComponent={queueForm}></Route>
+                <Route path="vdp/new" getComponent={vdpForm}></Route>
                 <Route path="channel/:id" getComponent={channel}></Route>
                 <Route path="queue/:id" getComponent={queue}></Route>
                 <Route path="vdp/:id" getComponent={vdp}></Route>
-                <Route path="vdp/new" getComponent={vdpForm}></Route>
                 <Route path="env" getComponent={envList}>
                     <IndexRoute getComponent={envItem}></IndexRoute>
                     <Route path="item" getComponent={envItem}></Route>

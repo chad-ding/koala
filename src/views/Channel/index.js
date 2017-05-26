@@ -40,7 +40,7 @@ class Channel extends Component {
                     <Step status="wait" title="PRELIVE" icon={<Icon type="check-circle" />} />
                 </Steps>
                 <br/><br/>
-                <h2>基本信息</h2>
+                <h2 className="title"><Icon type="tag"></Icon>&nbsp;基本信息</h2>
                 <br/><hr/><br/>
                 <Row>
                     <Col span={4} className="label">频道名称:</Col>
@@ -66,7 +66,7 @@ class Channel extends Component {
                     <Col span={4} className="label">存活时间:</Col>
                     <Col span={20} className="text">dddddddddddddddddddddddddddddddd</Col>
                 </Row>
-                <h2>容量预估</h2>
+                <h2 className="title"><Icon type="tag"></Icon>&nbsp;容量预估</h2>
                 <br/><hr/><br/>
                 <Row>
                     <Col span={4} className="label">应用规划数:</Col>
@@ -80,7 +80,7 @@ class Channel extends Component {
                     <Col span={4} className="label">消息体预估:</Col>
                     <Col span={20} className="text">dddddddddddddddddddddddddddddddd</Col>
                 </Row>
-                <h2>项目信息</h2>
+                <h2 className="title"><Icon type="tag"></Icon>&nbsp;项目信息</h2>
                 <br/><hr/><br/>
                 <Row>
                     <Col span={4} className="label">App ID:</Col>

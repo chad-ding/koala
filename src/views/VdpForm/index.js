@@ -126,7 +126,7 @@ class Vdp extends Component {
                             }],
                             initialValue: '1'
                         })(
-                            <Select defaultValue="1">
+                            <Select>
                                 <Option value="1">1天</Option>
                                 <Option value="2">5天</Option>
                                 <Option value="3">1周</Option>
@@ -145,7 +145,7 @@ class Vdp extends Component {
                             }],
                             initialValue: '1'
                         })(
-                            <Select defaultValue="1">
+                            <Select>
                                 <Option value="1">保障并行</Option>
                                 <Option value="2">保障顺序</Option>
                             </Select>
@@ -199,7 +199,7 @@ class Vdp extends Component {
 
 function mapStateToProps(state) {
     return {
-        ...state.ChannelFormReducer
+        
     };
 }
 

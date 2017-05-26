@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Button, Switch, Checkbox, Select, Radio, InputNumber, Breadcrumb, Icon, Table } from 'antd';
+import { Form, Input, Button, Switch, Checkbox, Select, InputNumber, Breadcrumb, Icon, Table } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import ChannelModal from './ChannelModal';

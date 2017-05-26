@@ -32,3 +32,5 @@ export const GET_CHANNEL_LIST = Symbol('GET_CHANNEL_LIST');
 export const GET_QUEUE_LIST = Symbol('GET_QUEUE_LIST');
 //拉取Vdp列表
 export const GET_VDP_LIST = Symbol('GET_VDP_LIS');
+//拉取订阅列表
+export const GET_SUBSCRIBE_LIST = Symbol('GET_SUBSCRIBE_LIST');

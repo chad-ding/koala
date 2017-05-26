@@ -5,7 +5,6 @@
  */
 
 import { TAB_CHANGE } from '../../consts/action';
-import { fetchData } from '../../resource';
 
 export function changeTab(key) {
     return {

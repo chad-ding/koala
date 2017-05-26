@@ -41,7 +41,7 @@ class Queue extends Component {
             id: 3,
             name: 'CCCC',
             route: '*'
-        }]
+        }];
 
         return (
             <div className="container">
@@ -64,7 +64,7 @@ class Queue extends Component {
                     <Step status="wait" title="PRELIVE" icon={<Icon type="check-circle" />} />
                 </Steps>
                 <br/><br/>
-                <h2>基本信息</h2>
+                <h2 className="title"><Icon type="tag"></Icon>&nbsp;基本信息</h2>
                 <br/><hr/><br/>
                 <Row>
                     <Col span={4} className="label">队列名称:</Col>
@@ -104,7 +104,7 @@ class Queue extends Component {
                         <Table rowKey={record => record.id} columns={columns} dataSource={tableData}></Table>
                     </Col>
                 </Row>
-                <h2>容量预估</h2>
+                <h2 className="title"><Icon type="tag"></Icon>&nbsp;容量预估</h2>
                 <br/><hr/><br/>
                 <Row>
                     <Col span={4} className="label">应用规划数:</Col>
@@ -118,7 +118,7 @@ class Queue extends Component {
                     <Col span={4} className="label">消息体预估:</Col>
                     <Col span={20} className="text">dddddddddddddddddddddddddddddddd</Col>
                 </Row>
-                <h2>项目信息</h2>
+                <h2 className="title"><Icon type="tag"></Icon>&nbsp;项目信息</h2>
                 <br/><hr/><br/>
                 <Row>
                     <Col span={4} className="label">App ID:</Col>
