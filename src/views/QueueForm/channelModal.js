@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Modal, Table, Row, Col, Input, Select, Button, Form } from 'antd';
+import { Modal, Table, Input, Select, Button, Form } from 'antd';
 import { handleModal, getSubscribeList } from './action';
 
 class Filter extends Component {
@@ -16,10 +16,20 @@ class Filter extends Component {
     render(){
         const { getFieldDecorator } = this.props.form;
         const FormItem = Form.Item;
+        const formItemLayout = {
+            labelCol: {
+                xs: { span: 12 },
+                sm: { span: 12 }
+            },
+            wrapperCol: {
+                xs: { span: 12 },
+                sm: { span: 12 }
+            }
+        };
 
         return (
             <Form layout="inline" onSubmit={this.handleSubmit}>
-                <FormItem label="集群">
+                <FormItem {...formItemLayout} label="集群">
                     {getFieldDecorator('cluster', {
                         initialValue: '1'
                     })(
@@ -31,9 +41,11 @@ class Filter extends Component {
                         </Select>
                     )}
                 </FormItem>
-                <FormItem label="关键字">
+                <FormItem {...formItemLayout} label="关键字">
                     {getFieldDecorator('keyword', {
-
+                        rules: [{
+                            type: 'string', message: '只能输入字符'
+                        }]
                     })(
                         <Input />
                     )}
@@ -85,8 +97,6 @@ class ChannelModal extends Component {
             dataIndex: 'status',
             key: 'status'
         }];
-
-        const { Option } = Select;
 
         return (
             <Modal width={800} maskClosable={false} onOk={this.handleOk} onCancel={this.handleCancel} title="订阅频道" key={this.props.channelModal.counter} visible={this.props.channelModal.visible}>
