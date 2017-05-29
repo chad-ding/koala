@@ -21,7 +21,7 @@ class Queue extends Component {
         const { dispatch } = this.props;
         dispatch(handleModal(true));
     }
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
