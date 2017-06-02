@@ -20,14 +20,14 @@ class Home extends Component {
         this.showLoginModal = this.showLoginModal.bind(this);
         this.tabChange = this.tabChange.bind(this);
     }
-    tabChange(key) {
+    tabChange(item, key, keyPath) {
         const { dispatch } = this.props;
-        dispatch(changeTab(key));
+        dispatch(changeTab(item.key));
     }
     componentDidMount() {
         let route = this.props.routes[1];
         let path = route.path;
-        this.tabChange(path);
+        this.tabChange({key: path});
     }
     componentWillUnmount() {
         console.info('%ckoala app shutdown..', 'color:rgba(187, 0, 0, 1);');
@@ -71,7 +71,7 @@ class Home extends Component {
         );
 
         const navs = (
-            <Menu mode="horizontal" selectedKeys={[this.props.tab]} defaultSelectedKeys={['application']} theme="dark">
+            <Menu mode="horizontal" onClick={this.tabChange} selectedKeys={[this.props.tab]} defaultSelectedKeys={['application']} theme="dark">
                 <Menu.Item key="application">
                     <Link to="/application">我的申请</Link>
                 </Menu.Item>
@@ -81,7 +81,7 @@ class Home extends Component {
                 <Menu.Item key="env">
                     <Link to="/env/item">环境管理</Link>
                 </Menu.Item>
-                <Menu.Item key="setting">
+                <Menu.Item key="sys">
                     <Link to="/sys/baseInfo">系统设置</Link>
                 </Menu.Item>
                 <Menu.Item key="monitor">
