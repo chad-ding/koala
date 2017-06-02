@@ -36,3 +36,7 @@ export const GET_QUEUE_LIST = Symbol('GET_QUEUE_LIST');
 export const GET_VDP_LIST = Symbol('GET_VDP_LIS');
 //拉取订阅列表
 export const GET_SUBSCRIBE_LIST = Symbol('GET_SUBSCRIBE_LIST');
+//订阅频道
+export const SUBSCRIBE = Symbol('SUBSCRIBE');
+//取消订阅
+export const UNSUBSCRIBE = Symbol('UNSUBSCRIBE');

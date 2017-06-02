@@ -27,6 +27,11 @@ class Home extends Component {
     componentDidMount() {
         let route = this.props.routes[1];
         let path = route.path;
+        
+        if(/^(?:channel|queue)\/\w+$/.test(path)){
+            path = 'application';
+        }
+
         this.tabChange({key: path});
     }
     componentWillUnmount() {

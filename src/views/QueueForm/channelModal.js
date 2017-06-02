@@ -106,7 +106,8 @@ class ChannelModal extends Component {
         }, {
             title: '操作或状态',
             dataIndex: 'status',
-            key: 'status'
+            key: 'status',
+            render: (text, record, index) => <Button disabled={record.subscribed} onClick={(env) => this.props.onSubscribe(record)} type="primary">订阅</Button>
         }];
 
         let pagination = {
@@ -120,7 +121,7 @@ class ChannelModal extends Component {
             <Modal width={800} maskClosable={false} onOk={this.handleOk} onCancel={this.handleCancel} title="订阅频道" key={this.props.channelModal.counter} visible={this.props.channelModal.visible}>
                 <FilterForm></FilterForm>
                 <br/>
-                <Table pagination={pagination} columns={columns} dataSource={this.props.subscribeList}></Table>
+                <Table rowKey="id" pagination={pagination} columns={columns} dataSource={this.props.subscribeList}></Table>
             </Modal>
         );
     }
