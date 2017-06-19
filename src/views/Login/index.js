@@ -11,8 +11,6 @@ import { LOGIN_MODAL_SHOW } from '../../consts/action';
 import { login } from './action';
 import md5 from 'js-md5';
 
-const FormItem = Form.Item;
-
 class LoginModal extends Component {
     constructor(props) {
         super(props);
@@ -43,6 +41,7 @@ class LoginModal extends Component {
     }
     render() {
         const { getFieldDecorator } = this.props.form;
+        const FormItem = Form.Item;
         return (
             <div>
                 <Modal title="登录" key={this.props.counter} visible={this.props.visible} maskClosable={false} onOk={this.handleSubmit} onCancel={this.handleCancel}>

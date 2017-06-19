@@ -19,7 +19,7 @@ import vdpListReducer from '../views/VdpList/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
 
-function requestReducer(state = { errorInfo: { data: null, counter: 0} }, action) {
+function requestReducer(state = { errorInfo: { data: null, counter: 0 } }, action) {
 
     switch (action.type) {
         case REQUEST_FAILED:

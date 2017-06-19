@@ -31,7 +31,7 @@ class EnvList extends Component {
         dispatch(changeTab(item.key));
     }
     componentWillUnmount() {
-        const {dispatch} = this.props;
+        const { dispatch } = this.props;
         dispatch(changeTab('qa'));
     }
     render() {

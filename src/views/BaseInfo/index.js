@@ -4,17 +4,78 @@
  *@Date: 2017-05-18 19:29:05
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Form, Input, Button } from 'antd';
 
-export default class BaseInfo extends Component{
-    constructor(props){
+class BaseInfoForm extends Component {
+    constructor(props) {
         super(props);
     }
-    render(){
+    render() {
+        const { getFieldDecorator } = this.props.form;
+        const FormItem = Form.Item;
+
+        const formItemLayout = {
+            labelCol: {
+                xs: { span: 14 },
+                sm: { span: 6 }
+            },
+            wrapperCol: {
+                xs: { span: 24 },
+                sm: { span: 14 }
+            }
+        };
+
+        const tailFormItemLayout = {
+            wrapperCol: {
+                xs: {
+                    span: 24,
+                    offset: 0
+                },
+                sm: {
+                    span: 14,
+                    offset: 6
+                }
+            }
+        };
+
         return (
             <div>
-                aaaaaaaaaaaaa
+                <Form className="login-form">
+                    <FormItem {...formItemLayout} label="流程顺序">
+                        {getFieldDecorator('userName', {
+                            rules: [
+                                {pattern: /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/, message: '请输入正确的邮箱格式!'}    
+                            ]
+                        })(
+                            <Input rows={5} type="textarea"/>
+                        )}
+                    </FormItem>
+                    <FormItem {...formItemLayout} label="登录首页">
+                        {getFieldDecorator('homePage', {
+                            rules: [
+                                {pattern: /^\w{6}$/, message: '请输入正确的格式!'}
+                            ]
+                        })(
+                            <Input type="text" />
+                        )}
+                    </FormItem>
+                    <FormItem {...tailFormItemLayout}>
+                        <Button type="primary" htmlType="submit" size="large">保存</Button>  
+                    </FormItem>
+                </Form>
             </div>
         );
     }
 };
+
+const BaseInfo = Form.create()(BaseInfoForm);
+
+function mapStateToProps(state) {
+    return {
+
+    };
+};
+
+export default connect(mapStateToProps)(BaseInfo);
