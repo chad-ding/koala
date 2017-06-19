@@ -10,6 +10,7 @@ import { Layout, Row, Col, Menu, Dropdown, Icon, notification, Input } from 'ant
 import { connect } from 'react-redux';
 import Login from '../Login';
 import { LOGIN_MODAL_SHOW } from '../../consts/action';
+import { changeTab } from './action';
 
 import './style.less';
 
@@ -17,9 +18,21 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.showLoginModal = this.showLoginModal.bind(this);
+        this.tabChange = this.tabChange.bind(this);
+    }
+    tabChange(item, key, keyPath) {
+        const { dispatch } = this.props;
+        dispatch(changeTab(item.key));
     }
     componentDidMount() {
-        console.info('%ckoala app startup...', 'color:rgba(187, 0, 0, 1);');
+        let route = this.props.routes[1];
+        let path = route.path;
+        
+        if(/^(?:channel|queue)\/\w+$/.test(path)){
+            path = 'application';
+        }
+
+        this.tabChange({key: path});
     }
     componentWillUnmount() {
         console.info('%ckoala app shutdown..', 'color:rgba(187, 0, 0, 1);');
@@ -63,7 +76,7 @@ class Home extends Component {
         );
 
         const navs = (
-            <Menu mode="horizontal" defaultSelectedKeys={['application']} theme="dark">
+            <Menu mode="horizontal" onClick={this.tabChange} selectedKeys={[this.props.tab]} defaultSelectedKeys={['application']} theme="dark">
                 <Menu.Item key="application">
                     <Link to="/application">我的申请</Link>
                 </Menu.Item>
@@ -73,7 +86,7 @@ class Home extends Component {
                 <Menu.Item key="env">
                     <Link to="/env/item">环境管理</Link>
                 </Menu.Item>
-                <Menu.Item key="setting">
+                <Menu.Item key="sys">
                     <Link to="/sys/baseInfo">系统设置</Link>
                 </Menu.Item>
                 <Menu.Item key="monitor">
@@ -127,7 +140,8 @@ class Home extends Component {
 function mapStateToProps(state) {
     return {
         userInfo: state.loginReducer.userInfo,
-        errorInfo: state.requestReducer.errorInfo
+        errorInfo: state.requestReducer.errorInfo,
+        tab: state.homeReducer.tab
     };
 }
 

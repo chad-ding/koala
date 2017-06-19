@@ -27,9 +27,9 @@ class SysConfig extends Component {
         super(props);
         this.tabChange = this.tabChange.bind(this);
     }
-    tabChange(item, key, keyPath) {
+    tabChange(key) {
         const { dispatch } = this.props;
-        dispatch(changeTab(item.key));
+        dispatch(changeTab(key));
     }
     routerWillLeave(nextLocation) {
         if (!this.state.isSaved){
@@ -37,7 +37,9 @@ class SysConfig extends Component {
         }
     }
     componentDidMount() {
-        console.log('sys config startup...');
+        let route = this.props.routes[this.props.routes.length - 1];
+        let path = route.path;
+        this.tabChange(path);
     }
     componentWillUnmount() {
         const { dispatch } = this.props;
@@ -48,7 +50,7 @@ class SysConfig extends Component {
             <div className="container">
                 <Row gutter={24}>
                     <Col span={6}>
-                        <Menu onClick={this.tabChange} mode="inline" selectedKeys={[this.props.tab]} defaultSelectedKeys={['baseInfo']} className="sys-container">
+                        <Menu mode="inline" selectedKeys={[this.props.tab]} defaultSelectedKeys={['baseInfo']} className="sys-container">
                             <Menu.Item key="baseInfo">
                                 <Link to="/sys/baseInfo" className="sys-item">基本信息</Link>
                                 <Icon className="env-icon" type="right"></Icon>

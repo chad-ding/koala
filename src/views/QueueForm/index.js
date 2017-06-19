@@ -9,25 +9,35 @@ import { Form, Input, Button, Switch, Checkbox, Select, InputNumber, Breadcrumb,
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import ChannelModal from './ChannelModal';
-import { handleModal } from './action';
+import { handleModal, subscribe, unsubscribe } from './action';
 
 class Queue extends Component {
     constructor(props) {
         super(props);
         this.handleModal = this.handleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.subscribe = this.subscribe.bind(this);
+        this.unsubscribe = this.unsubscribe.bind(this);
     }
     handleModal() {
         const { dispatch } = this.props;
         dispatch(handleModal(true));
     }
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
             }
         });
+    }
+    subscribe(channel) {
+        const { dispatch } = this.props;
+        dispatch(subscribe(channel));
+    }
+    unsubscribe(channel) {
+        const { dispatch } = this.props;
+        dispatch(unsubscribe(channel));
     }
     render() {
 
@@ -65,14 +75,14 @@ class Queue extends Component {
             key: 'name'
         }, {
             title: '路由',
-            dataIndex: 'url',
-            key: 'url'
+            key: 'route',
+            render: () => <Input></Input>
         }, {
             title: '操作',
             key: 'action',
             render: (text, record, index) => (
                 <span>
-                    <a href="javascript:;" onClick={() => this.delPortal(index)}>删除</a>
+                    <a href="javascript:;" onClick={() => this.unsubscribe(record)}>删除</a>
                 </span>
             )
         }];
@@ -215,7 +225,7 @@ class Queue extends Component {
                         <Button onClick={this.handleModal} type="primary" htmlType="button" size="large" style={{float: 'right'}}>添加订阅</Button>
                     </FormItem>
                     <FormItem {...formItemLayout} colon={false} label=" ">
-                        <Table size="small" rowKey="name" columns={columns} dataSource={this.props.portalList}></Table>
+                        <Table pagination={false} size="small" rowKey="name" columns={columns} dataSource={this.props.subscribedChannel}></Table>
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>
                         {getFieldDecorator('useage', {
@@ -234,7 +244,7 @@ class Queue extends Component {
                         <Button type="primary" htmlType="submit" size="large">保存</Button>  
                     </FormItem>
                 </Form>
-                <ChannelModal></ChannelModal>
+                <ChannelModal onSubscribe={this.subscribe}></ChannelModal>
             </div>
         );
     }
@@ -242,7 +252,7 @@ class Queue extends Component {
 
 function mapStateToProps(state) {
     return {
-        ...state.ChannelFormReducer
+        subscribedChannel: state.queueFormReducer.subscribedChannel
     };
 }
 

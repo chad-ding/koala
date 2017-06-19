@@ -12,6 +12,8 @@ export const REQUEST_FAILED = Symbol('REQUEST_FAILED');
 export const LOGIN_MODAL_SHOW = Symbol('LOGIN_MODAL_SHOW');
 //登录
 export const LOGIN = Symbol('LOGIN');
+//根组件Tab变更
+export const TAB_CHANGE_HOME = Symbol('TAB_CHANGE_HOME');
 //环境管理Tab变更
 export const TAB_CHANGE_ENV = Symbol('TAB_CHANGE_ENV');
 //系统设置Tab变更
@@ -34,3 +36,7 @@ export const GET_QUEUE_LIST = Symbol('GET_QUEUE_LIST');
 export const GET_VDP_LIST = Symbol('GET_VDP_LIS');
 //拉取订阅列表
 export const GET_SUBSCRIBE_LIST = Symbol('GET_SUBSCRIBE_LIST');
+//订阅频道
+export const SUBSCRIBE = Symbol('SUBSCRIBE');
+//取消订阅
+export const UNSUBSCRIBE = Symbol('UNSUBSCRIBE');

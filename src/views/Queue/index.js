@@ -33,11 +33,11 @@ class Queue extends Component {
             id: 1,
             name: 'AAAA',
             route: '*'
-        },{
+        }, {
             id: 2,
             name: 'BBBB',
             route: '*'
-        },{
+        }, {
             id: 3,
             name: 'CCCC',
             route: '*'

@@ -7,7 +7,7 @@
 import { CHANNEL_MODAL_SHOW } from '../../consts/action';
 import { fetchData } from '../../resource';
 import { SUBSCRIBE_LIST_PATH } from '../../consts/path';
-import { GET_SUBSCRIBE_LIST } from '../../consts/action';
+import { GET_SUBSCRIBE_LIST, SUBSCRIBE, UNSUBSCRIBE } from '../../consts/action';
 
 export function getSubscribeList(params) {
     return fetchData(Object.assign({
@@ -20,5 +20,19 @@ export function handleModal(display) {
     return {
         type: CHANNEL_MODAL_SHOW,
         visible: display
+    };
+};
+
+export function subscribe(channel){
+	return {
+		type: SUBSCRIBE,
+		channel: channel
+	};
+};
+
+export function unsubscribe(channel){
+    return {
+        type: UNSUBSCRIBE,
+        channel: channel
     };
 };

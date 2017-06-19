@@ -14,7 +14,7 @@ class Vdp extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
@@ -199,7 +199,7 @@ class Vdp extends Component {
 
 function mapStateToProps(state) {
     return {
-        
+
     };
 }
 

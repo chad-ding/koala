@@ -26,20 +26,23 @@ class EnvList extends Component {
         super(props);
         this.tabChange = this.tabChange.bind(this);
     }
-    tabChange(item, key, keyPath) {
+    tabChange(key) {
         const { dispatch } = this.props;
-        dispatch(changeTab(item.key));
+        dispatch(changeTab(key));
+    }
+    componentDidMount(){
+        let route = this.props.routes[this.props.routes.length - 1];
+        let path = route.path;
+        this.tabChange(path);
     }
     componentWillUnmount() {
-        const { dispatch } = this.props;
-        dispatch(changeTab('qa'));
     }
     render() {
         return (
             <div className="container">
                 <Row gutter={24}>
                     <Col span={6}>
-                        <Menu onClick={this.tabChange} mode="inline" selectedKeys={[this.props.tab]} defaultSelectedKeys={['qa']} className="env-container">
+                        <Menu mode="inline" selectedKeys={[this.props.tab]} defaultSelectedKeys={['qa']} className="env-container">
                             <Menu.Item key="qa">
                                 <Tag color="green">1</Tag>
                                 <Link to="/env/item" className="env-item">QA</Link>
@@ -60,7 +63,7 @@ class EnvList extends Component {
                                 <Link to="/env/item" className="env-item">PRELIVE</Link>
                                 <Badge count={200} overflowCount={999} className="env-badge"></Badge>
                             </Menu.Item>
-                            <Menu.Item key="addEnv">
+                            <Menu.Item key="add">
                                 <Tag color="green">+</Tag>
                                 <Link to="/env/add" className="env-item">添加环境</Link>
                             </Menu.Item>

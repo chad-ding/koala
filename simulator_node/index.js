@@ -59,4 +59,4 @@ app.get('/api/subscribe/list', function(req, res) {
 
 app.listen(8080);
 
-console.log('Server running on 8080 \n');
+console.log('Server running on 8080');
