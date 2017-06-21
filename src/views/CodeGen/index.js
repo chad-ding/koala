@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import Params from './params';
 import Template from './template';
 
+import './style.less';
+
 class CodeGen extends Component {
     constructor(props) {
         super(props);

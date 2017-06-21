@@ -1,0 +1,29 @@
+[{
+	"vhost": "default",
+	"username": "root",
+	"password": "guest"
+},{
+	"vhost": "default",
+	"username": "guest",
+	"password": "guest"
+},{
+	"vhost": "/",
+	"username": "chad.ding",
+	"password": "guest"
+},{
+	"vhost": "/",
+	"username": "guest",
+	"password": "guest"
+},{
+	"vhost": "/",
+	"username": "guest",
+	"password": "guest"
+},{
+	"vhost": "default",
+	"username": "obama",
+	"password": "guest"
+},{
+	"vhost": "/",
+	"username": "panda",
+	"password": "guest"
+}]

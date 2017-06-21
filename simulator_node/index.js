@@ -6,7 +6,6 @@
 
 var express = require('express');
 var fs = require('fs');
-
 var app = express();
 
 app.get('/api/channel/list', function(req, res) {
@@ -61,6 +60,18 @@ app.get('/api/params/list', function(req, res) {
     res.writeHead(200, { 'Content-Type': 'application/json;charset=utf-8' });
 
     fs.readFile(__dirname + '/data/params_list.json', { encoding: 'utf-8' }, function(err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        res.end(data);
+    });
+});
+
+app.get('/api/domain/list', function(req, res) {
+    res.writeHead(200, { 'Content-Type': 'application/json;charset=utf-8' });
+
+    fs.readFile(__dirname + '/data/domain_list.json', { encoding: 'utf-8' }, function(err, data) {
         if (err) {
             console.error(err);
             return;

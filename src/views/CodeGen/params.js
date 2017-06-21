@@ -44,8 +44,10 @@ class Params extends Component {
 
         return (
             <div>
-				<Button type="primary">添加选项</Button>
-				<Table rowKey={record => record.id} columns={columns} dataSource={this.props.paramsList}></Table>
+            	<div className="wrapper">
+            		<Button type="primary">添加选项</Button>
+            	</div>
+				<Table rowKey={record => record.name} columns={columns} dataSource={this.props.paramsList}></Table>
 			</div>
         );
     }

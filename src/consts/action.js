@@ -42,3 +42,5 @@ export const SUBSCRIBE = Symbol('SUBSCRIBE');
 export const UNSUBSCRIBE = Symbol('UNSUBSCRIBE');
 //拉取系统参数列表
 export const GET_PARAMS_LIST = Symbol('GET_PARAMS_LIST');
+//拉取系统域名列表
+export const GET_DOMAIN_LIST = Symbol('GET_DOMAIN_LIST');
