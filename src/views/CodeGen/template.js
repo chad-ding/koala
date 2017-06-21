@@ -26,7 +26,7 @@ class Template extends Component {
 					<h2>index.php</h2>
 					<Input type="textarea" rows={10}></Input>
 				</section>
-				<Button type="primary">保存</Button>
+				<Button size="large" type="primary">保存</Button>
 			</div>
         );
     }
