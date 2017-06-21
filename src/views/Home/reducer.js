@@ -4,7 +4,7 @@
  *@Date: 2017-04-26 16:27:29
  */
 
-import { TAB_CHANGE_HOME, LOGIN_MODAL_SHOW, USER_LOGINED } from '../../consts/action';
+import { TAB_CHANGE_HOME, LOGIN_MODAL_CONTROL, USER_LOGINED, LOGIN } from '../../consts/action';
 
 export default function homeReducer(state = { userInfo: null, tab: 'application', loginModal: { visible: false, counter: 0 } }, action) {
     switch (action.type) {
@@ -12,8 +12,10 @@ export default function homeReducer(state = { userInfo: null, tab: 'application'
             return Object.assign({}, state, { tab: action.tab });
         case USER_LOGINED:
             return Object.assign({}, state, { userInfo: action.data });
-        case LOGIN_MODAL_SHOW:
+        case LOGIN_MODAL_CONTROL:
             return Object.assign({}, state, { loginModal: { visible: action.visible, counter: ++state.loginModal.counter } });
+        case LOGIN:
+            return Object.assign({}, state, { userInfo: action.data });
         default:
             return state;
     }

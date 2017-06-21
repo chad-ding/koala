@@ -27,7 +27,7 @@ class CodeGen extends Component {
                     <TabPane tab="模板" key="template">
                         <Template></Template>
                     </TabPane>
-                </Tabs>  
+                </Tabs>
             </div>
         );
     }

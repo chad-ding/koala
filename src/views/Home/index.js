@@ -8,9 +8,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Layout, Row, Col, Menu, Dropdown, Icon, notification, Input } from 'antd';
 import { connect } from 'react-redux';
-import Login from '../Login';
-import { LOGIN_MODAL_SHOW } from '../../consts/action';
-import { changeTab } from './action';
+import Login from './loginModal';
+import { changeTab, loginModalControl } from './action';
 
 import './style.less';
 
@@ -48,7 +47,7 @@ class Home extends Component {
     }
     showLoginModal() {
         let { dispatch } = this.props;
-        dispatch({ type: LOGIN_MODAL_SHOW, visible: true });
+        dispatch(loginModalControl(true));
     }
     render() {
         let Search = Input.Search;
@@ -139,7 +138,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
     return {
-        userInfo: state.loginReducer.userInfo,
+        userInfo: state.homeReducer.userInfo,
         errorInfo: state.requestReducer.errorInfo,
         tab: state.homeReducer.tab
     };

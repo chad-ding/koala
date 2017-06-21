@@ -114,7 +114,7 @@ class Domain extends Component {
         return (
             <div>
                 <FormBody></FormBody>
-                <Table rowKey={record => record.vhost} columns={columns} dataSource={this.props.domainList}></Table>
+                <Table rowKey={record => record.id} columns={columns} dataSource={this.props.domainList}></Table>
             </div>
         );
     }

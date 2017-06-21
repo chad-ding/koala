@@ -8,8 +8,8 @@
 export const RECEIVE_DATA = Symbol('RECEIVE_DATA');
 //请求失败
 export const REQUEST_FAILED = Symbol('REQUEST_FAILED');
-//显示登录Modal
-export const LOGIN_MODAL_SHOW = Symbol('LOGIN_MODAL_SHOW');
+//显示/隐藏登录Modal
+export const LOGIN_MODAL_CONTROL = Symbol('LOGIN_MODAL_CONTROL');
 //登录
 export const LOGIN = Symbol('LOGIN');
 //根组件Tab变更
@@ -44,3 +44,5 @@ export const UNSUBSCRIBE = Symbol('UNSUBSCRIBE');
 export const GET_PARAMS_LIST = Symbol('GET_PARAMS_LIST');
 //拉取系统域名列表
 export const GET_DOMAIN_LIST = Symbol('GET_DOMAIN_LIST');
+//显示/隐藏系统参数Modal
+export const PARAMS_MODAL_CONTROL = Symbol('PARAMS_MODAL_CONTROL');

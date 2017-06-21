@@ -1,51 +1,51 @@
 [{
     "type": "消费者",
-    "name": "auto.offset.reset",
+    "name": "auto.offset.reset1",
     "defaultValue": "32000",
     "purpose": "可选值 smallest 消费进度从最小的开始 largest 消费进度从最大的开始 该设置，只有在第一次消费的时候，起作用。一旦记录了offset以后，都是使用offset进行消费。这个时候如果很久没有消费，可能导致offset reset方面的异常"
 }, {
     "type": "生产者",
-    "name": "auto.retry.backoff.ms.reset",
+    "name": "auto.retry.backoff.ms.reset2",
     "defaultValue": "largest",
     "purpose": "每次rebalance的退避时间"
 }, {
     "type": "生产者",
-    "name": "auto.offset.reset",
+    "name": "auto.offset.reset3",
     "defaultValue": "1000",
     "purpose": "获取数据的线程数"
 }, {
     "type": "消费者",
-    "name": "auto.offset.reset",
+    "name": "auto.offset.reset4",
     "defaultValue": "8400",
     "purpose": "可选值 smallest 消费进度从最小的开始 largest 消费进度从最大的开始"
 }, {
     "type": "生产者",
-    "name": "auto.retry.backoff.ms.reset",
+    "name": "auto.retry.backoff.ms.reset5",
     "defaultValue": "1000",
     "purpose": "可选值 smallest 消费进度从最小的开始largest都是使用offset进行消费。这个时候如果很久没有消费，可能导致offset reset方面的异常"
 }, {
     "type": "消费者",
-    "name": "auto.offset.reset",
+    "name": "auto.offset.reset6",
     "defaultValue": "82000",
     "purpose": "可选值 smallest 是使用offset进行消费。这个时候如果很久没有消费，可能导致offset reset方面的异常"
 }, {
     "type": "生产者",
-    "name": "auto.offset.retry.backoff.ms",
+    "name": "auto.offset.retry.backoff.ms7",
     "defaultValue": "1000",
     "purpose": "可选值 smallest 消费进度从最小的开始 largest 消费进度ffset进行消费。这个时候如果很久没有消费，可能导致offset reset方面的异常"
 }, {
     "type": "生产者",
-    "name": "auto.offset.reset",
+    "name": "auto.offset.reset8",
     "defaultValue": "5000",
     "purpose": "可offset以后，都是使用offset进行消费。这个时候如果很久没有消费，可能导致offset reset方面的异常"
 }, {
     "type": "消费者",
-    "name": "auto.retry.backoff.ms.reset",
+    "name": "auto.retry.backoff.ms.reset9",
     "defaultValue": "92000",
     "purpose": "可选值 smalle一旦记录了offset以后，都是使用offset进行消费。这个时候如果很久没有消费，可能导致offset reset方面的异常"
 }, {
     "type": "生产者",
-    "name": "retry.backoff.ms.offset.reset",
+    "name": "retry.backoff.ms.offset.reset10",
     "defaultValue": "200",
     "purpose": "可选值 smallest 消费进度从最小的开始 largest 消费是使用offset进行消费。这个时候如果很久没有消费，可能导致offset reset方面的异常"
 }]

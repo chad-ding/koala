@@ -6,16 +6,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Table, Tooltip } from 'antd';
-import { getParamsList } from './action';
+import { getParamsList, paramsModalControl } from './action';
 import { cutString } from '../../utils';
+import ParamsModal from './ParamsModal';
 
 class Params extends Component {
     constructor(props) {
         super(props);
+        this.showParamsModal = this.showParamsModal.bind(this);
     }
     componentDidMount() {
         let { dispatch } = this.props;
         dispatch(getParamsList());
+    }
+    showParamsModal() {
+        let { dispatch } = this.props;
+        dispatch(paramsModalControl(true));
     }
     render() {
         let columns = [{
@@ -44,11 +50,12 @@ class Params extends Component {
 
         return (
             <div>
-            	<div className="wrapper">
-            		<Button size="large" type="primary">添加选项</Button>
-            	</div>
-				<Table rowKey={record => record.name} columns={columns} dataSource={this.props.paramsList}></Table>
-			</div>
+                <div className="wrapper">
+                    <Button onClick={this.showParamsModal} size="large" type="primary">添加选项</Button>
+                </div>
+                <Table rowKey={record => record.name} columns={columns} dataSource={this.props.paramsList}></Table>
+                <ParamsModal></ParamsModal>
+            </div>
         );
     }
 };

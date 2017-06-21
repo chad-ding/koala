@@ -1,15 +1,16 @@
 /**
  *@Author: chad.ding
- *@Copyright: 2008-2018 CHAD | 丁铭锋
- *@Date: 2017-04-25 22:54:03
+ *@Copyright: 2008-2018 CHAD
+ *@Date: 2017-06-21 22:34:09
  */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Form, Icon, Input, Checkbox } from 'antd';
 import RandomCode from '../../components/RandomCode';
-import { LOGIN_MODAL_SHOW } from '../../consts/action';
 import { login } from './action';
 import md5 from 'js-md5';
+import { loginModalControl } from './action';
 
 class LoginModal extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class LoginModal extends Component {
     }
     handleCancel() {
         let { dispatch } = this.props;
-        dispatch({ type: LOGIN_MODAL_SHOW, visible: false });
+        dispatch(loginModalControl(false));
     }
     handleSubmit() {
 
@@ -40,8 +41,10 @@ class LoginModal extends Component {
         this.handleCancel();
     }
     render() {
+
         let { getFieldDecorator } = this.props.form;
         let FormItem = Form.Item;
+
         return (
             <div>
                 <Modal title="登录" key={this.props.counter} visible={this.props.visible} maskClosable={false} onOk={this.handleSubmit} onCancel={this.handleCancel}>
