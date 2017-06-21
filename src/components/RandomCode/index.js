@@ -37,7 +37,7 @@ export default class RandomCode extends Component {
         });
     }
     validate(){
-        const {nums, randomCode} = this.state;
+        let {nums, randomCode} = this.state;
         return nums.join('') === randomCode;
     }
     inputChange(event){

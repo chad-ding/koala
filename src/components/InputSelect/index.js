@@ -11,7 +11,7 @@ export default class InputSelect extends Component {
     constructor(props) {
         super(props);
 
-        const value = this.props.value || {};
+        let value = this.props.value || {};
         this.state = {
             number: value.number || 1,
             unit: value.unit || ''
@@ -20,13 +20,13 @@ export default class InputSelect extends Component {
     componentWillReceiveProps(nextProps) {
         // Should be a controlled component.
         if ('value' in nextProps) {
-            const value = nextProps.value;
+            let value = nextProps.value;
             this.setState(value);
         }
     }
     handleNumberChange = (e) => {
-        //const number = parseInt(e.target.value || 0, 10);
-        const number = e.target.value;
+        //let number = parseInt(e.target.value || 0, 10);
+        let number = e.target.value;
         if (isNaN(number)) {
             return;
         }
@@ -42,15 +42,15 @@ export default class InputSelect extends Component {
         this.triggerChange({ unit });
     }
     triggerChange = (changedValue) => {
-        const onChange = this.props.onChange;
+        let onChange = this.props.onChange;
         if (onChange) {
             onChange(Object.assign({}, this.state, changedValue));
         }
     }
     render() {
-        const { size } = this.props;
-        const state = this.state;
-        const Option = Select.Option;
+        let { size } = this.props;
+        let state = this.state;
+        let Option = Select.Option;
 
         return (
             <span>

@@ -19,15 +19,15 @@ class EnvAdd extends Component {
         this.delPortal = this.delPortal.bind(this);
     }
     handleModal() {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(handleModal(true));
     }
     delPortal(index) {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(delPortal(index));
     }
     render() {
-        const formItemLayout = {
+        let formItemLayout = {
             labelCol: {
                 xs: { span: 14 },
                 sm: { span: 6 }
@@ -38,7 +38,7 @@ class EnvAdd extends Component {
             }
         };
 
-        const tailFormItemLayout = {
+        let tailFormItemLayout = {
             wrapperCol: {
                 xs: {
                     span: 24,
@@ -51,10 +51,10 @@ class EnvAdd extends Component {
             }
         };
 
-        const FormItem = Form.Item;
-        const { getFieldDecorator } = this.props.form;
+        let FormItem = Form.Item;
+        let { getFieldDecorator } = this.props.form;
 
-        const columns = [{
+        let columns = [{
             title: '名称',
             dataIndex: 'name',
             key: 'name'
@@ -171,7 +171,7 @@ class EnvAdd extends Component {
     }
 };
 
-const EnvForm = Form.create()(EnvAdd);
+let EnvForm = Form.create()(EnvAdd);
 
 function mapStateToProps(state) {
 

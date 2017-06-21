@@ -13,10 +13,10 @@ class DataDicForm extends Component {
         super(props);
     }
     render() {
-        const { getFieldDecorator } = this.props.form;
-        const FormItem = Form.Item;
+        let { getFieldDecorator } = this.props.form;
+        let FormItem = Form.Item;
 
-        const formItemLayout = {
+        let formItemLayout = {
             labelCol: {
                 xs: { span: 14 },
                 sm: { span: 6 }
@@ -27,7 +27,7 @@ class DataDicForm extends Component {
             }
         };
 
-        const tailFormItemLayout = {
+        let tailFormItemLayout = {
             wrapperCol: {
                 xs: {
                     span: 24,
@@ -97,7 +97,7 @@ class DataDicForm extends Component {
     }
 };
 
-const DataDic = Form.create()(DataDicForm);
+let DataDic = Form.create()(DataDicForm);
 
 function mapStateToProps(state) {
     return {

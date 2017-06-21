@@ -33,12 +33,12 @@ class Channel extends Component {
     }
     render() {
 
-        const FormItem = Form.Item;
-        const { getFieldDecorator } = this.props.form;
-        const { Option, OptGroup } = Select;
-        const RadioGroup = Radio.Group;
+        let FormItem = Form.Item;
+        let { getFieldDecorator } = this.props.form;
+        let { Option, OptGroup } = Select;
+        let RadioGroup = Radio.Group;
 
-        const formItemLayout = {
+        let formItemLayout = {
             labelCol: {
                 xs: { span: 14 },
                 sm: { span: 6 }
@@ -49,7 +49,7 @@ class Channel extends Component {
             }
         };
 
-        const tailFormItemLayout = {
+        let tailFormItemLayout = {
             wrapperCol: {
                 xs: {
                     span: 24,
@@ -62,7 +62,7 @@ class Channel extends Component {
             }
         };
 
-        const marks = {
+        let marks = {
             1: {
                 style: {
                     color: '#f50'
@@ -77,7 +77,7 @@ class Channel extends Component {
             }
         };
 
-        const unitMap = [
+        let unitMap = [
             { value: '1', text: 'QPS(请求/秒)' },
             { value: '2', text: 'QPM(请求/分)' },
             { value: '3', text: 'QPH(请求/小时)' },
@@ -280,6 +280,6 @@ function mapStateToProps(state) {
     };
 }
 
-const ChannelForm = Form.create()(Channel);
+let ChannelForm = Form.create()(Channel);
 
 export default connect(mapStateToProps)(ChannelForm);

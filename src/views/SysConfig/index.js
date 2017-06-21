@@ -13,7 +13,7 @@ import { changeTab } from './action';
 
 import './style.less';
 
-const tabMap = {
+let TAB_MAP = {
     baseInfo: '基本信息',
     dataDic: '数据字典',
     codeGen: '代码生成',
@@ -28,7 +28,7 @@ class SysConfig extends Component {
         this.tabChange = this.tabChange.bind(this);
     }
     tabChange(key) {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(changeTab(key));
     }
     routerWillLeave(nextLocation) {
@@ -42,7 +42,7 @@ class SysConfig extends Component {
         this.tabChange(path);
     }
     componentWillUnmount() {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         //dispatch(changeTab('baseInfo'));
     }
     render() {
@@ -85,7 +85,7 @@ class SysConfig extends Component {
                             <Breadcrumb.Item href="">
                                 <span>环境管理</span>
                             </Breadcrumb.Item>
-                            <Breadcrumb.Item>{tabMap[this.props.tab]}</Breadcrumb.Item>
+                            <Breadcrumb.Item>{TAB_MAP[this.props.tab]}</Breadcrumb.Item>
                         </Breadcrumb>
                         <br/>
                         {React.cloneElement(this.props.children, {

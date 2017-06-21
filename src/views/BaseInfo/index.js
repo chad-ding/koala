@@ -13,10 +13,10 @@ class BaseInfoForm extends Component {
         super(props);
     }
     render() {
-        const { getFieldDecorator } = this.props.form;
-        const FormItem = Form.Item;
+        let { getFieldDecorator } = this.props.form;
+        let FormItem = Form.Item;
 
-        const formItemLayout = {
+        let formItemLayout = {
             labelCol: {
                 xs: { span: 14 },
                 sm: { span: 6 }
@@ -27,7 +27,7 @@ class BaseInfoForm extends Component {
             }
         };
 
-        const tailFormItemLayout = {
+        let tailFormItemLayout = {
             wrapperCol: {
                 xs: {
                     span: 24,
@@ -70,7 +70,7 @@ class BaseInfoForm extends Component {
     }
 };
 
-const BaseInfo = Form.create()(BaseInfoForm);
+let BaseInfo = Form.create()(BaseInfoForm);
 
 function mapStateToProps(state) {
     return {

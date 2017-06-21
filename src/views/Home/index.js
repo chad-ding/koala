@@ -21,7 +21,7 @@ class Home extends Component {
         this.tabChange = this.tabChange.bind(this);
     }
     tabChange(item, key, keyPath) {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(changeTab(item.key));
     }
     componentDidMount() {
@@ -47,15 +47,15 @@ class Home extends Component {
         }
     }
     showLoginModal() {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch({ type: LOGIN_MODAL_SHOW, visible: true });
     }
     render() {
-        const Search = Input.Search;
-        const { Header, Content, Footer } = Layout;
-        const logo = require('../../../assets/img/logo.png');
+        let Search = Input.Search;
+        let { Header, Content, Footer } = Layout;
+        let logo = require('../../../assets/img/logo.png');
 
-        const menus = (
+        let menus = (
             <Menu>
                 <Menu.Item>
                     <a target="_blank" rel="noopener noreferrer" href="javascript:;">
@@ -75,7 +75,7 @@ class Home extends Component {
             </Menu>
         );
 
-        const navs = (
+        let navs = (
             <Menu mode="horizontal" onClick={this.tabChange} selectedKeys={[this.props.tab]} defaultSelectedKeys={['application']} theme="dark">
                 <Menu.Item key="application">
                     <Link to="/application">我的申请</Link>

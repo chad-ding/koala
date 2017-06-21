@@ -24,11 +24,11 @@ class Vdp extends Component {
     }
     render() {
 
-        const FormItem = Form.Item;
-        const { getFieldDecorator } = this.props.form;
-        const { Option, OptGroup } = Select;
+        let FormItem = Form.Item;
+        let { getFieldDecorator } = this.props.form;
+        let { Option, OptGroup } = Select;
 
-        const formItemLayout = {
+        let formItemLayout = {
             labelCol: {
                 xs: { span: 14 },
                 sm: { span: 6 }
@@ -39,7 +39,7 @@ class Vdp extends Component {
             }
         };
 
-        const tailFormItemLayout = {
+        let tailFormItemLayout = {
             wrapperCol: {
                 xs: {
                     span: 24,
@@ -203,6 +203,6 @@ function mapStateToProps(state) {
     };
 }
 
-const VdpForm = Form.create()(Vdp);
+let VdpForm = Form.create()(Vdp);
 
 export default connect(mapStateToProps)(VdpForm);

@@ -15,7 +15,7 @@ import VdpList from '../VdpList';
 
 import './style.less';
 
-const tabMap = {
+const TAB_MAP = {
     channel: '频道',
     queue: '队列',
     table: '数据表'
@@ -29,11 +29,11 @@ class Application extends Component {
     componentDidMount() {
     }
     tabChange(key) {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(changeTab(key));
     }
     render() {
-        const TabPane = Tabs.TabPane;
+        let TabPane = Tabs.TabPane;
 
         return (
             <div className="container">
@@ -45,7 +45,7 @@ class Application extends Component {
                         <span>接入申请</span>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                        {tabMap[this.props.tab]}
+                        {TAB_MAP[this.props.tab]}
                     </Breadcrumb.Item>
                 </Breadcrumb>
                 <br/><br/>

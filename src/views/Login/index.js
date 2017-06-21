@@ -18,7 +18,7 @@ class LoginModal extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleCancel() {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch({ type: LOGIN_MODAL_SHOW, visible: false });
     }
     handleSubmit() {
@@ -34,14 +34,14 @@ class LoginModal extends Component {
             loginPassword: md5(this.props.form.getFieldValue('password'))
         };
 
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
 
         dispatch(login(params));
         this.handleCancel();
     }
     render() {
-        const { getFieldDecorator } = this.props.form;
-        const FormItem = Form.Item;
+        let { getFieldDecorator } = this.props.form;
+        let FormItem = Form.Item;
         return (
             <div>
                 <Modal title="登录" key={this.props.counter} visible={this.props.visible} maskClosable={false} onOk={this.handleSubmit} onCancel={this.handleCancel}>
@@ -85,7 +85,7 @@ class LoginModal extends Component {
     }
 };
 
-const Login = Form.create()(LoginModal);
+let Login = Form.create()(LoginModal);
 
 function mapStateToProps(state) {
     return {

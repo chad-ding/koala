@@ -14,9 +14,9 @@ class Filter extends Component {
         super(props);
     }
     render() {
-        const { getFieldDecorator } = this.props.form;
-        const FormItem = Form.Item;
-        const formItemLayout = {
+        let { getFieldDecorator } = this.props.form;
+        let FormItem = Form.Item;
+        let formItemLayout = {
             labelCol: {
                 xs: { span: 5 },
                 sm: { span: 5 }
@@ -65,7 +65,7 @@ class Filter extends Component {
     }
 }
 
-const FilterForm = Form.create()(Filter);
+let FilterForm = Form.create()(Filter);
 
 class ChannelModal extends Component {
     constructor(props) {
@@ -78,11 +78,11 @@ class ChannelModal extends Component {
         console.log(page);
     }
     handleCancel() {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(handleModal(false));
     }
     componentWillReceiveProps(nextProps) {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         if (nextProps.channelModal.counter !== this.props.channelModal.counter && nextProps.channelModal.visible) {
             dispatch(getSubscribeList());
         }
@@ -91,7 +91,7 @@ class ChannelModal extends Component {
         this.handleCancel();
     }
     render() {
-        const columns = [{
+        let columns = [{
             title: '频道名称',
             dataIndex: 'name',
             key: 'name'

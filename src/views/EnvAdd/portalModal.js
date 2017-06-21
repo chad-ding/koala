@@ -16,19 +16,19 @@ class PortalModal extends Component {
         this.handleOk = this.handleOk.bind(this);
     }
     handleCancel() {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(handleModal(false));
     }
     handleOk() {
-        const form = this.props.form;
-        const portal = form.getFieldsValue();
-        const {dispatch} = this.props;
+        let form = this.props.form;
+        let portal = form.getFieldsValue();
+        let {dispatch} = this.props;
         dispatch(addPortal(portal));
         this.handleCancel();
     }
     render() {
-        const { getFieldDecorator } = this.props.form;
-        const formItemLayout = {
+        let { getFieldDecorator } = this.props.form;
+        let formItemLayout = {
             labelCol: {
                 xs: { span: 14 },
                 sm: { span: 6 }
@@ -39,7 +39,7 @@ class PortalModal extends Component {
             }
         };
 
-        const FormItem = Form.Item;
+        let FormItem = Form.Item;
         return (
             <Modal maskClosable={false} onOk={this.handleOk} onCancel={this.handleCancel} title="添加Portal" key={this.props.counter} visible={this.props.visible}>
                 <Form>
@@ -110,6 +110,6 @@ function mapStateToProps(state) {
     };
 }
 
-const PortalModalForm = Form.create()(PortalModal);
+let PortalModalForm = Form.create()(PortalModal);
 
 export default connect(mapStateToProps)(PortalModalForm);

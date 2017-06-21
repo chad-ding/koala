@@ -13,7 +13,7 @@ import { changeTab } from './action';
 
 import './style.less';
 
-const tabMap = {
+const TAB_MAP = {
     qa: 'QA',
     staging: 'STAGING',
     live: 'LIVE',
@@ -27,7 +27,7 @@ class EnvList extends Component {
         this.tabChange = this.tabChange.bind(this);
     }
     tabChange(key) {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(changeTab(key));
     }
     componentDidMount(){
@@ -77,7 +77,7 @@ class EnvList extends Component {
                             <Breadcrumb.Item>
                                 <span>环境管理</span>
                             </Breadcrumb.Item>
-                            <Breadcrumb.Item>{tabMap[this.props.tab]}</Breadcrumb.Item>
+                            <Breadcrumb.Item>{TAB_MAP[this.props.tab]}</Breadcrumb.Item>
                         </Breadcrumb>
                         <br/>
                         {React.cloneElement(this.props.children, {

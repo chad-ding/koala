@@ -16,8 +16,7 @@ class Vdp extends Component {
         super(props);
     }
     render() {
-
-        const Step = Steps.Step;
+        let Step = Steps.Step;
 
         return (
             <div className="container">

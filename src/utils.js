@@ -4,7 +4,7 @@
  *@Date: 2017-04-06 16:48:24
  */
 
-import {JSEncrypt} from 'jsencrypt';
+import { JSEncrypt } from 'jsencrypt';
 
 export function isEmpty(obj) {
     return Object.getOwnPropertyNames(obj).length <= 0;
@@ -138,14 +138,14 @@ export function getScrollHeight() {
  * rsa加密
  */
 export function RSAEncrypt(encryptString) {
-    const publicKey = '-----BEGIN PUBLIC KEY-----\
+    const PUBLIC_KEY = '-----BEGIN PUBLIC KEY-----\
             MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDxI+LyiBHwTJmb8lFPKrI7etgn\
             x4Hnyx0WnLLyWmOyJd1dqzxUgfIgM+oIlzYaiet4zcgByqNr5MmgEltgIOJMiU81\
             fJD+Cmyu54evL9oP7UPULwlWyQZJMxtzGNEeXg92pwmkl399Dyw2dnvt6UA9pI+Y\
             RYz+/hfNN23OGUUiNQIDAQAB\
             -----END PUBLIC KEY-----';
     let encrypt = new JSEncrypt();
-    encrypt.setPublicKey(publicKey);
+    encrypt.setPublicKey(PUBLIC_KEY);
     encryptString = encrypt.encrypt(encryptString);
     return encryptString;
 }
@@ -170,8 +170,8 @@ export function getCookies(name) {
         let start = document.cookie.indexOf(name + '='); //返回某指定值在字符串中首次出现的位置。
         if (start != -1) {
             start = start + name.length + 1;
-            let end = document.cookie.indexOf(';', start);//返回';'在字符串中首次出现的位置。
-            if (end == -1){
+            let end = document.cookie.indexOf(';', start); //返回';'在字符串中首次出现的位置。
+            if (end == -1) {
                 end = document.cookie.length;
             }
             result = unescape(document.cookie.substring(start, end));

@@ -14,8 +14,8 @@ export default class EnvItem extends Component {
         super(props);
     }
     render(){
-        const {Header, Content} = Layout;
-        const TabPane = Tabs.TabPane;
+        let {Header, Content} = Layout;
+        let TabPane = Tabs.TabPane;
 
         return (
             <Layout style={{background: '#FFF'}}>

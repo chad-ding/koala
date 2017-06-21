@@ -20,7 +20,7 @@ class Queue extends Component {
         this.unsubscribe = this.unsubscribe.bind(this);
     }
     handleModal() {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(handleModal(true));
     }
     handleSubmit(e) {
@@ -32,20 +32,20 @@ class Queue extends Component {
         });
     }
     subscribe(channel) {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(subscribe(channel));
     }
     unsubscribe(channel) {
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(unsubscribe(channel));
     }
     render() {
 
-        const FormItem = Form.Item;
-        const { getFieldDecorator } = this.props.form;
-        const { Option, OptGroup } = Select;
+        let FormItem = Form.Item;
+        let { getFieldDecorator } = this.props.form;
+        let { Option, OptGroup } = Select;
 
-        const formItemLayout = {
+        let formItemLayout = {
             labelCol: {
                 xs: { span: 14 },
                 sm: { span: 6 }
@@ -56,7 +56,7 @@ class Queue extends Component {
             }
         };
 
-        const tailFormItemLayout = {
+        let tailFormItemLayout = {
             wrapperCol: {
                 xs: {
                     span: 24,
@@ -69,7 +69,7 @@ class Queue extends Component {
             }
         };
 
-        const columns = [{
+        let columns = [{
             title: '频道名称',
             dataIndex: 'name',
             key: 'name'
@@ -256,6 +256,6 @@ function mapStateToProps(state) {
     };
 }
 
-const QueueForm = Form.create()(Queue);
+let QueueForm = Form.create()(Queue);
 
 export default connect(mapStateToProps)(QueueForm);

@@ -15,11 +15,11 @@ class QueueList extends Component {
         super(props);
     }
     componentDidMount(){
-        const { dispatch } = this.props;
+        let { dispatch } = this.props;
         dispatch(getQueueList());
     }
     render() {
-        const columns = [{
+        let columns = [{
             title: '名称',
             dataIndex: 'name',
             key: 'name',
@@ -70,7 +70,7 @@ class QueueList extends Component {
             key: 'status'
         }];
 
-        const Search = Input.Search;
+        let Search = Input.Search;
 
         return (
             <div>

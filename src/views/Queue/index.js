@@ -17,9 +17,9 @@ class Queue extends Component {
     }
     render() {
 
-        const Step = Steps.Step;
+        let Step = Steps.Step;
 
-        const columns = [{
+        let columns = [{
             title: '频道名称',
             dataIndex: 'name',
             key: 'name'
@@ -29,7 +29,7 @@ class Queue extends Component {
             key: 'route'
         }];
 
-        const tableData = [{
+        let tableData = [{
             id: 1,
             name: 'AAAA',
             route: '*'

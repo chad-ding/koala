@@ -10,117 +10,117 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import configStore from './store/ConfigStore';
 
-const store = configStore();
+let store = configStore();
 
-const home = (location, callback) => {
+let home = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Home').default);
     }, 'Home');
 };
 
-const application = (location, callback) => {
+let application = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Application').default);
     }, 'Application');
 };
 
-const approval = (location, callback) => {
+let approval = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Approval').default);
     }, 'Approval');
 };
 
-const envList = (location, callback) => {
+let envList = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/EnvList').default);
     }, 'EnvList');
 };
 
-const envItem = (location, callback) => {
+let envItem = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/EnvItem').default);
     }, 'EnvItem');
 };
 
-const envAdd = (location, callback) => {
+let envAdd = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/EnvAdd').default);
     }, 'EnvAdd');
 };
 
-const channelForm = (location, callback) => {
+let channelForm = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/ChannelForm').default);
     }, 'ChannelForm');
 };
 
-const queueForm = (location, callback) => {
+let queueForm = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/QueueForm').default);
     }, 'QueueForm');
 };
 
-const vdpForm = (location, callback) => {
+let vdpForm = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/VdpForm').default);
     }, 'VdpForm');
 };
 
-const sysConfig = (location, callback) => {
+let sysConfig = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/SysConfig').default);
     }, 'SysConfig');
 };
 
-const baseInfo = (location, callback) => {
+let baseInfo = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/BaseInfo').default);
     }, 'BaseInfo');
 };
 
-const dataDic = (location, callback) => {
+let dataDic = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/DataDic').default);
     }, 'DataDic');
 };
 
-const codeGen = (location, callback) => {
+let codeGen = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/CodeGen').default);
     }, 'CodeGen');
 };
 
-const note = (location, callback) => {
+let note = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Note').default);
     }, 'Note');
 };
 
-const role = (location, callback) => {
+let role = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Role').default);
     }, 'Role');
 };
 
-const domain = (location, callback) => {
+let domain = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Domain').default);
     }, 'Domain');
 };
 
-const channel = (location, callback) => {
+let channel = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Channel').default);
     }, 'Channel');
 };
 
-const queue = (location, callback) => {
+let queue = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Queue').default);
     }, 'Queue');
 };
 
-const vdp = (location, callback) => {
+let vdp = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Vdp').default);
     }, 'Vdp');

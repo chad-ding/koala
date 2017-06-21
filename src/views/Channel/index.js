@@ -17,7 +17,7 @@ class Channel extends Component {
     }
     render() {
 
-        const Step = Steps.Step;
+        let Step = Steps.Step;
 
         return (
             <div className="container">
