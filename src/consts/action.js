@@ -40,3 +40,5 @@ export const GET_SUBSCRIBE_LIST = Symbol('GET_SUBSCRIBE_LIST');
 export const SUBSCRIBE = Symbol('SUBSCRIBE');
 //取消订阅
 export const UNSUBSCRIBE = Symbol('UNSUBSCRIBE');
+//拉取系统参数列表
+export const GET_PARAMS_LIST = Symbol('GET_PARAMS_LIST');

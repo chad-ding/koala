@@ -16,6 +16,7 @@ import queueFormReducer from '../views/QueueForm/reducer';
 import queueListReducer from '../views/QueueList/reducer';
 import sysConfigReducer from '../views/SysConfig/reducer';
 import vdpListReducer from '../views/VdpList/reducer';
+import codeGenReducer from '../views/CodeGen/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
 
@@ -42,5 +43,6 @@ export default combineReducers({
     queueFormReducer,
     queueListReducer,
     sysConfigReducer,
-    vdpListReducer
+    vdpListReducer,
+    codeGenReducer
 });

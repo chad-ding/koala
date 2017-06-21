@@ -24,6 +24,11 @@ export const SUBSCRIBE_LIST_PATH = {
     method: 'GET'
 };
 
+export const PARAMS_LIST_PATH = {
+    path: '/params/list',
+    method: 'GET'
+};
+
 export const LOGIN_PATH = {
     path: '/api/user/login',
     method: 'GET'

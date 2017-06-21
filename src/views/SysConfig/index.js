@@ -83,7 +83,7 @@ class SysConfig extends Component {
                                 <Icon type="home" />
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <span>环境管理</span>
+                                <span>系统设置</span>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item>{TAB_MAP[this.props.tab]}</Breadcrumb.Item>
                         </Breadcrumb>

@@ -5,16 +5,36 @@
  */
 
 import React, { Component } from 'react';
+import { Tabs } from 'antd';
+import { connect } from 'react-redux';
+import Params from './params';
+import Template from './template';
 
-export default class CodeGen extends Component {
+class CodeGen extends Component {
     constructor(props) {
         super(props);
     }
     render() {
+        let TabPane = Tabs.TabPane;
         return (
             <div>
-                111111111111111
+                <Tabs defaultActiveKey="params" onChange={this.tabChange} type="card">
+                    <TabPane tab="参数" key="params">
+                        <Params></Params>
+                    </TabPane>
+                    <TabPane tab="模板" key="template">
+                        <Template></Template>
+                    </TabPane>
+                </Tabs>  
             </div>
         );
     }
 };
+
+function mapStateToProps(state) {
+    return {
+        ...state
+    };
+}
+
+export default connect(mapStateToProps)(CodeGen);

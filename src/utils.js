@@ -6,6 +6,19 @@
 
 import { JSEncrypt } from 'jsencrypt';
 
+//对字符串截取给定长度末尾加上...
+export function cutString(str, len){
+    if(typeof str != 'string'){
+        return str;
+    }else if(str.length <= len){
+        return str;
+    }
+
+    let string = str.substr(0, len);
+
+    return `${string}...`;
+}
+
 export function isEmpty(obj) {
     return Object.getOwnPropertyNames(obj).length <= 0;
 }
