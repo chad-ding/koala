@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Table, Tooltip } from 'antd';
-import { getParamsList, paramsModalControl } from './action';
+import { getParamsList, handleModal } from './action';
 import { cutString } from '../../utils';
 import ParamsModal from './ParamsModal';
 
@@ -21,7 +21,7 @@ class Params extends Component {
     }
     showParamsModal() {
         let { dispatch } = this.props;
-        dispatch(paramsModalControl(true));
+        dispatch(handleModal(true));
     }
     render() {
         let columns = [{

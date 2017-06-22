@@ -10,7 +10,7 @@ import { Modal, Form, Icon, Input, Checkbox } from 'antd';
 import RandomCode from '../../components/RandomCode';
 import { login } from './action';
 import md5 from 'js-md5';
-import { loginModalControl } from './action';
+import { handleModal } from './action';
 
 class LoginModal extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class LoginModal extends Component {
     }
     handleCancel() {
         let { dispatch } = this.props;
-        dispatch(loginModalControl(false));
+        dispatch(handleModal(false));
     }
     handleSubmit() {
 

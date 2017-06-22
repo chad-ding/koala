@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 import { Layout, Row, Col, Menu, Dropdown, Icon, notification, Input } from 'antd';
 import { connect } from 'react-redux';
 import Login from './loginModal';
-import { changeTab, loginModalControl } from './action';
+import { changeTab, handleModal } from './action';
 
 import './style.less';
 
@@ -26,12 +26,12 @@ class Home extends Component {
     componentDidMount() {
         let route = this.props.routes[1];
         let path = route.path;
-        
-        if(/^(?:channel|queue)\/\w+$/.test(path)){
+
+        if (/^(?:channel|queue)\/\w+$/.test(path)) {
             path = 'application';
         }
 
-        this.tabChange({key: path});
+        this.tabChange({ key: path });
     }
     componentWillUnmount() {
         console.info('%ckoala app shutdown..', 'color:rgba(187, 0, 0, 1);');
@@ -47,7 +47,7 @@ class Home extends Component {
     }
     showLoginModal() {
         let { dispatch } = this.props;
-        dispatch(loginModalControl(true));
+        dispatch(handleModal(true));
     }
     render() {
         let Search = Input.Search;

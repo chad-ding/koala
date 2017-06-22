@@ -4,7 +4,7 @@
  *@Date: 2017-06-01 23:31:16
  */
 
-import { LOGIN, TAB_CHANGE_HOME, LOGIN_MODAL_CONTROL } from '../../consts/action';
+import { LOGIN, TAB_CHANGE_HOME, LOGIN_MODAL_HANDLE } from '../../consts/action';
 import { fetchData } from '../../resource';
 import { LOGIN_PATH } from '../../consts/path';
 
@@ -15,9 +15,9 @@ export function changeTab(key) {
     };
 };
 
-export function loginModalControl(visible){
+export function handleModal(visible){
 	return { 
-		type: LOGIN_MODAL_CONTROL,
+		type: LOGIN_MODAL_HANDLE,
 		visible: visible 
 	};
 

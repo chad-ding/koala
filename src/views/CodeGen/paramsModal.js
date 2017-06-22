@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, Modal, Select, Input } from 'antd';
-import { paramsModalControl } from './action';
+import { handleModal } from './action';
 
 class ParamsForm extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class ParamsForm extends Component {
     }
     handleCancel() {
         let { dispatch } = this.props;
-        dispatch(paramsModalControl(false));
+        dispatch(handleModal(false));
     }
     render() {
 

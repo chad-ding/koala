@@ -5,7 +5,7 @@
 
 import { fetchData } from '../../resource';
 import { PARAMS_LIST_PATH } from '../../consts/path';
-import { GET_PARAMS_LIST, PARAMS_MODAL_CONTROL } from '../../consts/action';
+import { GET_PARAMS_LIST, PARAMS_MODAL_HANDLE } from '../../consts/action';
 
 export function getParamsList(params) {
     return fetchData(Object.assign({
@@ -14,9 +14,9 @@ export function getParamsList(params) {
     }, PARAMS_LIST_PATH));
 };
 
-export function paramsModalControl(visible){
+export function handleModal(visible){
 	return {
-		type: PARAMS_MODAL_CONTROL,
+		type: PARAMS_MODAL_HANDLE,
 		visible: visible
 	};
 };

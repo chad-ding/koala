@@ -4,12 +4,12 @@
  *@Date: 2017-05-18 11:05:30
  */
 
-import { PORTAL_MODAL_SHOW, ADD_PORTAL, DEL_PORTAL } from '../../consts/action';
+import { PORTAL_MODAL_HANDLE, ADD_PORTAL, DEL_PORTAL } from '../../consts/action';
 
 export default function envAddReducer(state = { portalModal: { visible: false, counter: 0 }, portalList: [] }, action) {
     let portalList;
     switch (action.type) {
-        case PORTAL_MODAL_SHOW:
+        case PORTAL_MODAL_HANDLE:
             return Object.assign({}, state, { portalModal: { visible: action.visible, counter: ++state.portalModal.counter } });
         case ADD_PORTAL:
             portalList = [action.portal].concat(state.portalList);

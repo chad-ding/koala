@@ -9,7 +9,13 @@ export const RECEIVE_DATA = Symbol('RECEIVE_DATA');
 //请求失败
 export const REQUEST_FAILED = Symbol('REQUEST_FAILED');
 //显示/隐藏登录Modal
-export const LOGIN_MODAL_CONTROL = Symbol('LOGIN_MODAL_CONTROL');
+export const LOGIN_MODAL_HANDLE = Symbol('LOGIN_MODAL_HANDLE');
+//显示/隐藏系统参数Modal
+export const PARAMS_MODAL_HANDLE = Symbol('PARAMS_MODAL_HANDLE');
+//显示/隐藏模板参数
+export const VARIABLE_MODAL_HANDLE = Symbol('VARIABLE_MODAL_HANDLE');
+//显示Portal modal
+export const PORTAL_MODAL_HANDLE = Symbol('PORTAL_MODAL_HANDLE');
 //登录
 export const LOGIN = Symbol('LOGIN');
 //根组件Tab变更
@@ -18,8 +24,6 @@ export const TAB_CHANGE_HOME = Symbol('TAB_CHANGE_HOME');
 export const TAB_CHANGE_ENV = Symbol('TAB_CHANGE_ENV');
 //系统设置Tab变更
 export const TAB_CHANGE_SYS = Symbol('TAB_CHANGE_SYS');
-//显示Portal modal
-export const PORTAL_MODAL_SHOW = Symbol('PORTAL_MODAL_SHOW');
 //添加Portal
 export const ADD_PORTAL = Symbol('ADD_PORTAL');
 //删除Portal
@@ -44,7 +48,3 @@ export const UNSUBSCRIBE = Symbol('UNSUBSCRIBE');
 export const GET_PARAMS_LIST = Symbol('GET_PARAMS_LIST');
 //拉取系统域名列表
 export const GET_DOMAIN_LIST = Symbol('GET_DOMAIN_LIST');
-//显示/隐藏系统参数Modal
-export const PARAMS_MODAL_CONTROL = Symbol('PARAMS_MODAL_CONTROL');
-//显示/隐藏模板参数
-export const VARIABLE_MODAL_HANDLE = Symbol('VARIABLE_MODAL_HANDLE');

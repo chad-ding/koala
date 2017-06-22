@@ -4,11 +4,11 @@
  *@Date: 2017-05-18 11:33:54
  */
 
-import { PORTAL_MODAL_SHOW, ADD_PORTAL, DEL_PORTAL } from '../../consts/action';
+import { PORTAL_MODAL_HANDLE, ADD_PORTAL, DEL_PORTAL } from '../../consts/action';
 
 export function handleModal(display) {
     return {
-        type: PORTAL_MODAL_SHOW,
+        type: PORTAL_MODAL_HANDLE,
         visible: display
     };
 };
