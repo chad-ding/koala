@@ -45,7 +45,7 @@ class ParamsForm extends Component {
                                 rules: [{
                                     required: true, message: '请选择存储引擎!'
                                 }],
-                                initialValue: '消息堆积(Kafka)'
+                                initialValue: '1'
                             })(
                                 <Select>
                                     <Option value="1">消费者</Option>
