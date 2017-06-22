@@ -16,15 +16,18 @@ export default class InputSelect extends Component {
             number: value.number || 1,
             unit: value.unit || ''
         };
+
+        this.handleNumberChange = this.handleNumberChange.bind(this);
+        this.handleUnitChange = this.handleUnitChange.bind(this);
+        this.triggerChange = this.triggerChange.bind(this);
     }
     componentWillReceiveProps(nextProps) {
-        // Should be a controlled component.
         if ('value' in nextProps) {
             let value = nextProps.value;
             this.setState(value);
         }
     }
-    handleNumberChange = (e) => {
+    handleNumberChange(e) {
         //let number = parseInt(e.target.value || 0, 10);
         let number = e.target.value;
         if (isNaN(number)) {
@@ -35,13 +38,13 @@ export default class InputSelect extends Component {
         }
         this.triggerChange({ number });
     }
-    handleUnitChange = (unit) => {
+    handleUnitChange(unit) {
         if (!('value' in this.props)) {
             this.setState({ unit });
         }
         this.triggerChange({ unit });
     }
-    triggerChange = (changedValue) => {
+    triggerChange(changedValue) {
         let onChange = this.props.onChange;
         if (onChange) {
             onChange(Object.assign({}, this.state, changedValue));
@@ -60,7 +63,7 @@ export default class InputSelect extends Component {
                         this.props.unitMap.map(item => <Option key={item.value} value={item.value}>{item.text}</Option>)
                     }
                 </Select>
-          </span>
+            </span>
         );
     }
 };

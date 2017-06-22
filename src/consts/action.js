@@ -46,3 +46,5 @@ export const GET_PARAMS_LIST = Symbol('GET_PARAMS_LIST');
 export const GET_DOMAIN_LIST = Symbol('GET_DOMAIN_LIST');
 //显示/隐藏系统参数Modal
 export const PARAMS_MODAL_CONTROL = Symbol('PARAMS_MODAL_CONTROL');
+//显示/隐藏模板参数
+export const VARIABLE_MODAL_HANDLE = Symbol('VARIABLE_MODAL_HANDLE');

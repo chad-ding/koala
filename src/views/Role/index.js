@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Button, Switch, Checkbox, Select, InputNumber, Breadcrumb, Icon, Table } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { connect } from 'react-redux';
 
 class RoleForm extends Component {

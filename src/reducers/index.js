@@ -17,6 +17,7 @@ import sysConfigReducer from '../views/SysConfig/reducer';
 import vdpListReducer from '../views/VdpList/reducer';
 import codeGenReducer from '../views/CodeGen/reducer';
 import domainReducer from '../views/Domain/reducer';
+import noteReducer from '../views/Note/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
 
@@ -44,5 +45,6 @@ export default combineReducers({
     sysConfigReducer,
     vdpListReducer,
     codeGenReducer,
-    domainReducer
+    domainReducer,
+    noteReducer
 });
