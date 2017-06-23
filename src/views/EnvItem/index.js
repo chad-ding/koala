@@ -77,7 +77,7 @@ export default class EnvItem extends Component {
                             <Alert message="Helps!" type="warning" closable  showIcon description="每个环境都对应了一个配置中心，下面是配置中心的Zookeeper,测试时,修改/etc/hosts或者C:\WINDOWS\System32\drivers\etc\hosts， 可咨询fating.zhang"/>
                             <Input type="textarea" rows={10}></Input>
                         </TabPane>
-                        <TabPane tab="控制台" key="terminal">
+                        <TabPane tab="控制台" key="console">
                             <Table rowKey={record => record.name} columns={consoleCloumns}></Table>
                         </TabPane>
                         <TabPane tab="集群" key="cluster">

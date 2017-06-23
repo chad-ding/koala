@@ -43,3 +43,8 @@ export const CONSOLE_PATH = {
     path: '/console/list',
     method: 'GET'
 };
+
+export const CLUSTER_PATH = {
+    path: '/cluster/list',
+    method: 'GET'
+};

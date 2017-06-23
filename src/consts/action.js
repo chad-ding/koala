@@ -50,3 +50,5 @@ export const GET_PARAMS_LIST = Symbol('GET_PARAMS_LIST');
 export const GET_DOMAIN_LIST = Symbol('GET_DOMAIN_LIST');
 //拉取控制台列表
 export const GET_CONSOLE_LIST = Symbol('GET_CONSOLE_LIST');
+//拉取集群台列表
+export const GET_CLUSTER_LIST = Symbol('GET_CLUSTER_LIST');

@@ -18,6 +18,7 @@ import vdpListReducer from '../views/VdpList/reducer';
 import codeGenReducer from '../views/CodeGen/reducer';
 import domainReducer from '../views/Domain/reducer';
 import noteReducer from '../views/Note/reducer';
+import envItemReducer from '../views/EnvItem/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
 
@@ -46,5 +47,6 @@ export default combineReducers({
     vdpListReducer,
     codeGenReducer,
     domainReducer,
-    noteReducer
+    noteReducer,
+    envItemReducer
 });
