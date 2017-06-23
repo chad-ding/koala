@@ -1,6 +1,6 @@
 /**
  *@Author: chad.ding
- *@Copyright: 2008-2018 CHAD | 丁铭锋
+ *@Copyright: 2008-2018 CHAD
  *@Date: 2017-04-06 11:17:32
  */
 
@@ -126,7 +126,7 @@ class Home extends Component {
                 <Footer>
                     <Row align="center">
                         <Col span={10}></Col>
-                        <Col span={4}>© 2015 Koala Web App</Col>
+                        <Col span={4}>© 2017 Koala Web App</Col>
                         <Col span={10}></Col>
                     </Row>
                 </Footer>

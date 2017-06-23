@@ -5,24 +5,26 @@
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Button, Icon } from 'antd';
+import { Form, Input, Button, Icon, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import CheckInput from '../../components/CheckInput';
 import VariableModal from './variableModal';
 import { handleModal } from './action';
+
+import './style.less';
 
 class NoteForm extends Component {
     constructor(props) {
         super(props);
         this.showModal = this.showModal.bind(this);
     }
-    componentDidMount(){
+    componentDidMount() {
         console.log('note module did mount...');
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         console.log('note module will unmount...');
     }
-    showModal(){
+    showModal() {
         let { dispatch } = this.props;
         dispatch(handleModal(true));
     }
@@ -61,7 +63,9 @@ class NoteForm extends Component {
                     <h3>
                         <Icon type="setting"></Icon>
                         &nbsp;基本信息&nbsp;&nbsp;
-                        <Icon onClick={this.showModal} style={{color: '#108ee9'}} type="question-circle-o"></Icon>
+                        <Tooltip placement="topRight" title="点击查看变量详情">
+                            <Icon onClick={this.showModal} className="question-icon" type="question-circle-o"></Icon>
+                        </Tooltip>
                     </h3>
                     <FormItem {...formItemLayout} label="邮件主题" hasFeedback>
                         {getFieldDecorator('title', {
@@ -107,7 +111,7 @@ class NoteForm extends Component {
                             },{
                                 validator: this.checkFlow
                             }],
-                            initialValue: { checked: true, text: '' }
+                            initialValue: { checked: true, text: '200KB' }
                         })(
                             <CheckInput></CheckInput>
                         )}
@@ -119,7 +123,7 @@ class NoteForm extends Component {
                             },{
                                 validator: this.checkFlow
                             }],
-                            initialValue: { checked: true, text: '' }
+                            initialValue: { checked: false, text: '' }
                         })(
                             <CheckInput></CheckInput>
                         )}
@@ -148,7 +152,7 @@ class NoteForm extends Component {
                             <CheckInput></CheckInput>
                         )}
                     </FormItem>
-                    <h3><Icon type="android-o"></Icon>&nbsp;SMTP</h3>
+                    <h3><Icon type="mail"></Icon>&nbsp;SMTP</h3>
                     <FormItem {...formItemLayout} label="邮件服务器" hasFeedback>
                         {getFieldDecorator('server', {
                             rules: [{
@@ -214,14 +218,14 @@ class NoteForm extends Component {
                     </FormItem>
                 </Form>
                 <VariableModal></VariableModal>
-            </div> 
+            </div>
         );
     }
 };
 
 let Note = Form.create()(NoteForm);
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
 
     };

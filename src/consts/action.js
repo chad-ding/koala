@@ -1,6 +1,6 @@
 /**
  *@Author: chad.ding
- *@Copyright: 2008-2018 CHAD | 丁铭锋
+ *@Copyright: 2008-2018 CHAD
  *@Date: 2017-04-06 11:01:45
  */
 
@@ -16,6 +16,8 @@ export const PARAMS_MODAL_HANDLE = Symbol('PARAMS_MODAL_HANDLE');
 export const VARIABLE_MODAL_HANDLE = Symbol('VARIABLE_MODAL_HANDLE');
 //显示Portal modal
 export const PORTAL_MODAL_HANDLE = Symbol('PORTAL_MODAL_HANDLE');
+//显示Channel modal
+export const CHANNEL_MODAL_HANDLE = Symbol('CHANNEL_MODAL_HANDLE');
 //登录
 export const LOGIN = Symbol('LOGIN');
 //根组件Tab变更
@@ -30,8 +32,6 @@ export const ADD_PORTAL = Symbol('ADD_PORTAL');
 export const DEL_PORTAL = Symbol('DEL_PORTAL');
 //新增Channel
 export const ADD_CHANNEL = Symbol('ADD_CHANNEL');
-//显示Channel modal
-export const CHANNEL_MODAL_SHOW = Symbol('CHANNEL_MODAL_SHOW');
 //拉取Channel列表
 export const GET_CHANNEL_LIST = Symbol('GET_CHANNEL_LIST');
 //拉取Queue列表
@@ -48,3 +48,5 @@ export const UNSUBSCRIBE = Symbol('UNSUBSCRIBE');
 export const GET_PARAMS_LIST = Symbol('GET_PARAMS_LIST');
 //拉取系统域名列表
 export const GET_DOMAIN_LIST = Symbol('GET_DOMAIN_LIST');
+//拉取控制台列表
+export const GET_CONSOLE_LIST = Symbol('GET_CONSOLE_LIST');

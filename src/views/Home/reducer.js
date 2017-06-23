@@ -1,6 +1,6 @@
 /**
  *@Author: chad.ding
- *@Copyright: 2008-2018 CHAD | 丁铭锋
+ *@Copyright: 2008-2018 CHAD
  *@Date: 2017-04-26 16:27:29
  */
 

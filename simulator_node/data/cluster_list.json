@@ -1,0 +1,9 @@
+[{
+	"name": "transfer_test_cluster_c",
+	"kafka": "192.168.200.152:9092",
+	"zookeeper": "192.168.200.152:2181",
+	"channel": 23,
+	"queue": 47,
+	"health": true,
+	"aviableNode": 12
+}]

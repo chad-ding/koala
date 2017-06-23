@@ -1,6 +1,6 @@
 /**
  *@Author: chad.ding
- *@Copyright: 2008-2018 CHAD | 丁铭锋
+ *@Copyright: 2008-2018 CHAD
  *@Date: 2017-04-10 16:39:49
  */
 
@@ -35,6 +35,11 @@ export const DOMAIN_LIST_PATH = {
 };
 
 export const LOGIN_PATH = {
-    path: '/api/user/login',
+    path: '/user/login',
+    method: 'GET'
+};
+
+export const CONSOLE_PATH = {
+    path: '/console/list',
     method: 'GET'
 };

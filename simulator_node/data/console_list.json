@@ -1,0 +1,7 @@
+[{
+	"id": 1,
+	"console": "配置中心",
+	"account": "OA账号",
+	"bo": "winking.zhu",
+	"engine": "zookeeper://10.101.18.94:2181"
+}]

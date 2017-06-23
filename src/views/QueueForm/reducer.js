@@ -3,13 +3,12 @@
  *@Copyright: 2017-2018 DMF
  *@Date: 2017-05-18 16:26:43
  */
-import { CHANNEL_MODAL_SHOW, GET_SUBSCRIBE_LIST, SUBSCRIBE, UNSUBSCRIBE } from '../../consts/action';
+import { CHANNEL_MODAL_HANDLE, GET_SUBSCRIBE_LIST, SUBSCRIBE, UNSUBSCRIBE } from '../../consts/action';
 
 export default function queueFormReducer(state = { channelModal: { visible: false, counter: 0 }, subscribeList: [], subscribedChannel: [] }, action) {
 
     let subscribeList,
-        channel,
-        subscribedChannel;
+        channel;
 
     switch (action.type) {
         case SUBSCRIBE:
@@ -34,7 +33,7 @@ export default function queueFormReducer(state = { channelModal: { visible: fals
             return Object.assign({}, state, { subscribeList: subscribeList, subscribedChannel: subscribedChannel });
         case GET_SUBSCRIBE_LIST:
             return Object.assign({}, state, { subscribeList: action.data });
-        case CHANNEL_MODAL_SHOW:
+        case CHANNEL_MODAL_HANDLE:
             return Object.assign({}, state, { channelModal: { visible: action.visible, counter: state.channelModal.counter + 1 } });
         default:
             return state;
