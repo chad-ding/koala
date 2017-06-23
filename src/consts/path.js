@@ -39,12 +39,12 @@ export const LOGIN_PATH = {
     method: 'GET'
 };
 
-export const CONSOLE_PATH = {
+export const CONSOLE_LIST_PATH = {
     path: '/console/list',
     method: 'GET'
 };
 
-export const CLUSTER_PATH = {
+export const CLUSTER_LIST_PATH = {
     path: '/cluster/list',
     method: 'GET'
 };
