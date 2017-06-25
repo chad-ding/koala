@@ -4,12 +4,12 @@
  *@Date: 2017-04-26 16:27:14
  */
 
-import { TAB_CHANGE} from '../../consts/action';
+import { TAB_CHANGE_APPLICATION } from '../../consts/action';
 
-export default function applicationReducer(state = { appList: [], fetched: false, tab: 'channel'}, action) {
+export default function applicationReducer(state = { tab: 'channel' }, action) {
     switch (action.type) {
-        case TAB_CHANGE:
-        	return Object.assign({}, state, {tab: action.tab});
+        case TAB_CHANGE_APPLICATION:
+            return Object.assign({}, state, { tab: action.tab });
         default:
             return state;
     }

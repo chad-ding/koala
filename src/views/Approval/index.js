@@ -26,7 +26,10 @@ class Approval extends Component {
         super(props);
         this.tabChange = this.tabChange.bind(this);
     }
-    componentDidMount() {
+    componentDidMount() {}
+    componentWillUnmount(){
+        let {dispatch} = this.props;
+        dispatch(changeTab('channel'));
     }
     tabChange(key) {
         let { dispatch } = this.props;
@@ -66,8 +69,6 @@ class Approval extends Component {
 };
 
 Approval.propTypes = {
-    appList: PropTypes.array.isRequired,
-    fetched: PropTypes.bool.isRequired,
     tab: PropTypes.string.isRequired
 };
 
@@ -77,9 +78,7 @@ Approval.defaultProps = {
 
 function mapStateToProps(state) {
     return {
-        appList: state.applicationReducer.appList,
-        fetched: state.applicationReducer.fetched,
-        tab: state.applicationReducer.tab
+        tab: state.approvalReducer.tab
     };
 }
 

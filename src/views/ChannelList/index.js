@@ -16,7 +16,11 @@ class ChannelList extends Component {
     }
     componentDidMount() {
         let { dispatch } = this.props;
-        dispatch(getChannelList());
+        let params = {
+            path: this.props.path
+        };
+
+        dispatch(getChannelList(params));
     }
     render() {
         let columns = [{

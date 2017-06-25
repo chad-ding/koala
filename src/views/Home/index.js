@@ -27,7 +27,7 @@ class Home extends Component {
         let route = this.props.routes[1];
         let path = route.path;
 
-        if (/^(?:channel|queue)\/\w+$/.test(path)) {
+        if (path === undefined || /^(?:channel|queue|vdp)\/\w+$/.test(path)) {
             path = 'application';
         }
 

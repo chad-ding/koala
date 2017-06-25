@@ -28,6 +28,10 @@ class Application extends Component {
     }
     componentDidMount() {
     }
+    componentWillUnmount(){
+        let {dispatch} = this.props;
+        dispatch(changeTab('channel'));
+    }
     tabChange(key) {
         let { dispatch } = this.props;
         dispatch(changeTab(key));
@@ -66,8 +70,6 @@ class Application extends Component {
 };
 
 Application.propTypes = {
-    appList: PropTypes.array.isRequired,
-    fetched: PropTypes.bool.isRequired,
     tab: PropTypes.string.isRequired
 };
 
@@ -77,8 +79,6 @@ Application.defaultProps = {
 
 function mapStateToProps(state) {
     return {
-        appList: state.applicationReducer.appList,
-        fetched: state.applicationReducer.fetched,
         tab: state.applicationReducer.tab
     };
 }

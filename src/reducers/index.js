@@ -7,6 +7,7 @@
 import { combineReducers } from 'redux';
 import homeReducer from '../views/Home/reducer';
 import applicationReducer from '../views/Application/reducer';
+import approvalReducer from '../views/Approval/reducer';
 import envListReducer from '../views/EnvList/reducer';
 import envAddReducer from '../views/EnvAdd/reducer';
 import channelFormReducer from '../views/ChannelForm/reducer';
@@ -37,6 +38,7 @@ export default combineReducers({
     requestReducer,
     homeReducer,
     applicationReducer,
+    approvalReducer,
     envListReducer,
     envAddReducer,
     channelFormReducer,

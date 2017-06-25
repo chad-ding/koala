@@ -22,6 +22,10 @@ export const CHANNEL_MODAL_HANDLE = Symbol('CHANNEL_MODAL_HANDLE');
 export const LOGIN = Symbol('LOGIN');
 //根组件Tab变更
 export const TAB_CHANGE_HOME = Symbol('TAB_CHANGE_HOME');
+//接入申请Tab变更
+export const TAB_CHANGE_APPLICATION = Symbol('TAB_CHANGE_APPLICATION');
+//接入审批Tab变更
+export const TAB_CHANGE_APPROVAL = Symbol('TAB_CHANGE_APPROVAL');
 //环境管理Tab变更
 export const TAB_CHANGE_ENV = Symbol('TAB_CHANGE_ENV');
 //系统设置Tab变更
