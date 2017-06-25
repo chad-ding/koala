@@ -27,7 +27,7 @@ class ChannelList extends Component {
             title: '名称',
             dataIndex: 'name',
             key: 'name',
-            render: (text, record, index) => <Link to={`/channel/${record.id}`}>{text}</Link>
+            render: (text, record, index) => <Link to={`/application/channel/${record.id}`}>{text}</Link>
         }, {
             title: '项目',
             dataIndex: 'project',
