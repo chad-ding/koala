@@ -18,6 +18,7 @@ class Channel extends Component {
     render() {
 
         let Step = Steps.Step;
+        let { routes } = this.props;
 
         return (
             <div className="container">
@@ -26,7 +27,9 @@ class Channel extends Component {
                         <Icon type="home" />
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                        <Link to="/application">接入申请</Link>
+                    {
+                        routes[1].path === 'application' ?  <Link to="/application/list">接入申请</Link> : <Link to="/approval/list">接入审批</Link>
+                    }
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
                         <span>频道</span>

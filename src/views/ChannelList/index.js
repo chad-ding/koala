@@ -16,18 +16,22 @@ class ChannelList extends Component {
     }
     componentDidMount() {
         let { dispatch } = this.props;
+        let { routes } = this.props;
         let params = {
-            path: this.props.path
+            path: routes[1].path
         };
 
         dispatch(getChannelList(params));
     }
     render() {
+        
+        let { routes } = this.props;
+
         let columns = [{
             title: '名称',
             dataIndex: 'name',
             key: 'name',
-            render: (text, record, index) => <Link to={`/application/channel/${record.id}`}>{text}</Link>
+            render: (text, record, index) => <Link to={`/${routes[1].path}/channel/${record.id}`}>{text}</Link>
         }, {
             title: '项目',
             dataIndex: 'project',
