@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import { Form, Input, Switch, Button, Checkbox, Select, Radio, Slider, InputNumber, Breadcrumb, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import InputSelect from '../../components/InputSelect';
+import SelectInput from '../../components/SelectInput';
 
 import './style.less';
 
@@ -251,7 +251,7 @@ class Channel extends Component {
                             }],
                             initialValue: { number: 1, unit: '1' }
                         })(
-                            <InputSelect unitMap={unitMap}></InputSelect>
+                            <SelectInput unitMap={unitMap}></SelectInput>
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>

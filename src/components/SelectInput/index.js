@@ -9,7 +9,7 @@ import { Input, Select } from 'antd';
 
 import './style.less';
 
-export default class InputSelect extends Component {
+export default class SelectInput extends Component {
     constructor(props) {
         super(props);
 
