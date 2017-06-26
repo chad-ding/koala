@@ -59,7 +59,7 @@ export default class InputSelect extends Component {
 
         return (
             <span>
-                <Input type="text" size={size} value={state.number} onChange={this.handleNumberChange} className="inputWidth"/>
+                <Input type="text" size={size} value={state.number} onChange={this.handleNumberChange} className="input-width"/>
                 <Select value={state.unit} size={size} className="select-width" onChange={this.handleUnitChange}>
                     {
                         this.props.unitMap.map(item => <Option key={item.value} value={item.value}>{item.text}</Option>)

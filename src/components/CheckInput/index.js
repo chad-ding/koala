@@ -42,7 +42,7 @@ export default class CheckInput extends Component {
 		return (
 			<span>
 				<Checkbox size="large" onChange={this.handleCheckChange} checked={state.checked}></Checkbox>
-				<Input size="large" type="text" onChange={this.handleInputChange} value={state.text} className="inputWidth"></Input>
+				<Input size="large" type="text" onChange={this.handleInputChange} value={state.text} className="input-width"></Input>
 			</span>
 		);
 	}
