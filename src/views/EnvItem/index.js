@@ -21,7 +21,7 @@ class EnvItem extends Component {
         let TabPane = Tabs.TabPane;
 
         return (
-            <Layout style={{background: '#FFF'}}>
+            <Layout className="bg-white">
                 <Header className="env-header">
                    <h1>QA&nbsp;&nbsp;<Icon type="delete"></Icon></h1>
                 </Header>

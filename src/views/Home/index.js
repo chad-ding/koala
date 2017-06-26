@@ -41,7 +41,7 @@ class Home extends Component {
             notification.open({
                 message: nextProps.errorInfo.data.code,
                 description: nextProps.errorInfo.data.msg,
-                icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />
+                icon: <Icon type="smile-circle" style={{color: '#108ee9'}} />
             });
         }
     }
@@ -95,7 +95,7 @@ class Home extends Component {
         );
 
         return (
-            <Layout className="koala">
+            <Layout>
                 <Header className="header">
                     <Row gutter={16}>
                         <Col span={4}>

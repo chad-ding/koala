@@ -6,6 +6,8 @@
 import React, { Component } from 'react';
 import { Input, Checkbox } from 'antd';
 
+import './style.less'
+
 export default class CheckInput extends Component {
 	constructor(props){
 		super(props);
@@ -40,7 +42,7 @@ export default class CheckInput extends Component {
 		return (
 			<span>
 				<Checkbox size="large" onChange={this.handleCheckChange} checked={state.checked}></Checkbox>
-				<Input size="large" type="text" onChange={this.handleInputChange} value={state.text} style={{ width: '95%' }}></Input>
+				<Input size="large" type="text" onChange={this.handleInputChange} value={state.text} className="inputWidth"></Input>
 			</span>
 		);
 	}

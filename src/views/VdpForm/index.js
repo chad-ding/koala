@@ -9,6 +9,8 @@ import { Form, Input, Button, Checkbox, Select, InputNumber, Breadcrumb, Icon } 
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import './style.less';
+
 class Vdp extends Component {
     constructor(props) {
         super(props);
@@ -170,7 +172,7 @@ class Vdp extends Component {
                             ],
                             initialValue: 30
                         })(
-                            <InputNumber min={1} max={10} style={{width: '100%'}} />
+                            <InputNumber min={1} max={10} className="full-width" />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="用途说明" hasFeedback>

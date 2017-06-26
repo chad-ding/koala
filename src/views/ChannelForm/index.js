@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import InputSelect from '../../components/InputSelect';
 
+import './style.less';
+
 class Channel extends Component {
     constructor(props) {
         super(props);
@@ -237,7 +239,7 @@ class Channel extends Component {
                             }],
                             initialValue: 30
                         })(
-                            <InputNumber min={1} max={10} style={{width: '100%'}} />
+                            <InputNumber min={1} max={10} className="full-width" />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="总流量预估" hasFeedback>

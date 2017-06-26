@@ -44,6 +44,7 @@ class LoginModal extends Component {
 
         let { getFieldDecorator } = this.props.form;
         let FormItem = Form.Item;
+        let iconSize = { fontSize: 13 };
 
         return (
             <div>
@@ -56,7 +57,7 @@ class LoginModal extends Component {
                                     {pattern: /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/, message: '请输入正确的邮箱格式!'}    
                                 ]
                             })(
-                                <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} type="email" placeholder="登录账号" />
+                                <Input prefix={<Icon type="user" style={iconSize} />} type="email" placeholder="登录账号" />
                             )}
                         </FormItem>
                         <FormItem>
@@ -66,7 +67,7 @@ class LoginModal extends Component {
                                     {pattern: /^\w{6}$/, message: '请输入正确的格式!'}
                                 ]
                             })(
-                                <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="登录密码" />
+                                <Input prefix={<Icon type="lock" style={iconSize} />} type="password" placeholder="登录密码" />
                             )}
                         </FormItem>
                         <FormItem>

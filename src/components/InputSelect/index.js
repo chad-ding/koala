@@ -7,6 +7,8 @@
 import React, { Component } from 'react';
 import { Input, Select } from 'antd';
 
+import './style.less';
+
 export default class InputSelect extends Component {
     constructor(props) {
         super(props);
@@ -57,8 +59,8 @@ export default class InputSelect extends Component {
 
         return (
             <span>
-                <Input type="text" size={size} value={state.number} onChange={this.handleNumberChange} style={{ width: '65%', marginRight: '3%' }} />
-                <Select value={state.unit} size={size} style={{ width: '32%' }} onChange={this.handleUnitChange}>
+                <Input type="text" size={size} value={state.number} onChange={this.handleNumberChange} className="inputWidth"/>
+                <Select value={state.unit} size={size} className="select-width" onChange={this.handleUnitChange}>
                     {
                         this.props.unitMap.map(item => <Option key={item.value} value={item.value}>{item.text}</Option>)
                     }

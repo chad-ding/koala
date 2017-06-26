@@ -218,11 +218,11 @@ class Queue extends Component {
                             }],
                             initialValue: 30
                         })(
-                            <InputNumber min={1} max={10} style={{width: '100%'}} />
+                            <InputNumber min={1} max={10} className="full-width" />
                         )}
                     </FormItem>
                     <FormItem {...formItemLayout} label="订阅频道">
-                        <Button onClick={this.handleModal} type="primary" htmlType="button" size="large" style={{float: 'right'}}>添加订阅</Button>
+                        <Button onClick={this.handleModal} type="primary" htmlType="button" size="large" className="pull-right">添加订阅</Button>
                     </FormItem>
                     <FormItem {...formItemLayout} colon={false} label=" ">
                         <Table pagination={false} size="small" rowKey="name" columns={columns} dataSource={this.props.subscribedChannel}></Table>

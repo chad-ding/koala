@@ -156,7 +156,7 @@ class EnvAdd extends Component {
                     )}
                 </FormItem>
                 <FormItem {...formItemLayout} label="Portals">
-                    <Button onClick={this.handleModal} type="primary" htmlType="button" size="large" style={{float: 'right'}}>添加</Button>
+                    <Button onClick={this.handleModal} type="primary" htmlType="button" size="large" className="pull-right">添加</Button>
                 </FormItem>
                 <FormItem {...formItemLayout} colon={false} label=" ">
                     <Table size="small" rowKey="name" columns={columns} dataSource={this.props.portalList}></Table>
