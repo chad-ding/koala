@@ -237,7 +237,7 @@ class Queue extends Component {
                         )}
                     </FormItem>
                     <FormItem {...tailFormItemLayout}>
-                        <Link to="/application">
+                        <Link to="/application/list">
                             <Button type="default" htmlType="button" size="large">取消</Button>
                         </Link>
                         &nbsp;&nbsp;&nbsp;

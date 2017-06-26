@@ -14,16 +14,17 @@ class QueueList extends Component {
     constructor(props) {
         super(props);
     }
-    componentDidMount(){
+    componentDidMount() {
         let { dispatch } = this.props;
         dispatch(getQueueList());
     }
     render() {
+        let { path } = this.props;
         let columns = [{
             title: '名称',
             dataIndex: 'name',
             key: 'name',
-            render: (text, record, index) => <Link to={`/queue/${record.id}`}>{text}</Link>
+            render: (text, record, index) => <Link to={`/${path}/queue/${record.id}`}>{text}</Link>
         }, {
             title: '项目',
             dataIndex: 'project',
@@ -91,7 +92,7 @@ class QueueList extends Component {
                     </Col>
                 </Row>
                 <br/>
-                <Table columns={columns} dataSource={this.props.queueList}></Table>
+                <Table rowKey={record => record.id} columns={columns} dataSource={this.props.queueList}></Table>
             </div>
         );
     }

@@ -20,11 +20,13 @@ class VdpList extends Component {
         dispatch(getVdpList());
     }
     render() {
+        let { path } = this.props;
+
         let columns = [{
             title: '名称',
             dataIndex: 'name',
             key: 'name',
-            render: (text, record, index) => <Link to={`/vdp/${record.id}`}>{text}</Link>
+            render: (text, record, index) => <Link to={`/${path}/vdp/${record.id}`}>{text}</Link>
         }, {
             title: '项目',
             dataIndex: 'project',
@@ -81,7 +83,7 @@ class VdpList extends Component {
                     </Col>
                 </Row>
                 <br/>
-                <Table columns={columns} dataSource={this.props.vdpList}></Table>
+                <Table rowKey={record => record.id} columns={columns} dataSource={this.props.vdpList}></Table>
             </div>
         );
     }
