@@ -88,8 +88,8 @@ class Home extends Component {
                 <Menu.Item key="sys">
                     <Link to="/sys/baseInfo">系统设置</Link>
                 </Menu.Item>
-                <Menu.Item key="monitor">
-                    系统监控
+                <Menu.Item key="dashboard">
+                    <Link to="/dashboard">系统监控</Link>    
                 </Menu.Item>
             </Menu>
         );

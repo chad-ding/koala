@@ -126,6 +126,12 @@ let vdp = (location, callback) => {
     }, 'Vdp');
 };
 
+let dashboard = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Dashboard').default);
+    }, 'Dashboard');
+};
+
 render((
     <Provider store={store}>
         <Router history={browserHistory}>
@@ -163,6 +169,7 @@ render((
                     <Route path="role" getComponent={role}></Route>
                     <Route path="domain" getComponent={domain}></Route>
                 </Route>
+                <Route path="dashboard" getComponent={dashboard}></Route>
             </Route>
         </Router>
     </Provider>
