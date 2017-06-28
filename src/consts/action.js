@@ -62,3 +62,5 @@ export const GET_LINE_CHART_DATA = Symbol('GET_LINE_CHART_DATA');
 export const GET_BAR_CHART_DATA = Symbol('GET_BAR_CHART_DATA');
 //获取饼状图数据
 export const GET_PIE_CHART_DATA = Symbol('GET_PIE_CHART_DATA');
+//获取雷达图数据
+export const GET_RADAR_CHART_DATA = Symbol('GET_RADAR_CHART_DATA');

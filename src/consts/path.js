@@ -63,3 +63,8 @@ export const PIE_CHART_PATH = {
     path: '/chart/pie',
     method: 'GET'
 };
+
+export const RADAR_CHART_PATH = {
+    path: '/chart/radar',
+    method: 'GET'
+};

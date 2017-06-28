@@ -9,7 +9,8 @@ import { Breadcrumb, Icon, Row, Col } from 'antd';
 import LineChart from '../../components/LineChart';
 import BarChart from '../../components/BarChart';
 import PieChart from '../../components/PieChart';
-import { getLineChartData, getBarChartData, getPieChartData } from './action';
+import RadarChart from '../../components/RadarChart';
+import { getLineChartData, getBarChartData, getPieChartData, getRadarChartData } from './action';
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
@@ -21,6 +22,7 @@ class Dashboard extends Component {
         dispatch(getLineChartData());
         dispatch(getBarChartData());
         dispatch(getPieChartData());
+        dispatch(getRadarChartData());
     }
     render() {
 
@@ -49,7 +51,7 @@ class Dashboard extends Component {
                         <PieChart title="站点浏览量" data={this.props.pieData} style={{ width: '100%', height: '400px'}}></PieChart>
                     </Col>
                     <Col span={12}>
-                        <LineChart title="东京指数" data={this.props.lineData} style={{ width: '100%', height: '400px'}}></LineChart>
+                        <RadarChart title="AQI" data={this.props.radarData} style={{ width: '100%', height: '400px'}}></RadarChart>
                     </Col>
                 </Row>
             </div>
@@ -61,7 +63,8 @@ function mapStateToProps(state) {
     return {
         lineData: state.dashboardReducer.lineData,
         barData: state.dashboardReducer.barData,
-        pieData: state.dashboardReducer.pieData
+        pieData: state.dashboardReducer.pieData,
+        radarData: state.dashboardReducer.radarData
     };
 }
 
