@@ -20,6 +20,7 @@ import codeGenReducer from '../views/CodeGen/reducer';
 import domainReducer from '../views/Domain/reducer';
 import noteReducer from '../views/Note/reducer';
 import envItemReducer from '../views/EnvItem/reducer';
+import dashboardReducer from '../views/Dashboard/reducer';
 
 import { REQUEST_FAILED } from '../consts/action';
 
@@ -50,5 +51,6 @@ export default combineReducers({
     codeGenReducer,
     domainReducer,
     noteReducer,
-    envItemReducer
+    envItemReducer,
+    dashboardReducer
 });

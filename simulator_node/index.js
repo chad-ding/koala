@@ -104,6 +104,18 @@ app.get('/api/cluster/list', function(req, res) {
     });
 });
 
+app.get('/api/chart/line', function(req, res) {
+    res.writeHead(200, { 'Content-Type': 'application/json;charset=utf-8' });
+
+    fs.readFile(__dirname + '/data/line_chart_data.json', { encoding: 'utf-8' }, function(err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        res.end(data);
+    });
+});
+
 app.listen(8080);
 
 console.log('Server running on 8080');

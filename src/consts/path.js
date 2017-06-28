@@ -48,3 +48,8 @@ export const CLUSTER_LIST_PATH = {
     path: '/cluster/list',
     method: 'GET'
 };
+
+export const LINE_CHART_PATH = {
+    path: '/chart/line',
+    method: 'GET'
+};

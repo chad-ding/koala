@@ -5,34 +5,24 @@
  */
 
 import React, { Component } from 'react';
-import echarts from 'echarts';
 import { Breadcrumb, Icon } from 'antd';
+import LineChart from '../../components/LineChart';
+import { getLineChartData } from './action';
+import { connect } from 'react-redux';
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
     constructor(props) {
         super(props);
     }
     componentDidMount() {
-        let chart = echarts.init(document.getElementById('chart'));
-        chart.setOption({
-            title: { text: 'ECharts 入门示例' },
-            tooltip: {},
-            xAxis: {
-                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        });
+        let { dispatch } = this.props;
+        dispatch(getLineChartData());
     }
     render() {
-    	
+
         return (
             <div className="container">
-            	<Breadcrumb>
+                <Breadcrumb>
                     <Breadcrumb.Item>
                         <Icon type="home" />
                     </Breadcrumb.Item>
@@ -40,9 +30,17 @@ export default class Dashboard extends Component {
                         <span>系统监控</span>
                     </Breadcrumb.Item>
                 </Breadcrumb>
-                <br/><br/>
-				<div style={{width: '600px', height: '400px'}} id="chart"></div>
-			</div>
+                <br/>
+                <LineChart title="上证指数" lineData={this.props.lineData} style={{ width: '48%', height: '400px'}}></LineChart>
+            </div>
         );
     }
 };
+
+function mapStateToProps(state) {
+    return {
+        lineData: state.dashboardReducer.lineData
+    };
+}
+
+export default connect(mapStateToProps)(Dashboard);

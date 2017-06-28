@@ -56,3 +56,5 @@ export const GET_DOMAIN_LIST = Symbol('GET_DOMAIN_LIST');
 export const GET_CONSOLE_LIST = Symbol('GET_CONSOLE_LIST');
 //拉取集群台列表
 export const GET_CLUSTER_LIST = Symbol('GET_CLUSTER_LIST');
+//获取线图标数据
+export const GET_LINE_CHART_DATA = Symbol('GET_LINE_CHART_DATA');
