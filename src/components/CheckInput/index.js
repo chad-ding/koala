@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { Input, Checkbox } from 'antd';
 
-import './style.less'
+import './style.less';
 
 export default class CheckInput extends Component {
 	constructor(props){
