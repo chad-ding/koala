@@ -94,7 +94,7 @@ class Channel extends Component {
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
                         <span>
-                            <Link to="/application">接入申请</Link>
+                            <Link to="/application/list">接入申请</Link>
                         </span>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>

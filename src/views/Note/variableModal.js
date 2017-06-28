@@ -32,7 +32,7 @@ class VariableModal extends Component {
 
         return (
             <Modal title="模板变量" visible={this.props.visible} maskClosable={false} onCancel={this.handleCancel} footer={null}>
-				<Table rowKey={record => record.name} columns={columns} dataSource={VARIABLE}></Table>
+				<Table className="variable-height" rowKey={record => record.name} columns={columns} dataSource={VARIABLE}></Table>
 			</Modal>
         );
     }

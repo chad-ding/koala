@@ -5,9 +5,11 @@
  */
 
 import React, { Component } from 'react';
-import { Breadcrumb, Icon } from 'antd';
+import { Breadcrumb, Icon, Row, Col } from 'antd';
 import LineChart from '../../components/LineChart';
-import { getLineChartData } from './action';
+import BarChart from '../../components/BarChart';
+import PieChart from '../../components/PieChart';
+import { getLineChartData, getBarChartData, getPieChartData } from './action';
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
@@ -17,6 +19,8 @@ class Dashboard extends Component {
     componentDidMount() {
         let { dispatch } = this.props;
         dispatch(getLineChartData());
+        dispatch(getBarChartData());
+        dispatch(getPieChartData());
     }
     render() {
 
@@ -31,7 +35,23 @@ class Dashboard extends Component {
                     </Breadcrumb.Item>
                 </Breadcrumb>
                 <br/>
-                <LineChart title="上证指数" lineData={this.props.lineData} style={{ width: '48%', height: '400px'}}></LineChart>
+                <Row gutter={16}>
+                    <Col span={12}>
+                        <LineChart title="上证指数" data={this.props.lineData} style={{ width: '100%', height: '400px'}}></LineChart>
+                    </Col>
+                    <Col span={12}>
+                        <BarChart title="一周涨幅" data={this.props.barData} style={{ width: '100%', height: '400px'}}></BarChart>
+                    </Col>
+                </Row>
+                <br/>
+                <Row gutter={16}>
+                    <Col span={12}>
+                        <PieChart title="站点浏览量" data={this.props.pieData} style={{ width: '100%', height: '400px'}}></PieChart>
+                    </Col>
+                    <Col span={12}>
+                        <LineChart title="东京指数" data={this.props.lineData} style={{ width: '100%', height: '400px'}}></LineChart>
+                    </Col>
+                </Row>
             </div>
         );
     }
@@ -39,7 +59,9 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
     return {
-        lineData: state.dashboardReducer.lineData
+        lineData: state.dashboardReducer.lineData,
+        barData: state.dashboardReducer.barData,
+        pieData: state.dashboardReducer.pieData
     };
 }
 

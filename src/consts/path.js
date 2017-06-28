@@ -53,3 +53,13 @@ export const LINE_CHART_PATH = {
     path: '/chart/line',
     method: 'GET'
 };
+
+export const BAR_CHART_PATH = {
+    path: '/chart/bar',
+    method: 'GET'
+};
+
+export const PIE_CHART_PATH = {
+    path: '/chart/pie',
+    method: 'GET'
+};

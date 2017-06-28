@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import echarts from 'echarts';
 import PropTypes from 'prop-types';
-import {Icon} from 'antd';
+import { Icon } from 'antd';
 
 export default class LineChart extends Component {
     constructor(props) {
@@ -73,7 +73,7 @@ export default class LineChart extends Component {
     }
     componentWillReceiveProps(nextProps) {
 
-        let data = this.splitData(nextProps.lineData);
+        let data = this.splitData(nextProps.data);
         this.chart.setOption({
             backgroundColor: '#eee',
             animation: false,
@@ -180,15 +180,15 @@ export default class LineChart extends Component {
 };
 
 LineChart.propTypes = {
-    lineData: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
     title: PropTypes.string.isRequired
 };
 
 LineChart.defaultProps = {
-    lineData: [],
+    data: [],
     style: {
-        width: '600px', 
+        width: '600px',
         height: '400px'
     },
-    title: '线性图表'    
+    title: '线性图表'
 };

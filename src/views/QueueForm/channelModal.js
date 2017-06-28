@@ -57,7 +57,7 @@ class Filter extends Component {
                         </FormItem>
                     </Col>
                     <Col span={4}>
-                        <Button size="large">搜索</Button>
+                        <Button type="primary" size="large">搜索</Button>
                     </Col>
                 </Row> 
             </Form>
