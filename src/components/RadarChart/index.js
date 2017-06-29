@@ -26,13 +26,13 @@ export default class RadarChart extends Component {
 
         let option = {
             backgroundColor: '#161627',
-            title: {
+            /*title: {
                 text: 'AQI - 雷达图',
                 left: 'center',
                 textStyle: {
                     color: '#eee'
                 }
-            },
+            },*/
             legend: {
                 bottom: 5,
                 data: ['北京', '上海', '广州'],

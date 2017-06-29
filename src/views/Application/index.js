@@ -55,13 +55,13 @@ class Application extends Component {
                 <br/><br/>
                 <Tabs defaultActiveKey="channel" onChange={this.tabChange} type="card">
                     <TabPane tab="频道" key="channel">
-                        <ChannelList path={this.props.routes[1].path}></ChannelList>
+                        <ChannelList path="application"></ChannelList>
                     </TabPane>
                     <TabPane tab="队列" key="queue">
-                        <QueueList path={this.props.routes[1].path}></QueueList>
+                        <QueueList path="application"></QueueList>
                     </TabPane>
                     <TabPane tab="数据表" key="table">
-                        <VdpList path={this.props.routes[1].path}></VdpList>
+                        <VdpList path="application"></VdpList>
                     </TabPane>
                 </Tabs>  
             </div>
