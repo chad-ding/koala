@@ -132,6 +132,12 @@ let dashboard = (location, callback) => {
     }, 'Dashboard');
 };
 
+let help = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Help').default);
+    }, 'Help');
+};
+
 render((
     <Provider store={store}>
         <Router history={browserHistory}>
@@ -170,6 +176,7 @@ render((
                     <Route path="domain" getComponent={domain}></Route>
                 </Route>
                 <Route path="dashboard" getComponent={dashboard}></Route>
+                <Route path="help" getComponent={help}></Route>
             </Route>
         </Router>
     </Provider>

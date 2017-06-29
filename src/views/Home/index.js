@@ -57,9 +57,9 @@ class Home extends Component {
         let menus = (
             <Menu>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="javascript:;">
-                        <Icon type="mail"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;反馈
-                    </a>
+                    <Link to="/help">
+                        <Icon type="info-circle-o"></Icon>&nbsp;&nbsp;&nbsp;&nbsp;帮助
+                    </Link>
                 </Menu.Item>
                 <Menu.Item>
                     <a onClick={this.showLoginModal} rel="noopener noreferrer" href="javascript:;">
