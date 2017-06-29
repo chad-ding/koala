@@ -14,7 +14,7 @@
     "koala"
   ],
   "author": "chad.ding",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "6.4.0",
     "autoprefixer-loader": "^3.2.0",

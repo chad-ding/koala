@@ -3,13 +3,13 @@ var path = require('path');
 module.exports = {
     env: process.env.NODE_ENV,
     entry: './src/index.js',
-    devPort: 9200,
+    devPort: 9300,
     assetsSubDirectory: 'assets',
     assetsPublicPath: '/',
     //for proxy api
     proxyTable: {
         '/api/': {
-            target: 'http://localhost:8080/',
+            target: 'http://localhost:8081/',
             changeOrigin: true
         }
     },

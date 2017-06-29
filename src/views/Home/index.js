@@ -32,6 +32,7 @@ class Home extends Component {
         }
 
         this.tabChange({ key: path });
+        console.info('%ckoala app startup..', 'color:rgba(187, 0, 0, 1);');
     }
     componentWillUnmount() {
         console.info('%ckoala app shutdown..', 'color:rgba(187, 0, 0, 1);');
@@ -41,7 +42,7 @@ class Home extends Component {
             notification.open({
                 message: nextProps.errorInfo.data.code,
                 description: nextProps.errorInfo.data.msg,
-                icon: <Icon type="smile-circle" style={{color: '#108ee9'}} />
+                icon: <Icon type="close-circle-o" className="err-msg-icon" />
             });
         }
     }

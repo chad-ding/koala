@@ -8,6 +8,7 @@ import { dictToString } from './utils';
 import 'whatwg-fetch';
 import Promise from 'promise-polyfill';
 import { REQUEST_FAILED } from './consts/action';
+import { BASE_URL } from './consts/metadata';
 
 const METHOD = {
     GET: Symbol('GET'),
@@ -20,9 +21,6 @@ const METHOD = {
 if (!window.Promise) {
     window.Promise = Promise;
 }
-
-let baseUrl = 'http://localhost:9200/api';
-// let baseUrl = 'http://192.168.1.103:5000/api';
 
 let config = {
     headers: {
@@ -62,7 +60,7 @@ function send(params) {
 function fetchAllConfig(params) {
     //使用Promise.all()
     Promise.all(params.requests.map(request => {
-            let promise = fetch(baseUrl + request.path + '?' + dictToString(request.query), config);
+            let promise = fetch(BASE_URL + request.path + '?' + dictToString(request.query), config);
             return promise.then(res => res.json());
         }))
         .then(json => {
@@ -76,7 +74,7 @@ function fetchAllConfig(params) {
 
 function fetchConfig(params, config) {
 
-    return fetch(baseUrl + params.requests[0].path + (config.method !== 'GET' ? '' : params.requests[0].query), config)
+    return fetch(BASE_URL + params.requests[0].path + (config.method !== 'GET' ? '' : params.requests[0].query), config)
         .then(checkStatus)
         .then(res => res.json())
         .then(json => {

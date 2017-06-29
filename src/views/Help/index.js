@@ -24,7 +24,8 @@ export default class Help extends Component {
 						<dd>2.2、采用LESS作为CSS样式预编译语言。</dd>
     					<dd>2.3、项目构建工具为webpack，不要问为什么，因为这样逼格显得高大上。</dd>
     					<dd>2.4、采用ANTD作为组件库,本来想自己写的但是还不大会就先抄着吧。</dd>
-    					<dd>2.5、项目后端待搭建。</dd>
+    					<dd>2.5、绘制图表采用了echarts库。</dd>
+    					<dd>2.6、项目后端待搭建。</dd>
     					<dt>3、项目搭建与运行</dt>
     					<dd>3.1、安装node，已安装请跳过。</dd>
     					<dd>3.2、npm install安装package.json中定义的node模块到本地，其中包括webpack等各类开发工具以及组件库。</dd>
@@ -37,7 +38,9 @@ export default class Help extends Component {
 				</div>
 				<div className="text-panel text-warning">
 					The MIT License (MIT) <br/><br/>
+
 					Copyright (c) 2011-2016 Chad.Ding, Inc. <br/><br/>
+
 					Permission is hereby granted, free of charge, to any person obtaining a copy
 					of this software and associated documentation files (the "Software"), to deal
 					in the Software without restriction, including without limitation the rights

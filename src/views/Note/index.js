@@ -56,7 +56,7 @@ class NoteForm extends Component {
                 }
             }
         };
-
+        
         return (
             <div>
                 <Form onSubmit={this.handleSubmit}>
