@@ -42,7 +42,7 @@ class SysConfig extends Component {
         this.tabChange(path);
     }
     componentWillUnmount() {
-        let { dispatch } = this.props;
+        //let { dispatch } = this.props;
         //dispatch(changeTab('baseInfo'));
     }
     render() {
