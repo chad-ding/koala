@@ -72,16 +72,16 @@ class ChannelList extends Component {
             render: (text, record, index) => (
                 <div>
                     <Tooltip placement="top" title="QA">
-                        <Icon className="step-icon step-complete" type="check-circle"></Icon>
+                        <Icon className="step-icon step-complete" type="smile"></Icon>
                     </Tooltip>
                     <Tooltip placement="top" title="STAGING">
-                        <Icon className="step-icon step-processing" type="check-circle"></Icon>
+                        <Icon className="step-icon step-processing" type="meh"></Icon>
                     </Tooltip>
                     <Tooltip placement="top" title="LIVE">
-                        <Icon className="step-icon" type="check-circle"></Icon>
+                        <Icon className="step-icon step-reject" type="frown"></Icon>
                     </Tooltip>
                     <Tooltip placement="top" title="PRELIVE">
-                        <Icon className="step-icon" type="check-circle"></Icon>
+                        <Icon className="step-icon" type="meh"></Icon>
                     </Tooltip>
                 </div>
             )
