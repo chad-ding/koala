@@ -15,28 +15,28 @@ export default class FlowStep extends Component {
         this.stepView = this.stepView.bind(this);
     }
     stepView(iconStep) {
-    	let statusMap = [{
-    		type: 'meh',
-    		style: 'step-icon'
-    	},{
-    		type: 'meh',
-    		style: 'step-icon step-processing'
-    	},{
-    		type: 'smile',
-    		style: 'step-icon step-complete'
-    	},{
-    		type: 'frown',
-    		style: 'step-icon step-reject'
-    	}];
+        let statusMap = [{
+            type: 'meh',
+            style: 'step-icon step-standby'
+        }, {
+            type: 'meh',
+            style: 'step-icon step-processing'
+        }, {
+            type: 'smile',
+            style: 'step-icon step-complete'
+        }, {
+            type: 'frown',
+            style: 'step-icon step-reject'
+        }];
 
         let { step, status } = this.props;
-		if(iconStep < step){
-			return <Icon className="step-icon step-complete" type="smile"></Icon>;
-		}else if(iconStep == step){
-			return <Icon className={statusMap[status].style} type={statusMap[status].type}></Icon>;
-		}else{
-			return <Icon className="step-icon" type="meh"></Icon>;
-		}
+        if (iconStep < step) {
+            return <Icon className="step-icon step-complete" type="smile"></Icon>;
+        } else if (iconStep === step) {
+            return <Icon className={statusMap[status].style} type={statusMap[status].type}></Icon>;
+        } else {
+            return <Icon className="step-icon step-standby" type="meh"></Icon>;
+        }
     }
     render() {
 
