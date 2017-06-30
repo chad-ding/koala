@@ -5,10 +5,11 @@
  */
 
 import React, { Component } from 'react';
-import { Row, Col, Button, Input, Table, Tooltip, Icon } from 'antd';
+import { Row, Col, Button, Input, Table } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getQueueList } from './action';
+import FlowStep from '../../components/FlowStep';
 
 class QueueList extends Component {
     constructor(props) {
@@ -65,22 +66,7 @@ class QueueList extends Component {
             title: '流程进度',
             dataIndex: 'state',
             key: 'state',
-            render: (text, record, index) => (
-                <div>
-                    <Tooltip placement="top" title="QA">
-                        <Icon className="step-icon step-complete" type="smile"></Icon>
-                    </Tooltip>
-                    <Tooltip placement="top" title="STAGING">
-                        <Icon className="step-icon step-processing" type="meh"></Icon>
-                    </Tooltip>
-                    <Tooltip placement="top" title="LIVE">
-                        <Icon className="step-icon step-reject" type="frown"></Icon>
-                    </Tooltip>
-                    <Tooltip placement="top" title="PRELIVE">
-                        <Icon className="step-icon" type="meh"></Icon>
-                    </Tooltip>
-                </div>
-            )
+            render: (text, record, index) => <FlowStep step={record.step} status={record.status}></FlowStep>
         }, {
             title: '操作状态',
             dataIndex: 'status',

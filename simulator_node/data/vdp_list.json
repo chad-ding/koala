@@ -9,6 +9,7 @@
     "apply": "2017-05-25",
     "expire": "3 天 前",
     "language": "java",
+    "step": 2,
     "status": 1
 }, {
     "id": 2,
@@ -21,7 +22,8 @@
     "apply": "2017-05-25",
     "expire": "3 天 前",
     "language": "java",
-    "status": 1
+    "step": 3,
+    "status": 3
 }, {
     "id": 3,
     "name": "vms.vdp.113272663436",
@@ -33,7 +35,8 @@
     "apply": "2017-05-25",
     "expire": "3 天 前",
     "language": "java",
-    "status": 1
+    "step": 2,
+    "status": 3
 }, {
     "id": 4,
     "name": "vms.vdp.113272663436",
@@ -45,5 +48,6 @@
     "apply": "2017-05-25",
     "expire": "3 天 前",
     "language": "java",
+    "step": 2,
     "status": 1
 }]

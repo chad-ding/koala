@@ -6,10 +6,11 @@
  */
 
 import React, { Component } from 'react';
-import { Row, Col, Button, Input, Table, Tooltip, Icon } from 'antd';
+import { Row, Col, Button, Input, Table } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getVdpList } from './action';
+import FlowStep from '../../components/FlowStep';
 
 class VdpList extends Component {
     constructor(props) {
@@ -59,22 +60,7 @@ class VdpList extends Component {
             title: '流程进度',
             dataIndex: 'status',
             key: 'status',
-            render: (text, record, index) => (
-                <div>
-                    <Tooltip placement="top" title="QA">
-                        <Icon className="step-icon step-complete" type="smile"></Icon>
-                    </Tooltip>
-                    <Tooltip placement="top" title="STAGING">
-                        <Icon className="step-icon step-processing" type="meh"></Icon>
-                    </Tooltip>
-                    <Tooltip placement="top" title="LIVE">
-                        <Icon className="step-icon step-reject" type="frown"></Icon>
-                    </Tooltip>
-                    <Tooltip placement="top" title="PRELIVE">
-                        <Icon className="step-icon" type="meh"></Icon>
-                    </Tooltip>
-                </div>
-            )
+            render: (text, record, index) => <FlowStep step={record.step} status={record.status}></FlowStep>
         }];
 
         let Search = Input.Search;
@@ -90,11 +76,7 @@ class VdpList extends Component {
                     </Col>
                     <Col span={4} offset={12}>
                         {   
-                            
-                            this.props.path === 'approval' ? '' : 
-                            <Button size="large" type="primary">
-                                <Link to="/vdp/new">申请数据表</Link>
-                            </Button>
+                            this.props.path === 'approval' ? '' : <Button size="large" type="primary"><Link to="/vdp/new">申请数据表</Link></Button>
                         }
                     </Col>
                 </Row>

@@ -9,7 +9,7 @@
     "date": "2017-05-25",
     "expire": "3 天 前",
     "language": "java",
-    "state": 2,
+    "step": 2,
     "status": 1
 }, {
     "id": 2,
@@ -22,8 +22,8 @@
     "date": "2017-05-25",
     "expire": "3 天 前",
     "language": "java",
-    "state": 2,
-    "status": 1
+    "step": 3,
+    "status": 3
 }, {
     "id": 3,
     "name": "channel.test.topic.szy04",
@@ -35,8 +35,8 @@
     "date": "2017-05-25",
     "expire": "3 天 前",
     "language": "java",
-    "state": 2,
-    "status": 1
+    "step": 3,
+    "status": 2
 }, {
     "id": 4,
     "name": "channel.rabbitmq.xfd.opened",
@@ -48,6 +48,6 @@
     "date": "2017-05-25",
     "expire": "3 天 前",
     "language": "java",
-    "state": 2,
-    "status": 1
+    "step": 2,
+    "status": 3
 }]
