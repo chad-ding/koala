@@ -5,10 +5,12 @@
  */
 
 import React, { Component } from 'react';
-import { Row, Col, Button, Input, Table } from 'antd';
+import { Row, Col, Button, Input, Table, Steps, Icon, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getChannelList } from './action';
+
+import './style.less';
 
 class ChannelList extends Component {
     constructor(props) {
@@ -66,7 +68,23 @@ class ChannelList extends Component {
         }, {
             title: '流程进度',
             dataIndex: 'state',
-            key: 'state'
+            key: 'state',
+            render: (text, record, index) => (
+                <div>
+                    <Tooltip placement="top" title="QA">
+                        <Icon className="step-icon step-complete" type="check-circle"></Icon>
+                    </Tooltip>
+                    <Tooltip placement="top" title="STAGING">
+                        <Icon className="step-icon step-processing" type="check-circle"></Icon>
+                    </Tooltip>
+                    <Tooltip placement="top" title="LIVE">
+                        <Icon className="step-icon" type="check-circle"></Icon>
+                    </Tooltip>
+                    <Tooltip placement="top" title="PRELIVE">
+                        <Icon className="step-icon" type="check-circle"></Icon>
+                    </Tooltip>
+                </div>
+            )
         }, {
             title: '操作状态',
             dataIndex: 'status',
@@ -74,7 +92,6 @@ class ChannelList extends Component {
         }];
 
         let Search = Input.Search;
-
         return (
             <div>
                 <Row>
