@@ -26,8 +26,6 @@ class Application extends Component {
         super(props);
         this.tabChange = this.tabChange.bind(this);
     }
-    componentDidMount() {
-    }
     componentWillUnmount(){
         let {dispatch} = this.props;
         dispatch(changeTab('channel'));
