@@ -1,0 +1,40 @@
+{
+    "appenders": {
+        "console": {
+            "type": "console",
+            "category": "console"
+        },
+        "debug": {
+            "type": "dateFile",
+            "pattern": " .yyyy-MM-dd",
+            "category": "logDebug",
+            "filename": "E:/temp/debug/debug.log"
+        },
+        "info": {
+            "type": "dateFile",
+            "pattern": " .yyyy-MM-dd",
+            "category": "logInfo",
+            "filename": "E:/temp/info/info.log"
+        },
+        "warn": {
+            "type": "dateFile",
+            "pattern": " .yyyy-MM-dd",
+            "category": "logWarn",
+            "filename": "E:/temp/warn/warn.log"
+        },
+        "error": {
+            "type": "dateFile",
+            "pattern": " .yyyy-MM-dd",
+            "category": "logError",
+            "filename": "E:/temp/error/error.log"
+        }
+    },
+    "replaceConsole": true,
+    "categories": {
+        "default": { "appenders": ["info"], "level": "debug" },
+        "logDebug": { "appenders": ["debug"], "level": "debug" },
+        "logInfo": { "appenders": ["info"], "level": "info" },
+        "logWarn": { "appenders": ["warn"], "level": "warn" },
+        "logError": { "appenders": ["error"], "level": "error" }
+    }
+}

@@ -4,11 +4,13 @@
  *@Date: 2017-05-25 22:22:27
  */
 
-var express = require('express');
-var fs = require('fs');
-var app = express();
+let express = require('express');
+let fs = require('fs');
+let logger = require('../src/utils/logger').logger;
 
-var options = [{
+let app = express();
+
+let options = [{
     url: '/api/channel/list',
     method: 'GET',
     data: '/data/channel_list.json'
@@ -60,7 +62,7 @@ var options = [{
 
 
 function getFunction(option) {
-    var url = option.url,
+    let url = option.url,
         data = option.data;
 
     app.get(url, function(req, res) {
@@ -83,7 +85,6 @@ options.forEach(function(option) {
     }
 
 });
-
 
 app.listen(8081);
 console.log('Server running on 8081');
