@@ -8,7 +8,6 @@ let fs = require('fs');
 let path = require('path');
 
 let logger = {};
-exports.logger = logger;
 
 // 加载配置文件  
 let objConfig = JSON.parse(fs.readFileSync(path.join(__dirname, 'log4js.json'), 'utf8'));
@@ -52,7 +51,12 @@ logger.error = function(msg, exp) {
 };
 
 // 配合express用的方法  
-exports.use = function(app) {
+let use = function(app) {
     //页面请求日志, level用auto时,默认级别是WARN  
     app.use(log4js.connectLogger(logInfo, { level: 'debug', format: ':method :url' }));
+};
+
+exports = {
+    logger,
+    use
 };

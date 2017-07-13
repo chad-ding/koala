@@ -6,7 +6,7 @@
 
 let express = require('express');
 let fs = require('fs');
-let logger = require('../src/utils/logger').logger;
+let { logger } = require('../src/utils/logger');
 
 let app = express();
 
@@ -60,7 +60,6 @@ let options = [{
     data: '/data/radar_chart_data.json'
 }];
 
-
 function getFunction(option) {
     let url = option.url,
         data = option.data;
@@ -71,6 +70,7 @@ function getFunction(option) {
         fs.readFile(__dirname + data, { encoding: 'utf-8' }, function(err, data) {
             if (err) {
                 console.error(err);
+                logger.error(error);
                 return;
             }
             res.end(data);
