@@ -129,7 +129,7 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../../assets'),
             to: appConf.assetsSubDirectory,
-            ignore: ['.*']
+            ignore: ['img/**']
         }])
     ]
 };
