@@ -6,7 +6,7 @@
 
 let express = require('express');
 let fs = require('fs');
-let { logger } = require('../src/utils/logger');
+let { logger } = require('../logger');
 
 let app = express();
 
@@ -70,7 +70,7 @@ function getFunction(option) {
         fs.readFile(__dirname + data, { encoding: 'utf-8' }, function(err, data) {
             if (err) {
                 console.error(err);
-                logger.error(error);
+                logger.error(err);
                 return;
             }
             res.end(data);
