@@ -4,6 +4,7 @@
  */
 
 import React, { Component } from 'react';
+import { Icon } from 'antd';
 
 import './style.less';
 

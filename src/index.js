@@ -13,9 +13,9 @@ import configStore from './store/ConfigStore';
 let store = configStore();
 
 let home = (location, callback) => {
-    require.ensure([], require => {
-        callback(null, require('./views/Home').default);
-    }, 'Home');
+    import('./views/Home').then(component => {
+        callback(null, component.default);
+    });
 };
 
 let application = (location, callback) => {
