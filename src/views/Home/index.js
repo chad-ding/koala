@@ -78,7 +78,7 @@ class Home extends Component {
         let navs = (
             <Menu mode="horizontal" onClick={this.tabChange} selectedKeys={[this.props.tab]} defaultSelectedKeys={['application']} theme="dark">
                 <Menu.Item key="application">
-                    <Link to="/application/list"><Icon type="videocamera"></Icon>我的申请</Link>
+                    <Link to="/application/list">我的申请</Link>
                 </Menu.Item>
                 <Menu.Item key="approval">
                     <Link to="/approval/list">我的审批</Link>
