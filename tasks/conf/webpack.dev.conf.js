@@ -1,18 +1,16 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-var appConf = require('./app.conf');
-var utils = require('../utils');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const appConf = require('./app.conf');
+const utils = require('../utils');
 
-var resolve = utils.resolve;
-var assetsPath = utils.assetsPath;
+const resolve = utils.resolve;
+const assetsPath = utils.assetsPath;
 
 module.exports = {
     entry: {
         app: ['./tasks/utils/dev-client', appConf.entry]
     },
-    devtool: '#cheap-module-eval-source-map',
     output: {
         path: appConf.buildRoot,
         filename: '[name].js',
@@ -80,5 +78,6 @@ module.exports = {
         }),
         new FriendlyErrorsPlugin()
     ],
+    //devtool: '#cheap-module-eval-source-map',
     devtool: '#inline-source-map'
 };

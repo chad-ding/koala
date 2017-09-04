@@ -1,12 +1,12 @@
 process.env.NODE_ENV = 'production';
 
-var rm = require('rimraf');
-var path = require('path');
-var chalk = require('chalk');
-var webpack = require('webpack');
-var appConf = require('./conf/app.conf');
-var webpackConfig = require('./conf/webpack.prod.conf');
-var utils = require('./utils');
+const rm = require('rimraf');
+const path = require('path');
+const chalk = require('chalk');
+const webpack = require('webpack');
+const appConf = require('./conf/app.conf');
+const webpackConfig = require('./conf/webpack.prod.conf');
+const utils = require('./utils');
 
 
 rm(path.join(appConf.buildRoot, appConf.assetsSubDirectory), err => {

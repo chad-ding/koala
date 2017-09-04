@@ -1,37 +1,33 @@
 process.env.NODE_ENV = 'development';
 
-var opn = require('opn');
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var proxyMiddleware = require('http-proxy-middleware');
-var webpackConfig = require('./conf/webpack.dev.conf');
-var appConf = require('./conf/app.conf');
-var utils = require('./utils');
+const opn = require('opn');
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
+const proxyMiddleware = require('http-proxy-middleware');
+const webpackConfig = require('./conf/webpack.dev.conf');
+const appConf = require('./conf/app.conf');
+const utils = require('./utils');
+
+const port = process.env.PORT || appConf.devPort;
+const autoOpenBrowser = true;
+const proxyTable = appConf.proxyTable;
+const app = express();
+const compiler = webpack(webpackConfig);
+const uri = 'http://localhost:' + port;
 
 utils.checkLoaderEnable(webpackConfig, 'eslintEnable', 'eslint-loader');
 utils.checkLoaderEnable(webpackConfig, 'babelEnable', 'babel-loader');
 
-// default port where dev server listens for incoming traffic
-var port = process.env.PORT || appConf.devPort;
-    // automatically open browser, if not set will be false
-var autoOpenBrowser = true;
-    // Define HTTP proxies to your custom API backend
-    // https://github.com/chimurai/http-proxy-middleware
-var proxyTable = appConf.proxyTable;
-
-var app = express();
-var compiler = webpack(webpackConfig);
-
-var devMiddleware = require('webpack-dev-middleware')(compiler, {
+const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
     quiet: true
 });
 
-var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-        log: () => {}
-    });
-    // force page reload when html-webpack-plugin template changes
+const hotMiddleware = require('webpack-hot-middleware')(compiler, {
+    log: () => {}
+});
+
 compiler.plugin('compilation', function(compilation) {
     compilation.plugin('html-webpack-plugin-after-emit', function(data, cb) {
         hotMiddleware.publish({ action: 'reload' });
@@ -42,7 +38,7 @@ compiler.plugin('compilation', function(compilation) {
 // proxy api requests
 if (proxyTable) {
     Object.keys(proxyTable).forEach(function(context) {
-        var options = proxyTable[context];
+        let options = proxyTable[context];
         if (typeof options === 'string') {
             options = { target: options };
         }
@@ -61,10 +57,8 @@ app.use(devMiddleware);
 app.use(hotMiddleware);
 
 // serve pure static assets
-var staticPath = path.posix.join(appConf.assetsPublicPath, appConf.assetsSubDirectory);
+let staticPath = path.posix.join(appConf.assetsPublicPath, appConf.assetsSubDirectory);
 app.use(staticPath, express.static('./static'));
-
-var uri = 'http://localhost:' + port;
 
 devMiddleware.waitUntilValid(function() {
     console.info('>>> Listening at ' + uri + '\n');

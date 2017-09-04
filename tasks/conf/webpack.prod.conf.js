@@ -1,15 +1,14 @@
-/* eslint-disable */
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var appConf = require('./app.conf');
-var utils = require('../utils');
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const appConf = require('./app.conf');
+const utils = require('../utils');
 
-var resolve = utils.resolve;
-var assetsPath = utils.assetsPath;
+const resolve = utils.resolve;
+const assetsPath = utils.assetsPath;
 
 module.exports = {
     // Don't attempt to continue if there are any errors.
