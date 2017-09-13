@@ -6,7 +6,6 @@
 
 import { dictToString } from './utils';
 import 'whatwg-fetch';
-import Promise from 'promise-polyfill';
 import { REQUEST_FAILED } from './consts/action';
 import { BASE_URL } from './consts/metadata';
 
@@ -16,13 +15,7 @@ const METHOD = {
     DELETE: Symbol('DELETE')
 };
 
-
-//低版本的浏览器不支持promise
-if (!window.Promise) {
-    window.Promise = Promise;
-}
-
-let config = {
+const config = {
     headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
@@ -150,5 +143,4 @@ export function fetchData(...requests) {
         onSuccess: json => dispatch(receiveData(requests[0], json)),
         onFail: error => dispatch(requestFailed(requests[0], error))
     });
-
 };
