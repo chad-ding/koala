@@ -8,7 +8,6 @@ const appConf = require('./conf/app.conf');
 const webpackConfig = require('./conf/webpack.prod.conf');
 const utils = require('./utils');
 
-
 rm(path.join(appConf.buildRoot, appConf.assetsSubDirectory), err => {
     if (err){
         throw err;

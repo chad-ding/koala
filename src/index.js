@@ -9,13 +9,19 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import configStore from './store/ConfigStore';
+import Promise from 'promise-polyfill';
+
+//低版本的浏览器不支持promise
+if (!window.Promise) {
+    window.Promise = Promise;
+}
 
 let store = configStore();
 
 let home = (location, callback) => {
-    import('./views/Home').then(component => {
-        callback(null, component.default);
-    });
+    require.ensure([], require => {
+        callback(null, require('./views/Home').default);
+    }, 'Home');
 };
 
 let application = (location, callback) => {

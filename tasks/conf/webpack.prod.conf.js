@@ -40,7 +40,7 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             loader: 'eslint-loader',
-            enforce: "pre",
+            enforce: 'pre',
             include: [resolve('src'), resolve('test')]
         }, {
             test: /\.css$/,
