@@ -27,9 +27,15 @@ class Channel extends Component {
                         <Icon type="home" />
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                    {
-                        routes[1].path === 'application' ?  <Link to="/application/list">接入申请</Link> : <Link to="/approval/list">接入审批</Link>
-                    }
+                        {
+                            do{
+                                if(routes[1].path === 'application'){
+                                    <Link to="/application/list">接入申请</Link>;
+                                }else{
+                                    <Link to="/approval/list">接入审批</Link>;
+                                }
+                            }
+                        }
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
                         <span>频道</span>
