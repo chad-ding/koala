@@ -10,6 +10,8 @@ const utils = require('../utils');
 const resolve = utils.resolve;
 const assetsPath = utils.assetsPath;
 
+process.noDeprecation = true;
+
 module.exports = {
     // Don't attempt to continue if there are any errors.
     bail: true,
@@ -58,14 +60,14 @@ module.exports = {
         }, {
             test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
             loader: 'url-loader',
-            query: {
+            options: {
                 limit: 10000,
                 name: assetsPath('img/[name].[hash:7].[ext]')
             }
         }, {
             test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
             loader: 'url-loader',
-            query: {
+            options: {
                 limit: 10000,
                 name: assetsPath('fonts/[name].[hash:7].[ext]')
             }
