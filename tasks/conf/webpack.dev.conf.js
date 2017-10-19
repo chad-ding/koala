@@ -7,6 +7,8 @@ const utils = require('../utils');
 const resolve = utils.resolve;
 const assetsPath = utils.assetsPath;
 
+process.noDeprecation = true;
+
 module.exports = {
     entry: {
         app: ['./tasks/utils/dev-client', appConf.entry]
