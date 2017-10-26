@@ -20,7 +20,33 @@ module.exports = {
     // You can exclude the *.map files from the build during deployment.
     devtool: 'source-map',
     entry: {
-        app: appConf.entry
+        app: appConf.entry,
+        vendor: [ //build the mostly used framework scripts into vendor.
+            'react',
+            'react-dom',
+            'react-redux',
+            'react-router',
+            'redux',
+            'redux-thunk',
+            'prop-types',
+            'whatwg-fetch',
+            'promise-polyfill'
+        ],
+        antd: [	//build the mostly used components into a indepent chunk,avoid of total package over size.
+            'antd/lib/button',
+            'antd/lib/icon',
+            'antd/lib/breadcrumb',
+            'antd/lib/form',
+            'antd/lib/menu',
+            'antd/lib/input',
+            'antd/lib/input-number',
+            'antd/lib/dropdown',
+            'antd/lib/table',
+            'antd/lib/tabs',
+            'antd/lib/modal',
+            'antd/lib/row',
+            'antd/lib/col'
+        ]
     },
     output: {
         path: appConf.buildRoot,
@@ -82,6 +108,9 @@ module.exports = {
             }
         }),
         new webpack.optimize.UglifyJsPlugin({
+            output: {
+                comments: false // remove all comments
+            },
             compress: {
                 warnings: false
             },
@@ -107,25 +136,22 @@ module.exports = {
                 removeComments: true,
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
-                    // more options:
-                    // https://github.com/kangax/html-minifier#options-quick-reference
+                // more options:
+                // https://github.com/kangax/html-minifier#options-quick-reference
             },
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency'
         }),
         // split vendor js into its own file
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: function(module, count) {
-                // any required modules inside node_modules are extracted to vendor
-                return (module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../../node_modules')) === 0);
-            }
+            names: ['antd', 'vendor'],
+            minChunks: Infinity
         }),
         // extract webpack runtime and module manifest to its own file in order to
         // prevent vendor hash from being updated whenever app bundle is updated
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
-            chunks: ['vendor']
+            chunks: ['vendor', 'antd']
         }),
         // copy custom static assets
         new CopyWebpackPlugin([{
