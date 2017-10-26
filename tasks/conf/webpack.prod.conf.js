@@ -144,7 +144,7 @@ module.exports = {
         }),
         // split vendor js into its own file
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['antd', 'vendor'],
+            names: ['vendor', 'antd'],
             minChunks: Infinity
         }),
         // extract webpack runtime and module manifest to its own file in order to
