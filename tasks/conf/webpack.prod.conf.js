@@ -32,7 +32,7 @@ module.exports = {
             'whatwg-fetch',
             'promise-polyfill'
         ],
-        antd: [	//build the mostly used components into a indepent chunk,avoid of total package over size.
+        antd: [ //build the mostly used components into a independent chunk,avoid of total package over size.
             'antd/lib/button',
             'antd/lib/icon',
             'antd/lib/breadcrumb',
@@ -75,7 +75,12 @@ module.exports = {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
-                use: 'css-loader'
+                use: [{
+                    loader: 'css-loader',
+                    options: {
+                        minimize: true //css压缩
+                    }
+                }]
             })
         }, {
             test: /\.less/,

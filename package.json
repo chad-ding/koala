@@ -63,7 +63,7 @@
     "webpack-hot-middleware": "2.16.1"
   },
   "dependencies": {
-    "antd": "^2.9.0",
+    "antd": "^2.13.4",
     "echarts": "^3.6.2",
     "js-md5": "^0.4.2",
     "jsencrypt": "^2.3.1",

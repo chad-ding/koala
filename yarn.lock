@@ -112,9 +112,9 @@ ansi-styles@^3.1.0:
   dependencies:
     color-convert "^1.9.0"
 
-antd@^2.9.0:
-  version "2.13.6"
-  resolved "http://registry.npm.taobao.org/antd/download/antd-2.13.6.tgz#eb60b5db2bb03a92f918a2a2be3bca95a82ce1fa"
+antd@^2.13.4:
+  version "2.13.7"
+  resolved "http://registry.npm.taobao.org/antd/download/antd-2.13.7.tgz#9b50249b1909facc2af7f7e8d1bea88e4af68db2"
   dependencies:
     array-tree-filter "~1.0.0"
     babel-runtime "6.x"
