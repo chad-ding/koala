@@ -83,8 +83,13 @@ module.exports = {
                 }]
             })
         }, {
-            test: /\.less/,
-            loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'
+            test: /\.less$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'autoprefixer-loader',
+                'less-loader'
+            ]
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
@@ -141,8 +146,8 @@ module.exports = {
                 removeComments: true,
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
-                // more options:
-                // https://github.com/kangax/html-minifier#options-quick-reference
+                    // more options:
+                    // https://github.com/kangax/html-minifier#options-quick-reference
             },
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency'
