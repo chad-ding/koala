@@ -167,14 +167,14 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../../assets'),
             to: appConf.assetsSubDirectory,
-            ignore: ['img/**']
+            ignore: ['img/**', 'fonts/**']
         }]),
         new BundleAnalyzerPlugin({
             // Can be `server`, `static` or `disabled`.
             // In `server` mode analyzer will start HTTP server to show bundle report.
             // In `static` mode single HTML file with bundle report will be generated.
             // In `disabled` mode you can use this plugin to just generate Webpack Stats JSON file by setting `generateStatsFile` to `true`.
-            analyzerMode: 'server',
+            analyzerMode: 'disabled',
             // Host that will be used in `server` mode to start HTTP server.
             analyzerHost: '127.0.0.1',
             // Port that will be used in `server` mode to start HTTP server.
