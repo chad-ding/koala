@@ -21,7 +21,7 @@ module.exports = {
     bail: true,
     // We generate sourcemaps in production. This is slow but gives good results.
     // You can exclude the *.map files from the build during deployment.
-    //devtool: 'source-map',
+    devtool: 'source-map',
     entry: {
         app: appConf.entry,
         vendor: [ //build the mostly used framework scripts into vendor.
@@ -145,8 +145,8 @@ module.exports = {
             },
             compress: {
                 warnings: false
-            }
-            //sourceMap: true
+            },
+            sourceMap: true
         }),
         // extract css into its own file
         // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
