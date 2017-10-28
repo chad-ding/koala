@@ -11,8 +11,14 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const resolve = utils.resolve;
 const assetsPath = utils.assetsPath;
 
-const ExtractVendorCSS = new ExtractTextPlugin({ filename: assetsPath('css/vendor.[contenthash].css'), allChunks: true });
-const ExtractAppCSS = new ExtractTextPlugin({ filename: assetsPath('css/app.[contenthash].css'), allChunks: true });
+const ExtractVendorCSS = new ExtractTextPlugin({//extract library style files into vendor
+    filename: assetsPath('css/vendor.[contenthash].css'),
+    allChunks: true
+});
+const ExtractAppCSS = new ExtractTextPlugin({//extract project style files into app
+    filename: assetsPath('css/app.[contenthash].css'),
+    allChunks: true
+});
 
 process.noDeprecation = true;
 
@@ -88,8 +94,7 @@ module.exports = {
                 use: [{
                         loader: 'css-loader',
                         options: {
-                            minimize: true,
-                            importLoaders: 1
+                            minimize: true
                         }
                     },
                     'autoprefixer-loader',
@@ -104,8 +109,7 @@ module.exports = {
                 use: [{
                         loader: 'css-loader',
                         options: {
-                            minimize: true,
-                            importLoaders: 1
+                            minimize: true
                         }
                     },
                     'autoprefixer-loader',
@@ -150,9 +154,6 @@ module.exports = {
         }),
         // extract css into its own file
         // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-        /**new ExtractTextPlugin({
-            filename: assetsPath('css/[name].[contenthash].css')
-        }),**/
         ExtractVendorCSS,
         ExtractAppCSS,
         // Compress extracted CSS. We are using this plugin so that possible
