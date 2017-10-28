@@ -11,6 +11,9 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const resolve = utils.resolve;
 const assetsPath = utils.assetsPath;
 
+const ExtractVendorCSS = new ExtractTextPlugin({ filename: assetsPath('css/vendor.[contenthash].css'), allChunks: true });
+const ExtractAppCSS = new ExtractTextPlugin({ filename: assetsPath('css/app.[contenthash].css'), allChunks: true });
+
 process.noDeprecation = true;
 
 module.exports = {
@@ -18,7 +21,7 @@ module.exports = {
     bail: true,
     // We generate sourcemaps in production. This is slow but gives good results.
     // You can exclude the *.map files from the build during deployment.
-    devtool: 'source-map',
+    //devtool: 'source-map',
     entry: {
         app: appConf.entry,
         vendor: [ //build the mostly used framework scripts into vendor.
@@ -73,23 +76,42 @@ module.exports = {
             include: [resolve('src'), resolve('test')]
         }, {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract({
+            use: ExtractVendorCSS.extract({
                 fallback: 'style-loader',
-                use: [{
-                    loader: 'css-loader',
-                    options: {
-                        minimize: true //css压缩
-                    }
-                }]
+                use: ['css-loader', 'autoprefixer-loader']
             })
         }, {
             test: /\.less$/,
-            use: [
-                'style-loader',
-                'css-loader',
-                'autoprefixer-loader',
-                'less-loader'
-            ]
+            include: resolve('node_modules'),
+            use: ExtractVendorCSS.extract({
+                fallback: 'style-loader',
+                use: [{
+                        loader: 'css-loader',
+                        options: {
+                            minimize: true,
+                            importLoaders: 1
+                        }
+                    },
+                    'autoprefixer-loader',
+                    'less-loader'
+                ]
+            })
+        }, {
+            test: /\.less$/,
+            include: resolve('src'),
+            use: ExtractAppCSS.extract({
+                fallback: 'style-loader',
+                use: [{
+                        loader: 'css-loader',
+                        options: {
+                            minimize: true,
+                            importLoaders: 1
+                        }
+                    },
+                    'autoprefixer-loader',
+                    'less-loader'
+                ]
+            })
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
@@ -123,14 +145,16 @@ module.exports = {
             },
             compress: {
                 warnings: false
-            },
-            sourceMap: true
+            }
+            //sourceMap: true
         }),
         // extract css into its own file
         // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-        new ExtractTextPlugin({
+        /**new ExtractTextPlugin({
             filename: assetsPath('css/[name].[contenthash].css')
-        }),
+        }),**/
+        ExtractVendorCSS,
+        ExtractAppCSS,
         // Compress extracted CSS. We are using this plugin so that possible
         // duplicated CSS from different components can be deduped.
         new OptimizeCSSPlugin(),
