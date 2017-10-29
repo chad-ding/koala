@@ -5,7 +5,7 @@
  */
 
 import { LOGIN, TAB_CHANGE_HOME, LOGIN_MODAL_HANDLE } from '../../consts/action';
-import { fetchData } from '../../resource';
+import { fetchData } from '../../commons/resource';
 import { LOGIN_PATH } from '../../consts/path';
 
 export function changeTab(key) {

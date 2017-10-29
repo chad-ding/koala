@@ -8,25 +8,25 @@
             "type": "dateFile",
             "pattern": " .yyyy-MM-dd",
             "category": "logDebug",
-            "filename": "E:/temp/debug/debug.log"
+            "filename": "log/debug/debug.log"
         },
         "info": {
             "type": "dateFile",
             "pattern": " .yyyy-MM-dd",
             "category": "logInfo",
-            "filename": "E:/temp/info/info.log"
+            "filename": "log/info/info.log"
         },
         "warn": {
             "type": "dateFile",
             "pattern": " .yyyy-MM-dd",
             "category": "logWarn",
-            "filename": "E:/temp/warn/warn.log"
+            "filename": "log/warn/warn.log"
         },
         "error": {
             "type": "dateFile",
             "pattern": " .yyyy-MM-dd",
             "category": "logError",
-            "filename": "E:/temp/error/error.log"
+            "filename": "log/error/error.log"
         }
     },
     "replaceConsole": true,

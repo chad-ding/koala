@@ -4,7 +4,7 @@
  *@Date: 2017-05-25 16:05:57
  */
 
-import { fetchData } from '../../resource';
+import { fetchData } from '../../commons/resource';
 import { CHANNEL_LIST_PATH } from '../../consts/path';
 import { GET_CHANNEL_LIST } from '../../consts/action';
 

@@ -3,7 +3,7 @@
  *@Date: 2017-06-28 09:48:50
  */
 
-import { fetchData } from '../../resource';
+import { fetchData } from '../../commons/resource';
 import { LINE_CHART_PATH, BAR_CHART_PATH, PIE_CHART_PATH, RADAR_CHART_PATH } from '../../consts/path';
 import { GET_LINE_CHART_DATA, GET_BAR_CHART_DATA, GET_PIE_CHART_DATA, GET_RADAR_CHART_DATA } from '../../consts/action';
 

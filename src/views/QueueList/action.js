@@ -4,7 +4,7 @@
  *@Date: 2017-05-26 09:58:03
  */
 
-import { fetchData } from '../../resource';
+import { fetchData } from '../../commons/resource';
 import { QUEUE_LIST_PATH } from '../../consts/path';
 import { GET_QUEUE_LIST } from '../../consts/action';
 

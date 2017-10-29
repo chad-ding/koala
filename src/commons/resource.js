@@ -6,8 +6,8 @@
 
 import { dictToString } from './utils';
 import 'whatwg-fetch';
-import { REQUEST_FAILED } from './consts/action';
-import { BASE_URL } from './consts/metadata';
+import { REQUEST_FAILED } from '../consts/action';
+import { BASE_URL } from '../consts/metadata';
 
 const METHOD = {
     GET: Symbol('GET'),

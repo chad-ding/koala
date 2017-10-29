@@ -3,7 +3,7 @@
  *@Date: 2017-06-21 17:39:19
  */
 
-import { fetchData } from '../../resource';
+import { fetchData } from '../../commons/resource';
 import { DOMAIN_LIST_PATH } from '../../consts/path';
 import { GET_DOMAIN_LIST } from '../../consts/action';
 

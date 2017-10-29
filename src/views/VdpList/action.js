@@ -4,7 +4,7 @@
  *@Date: 2017-05-26 11:11:23
  */
 
-import { fetchData } from '../../resource';
+import { fetchData } from '../../commons/resource';
 import { VDP_LIST_PATH } from '../../consts/path';
 import { GET_VDP_LIST } from '../../consts/action';
 

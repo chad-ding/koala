@@ -3,7 +3,7 @@
  *@Date: 2017-06-21 16:07:43
  */
 
-import { fetchData } from '../../resource';
+import { fetchData } from '../../commons/resource';
 import { PARAMS_LIST_PATH } from '../../consts/path';
 import { GET_PARAMS_LIST, PARAMS_MODAL_HANDLE } from '../../consts/action';
 

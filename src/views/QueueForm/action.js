@@ -5,7 +5,7 @@
  */
 
 import { CHANNEL_MODAL_HANDLE } from '../../consts/action';
-import { fetchData } from '../../resource';
+import { fetchData } from '../../commons/resource';
 import { SUBSCRIBE_LIST_PATH } from '../../consts/path';
 import { GET_SUBSCRIBE_LIST, SUBSCRIBE, UNSUBSCRIBE } from '../../consts/action';
 

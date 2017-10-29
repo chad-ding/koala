@@ -5,10 +5,10 @@
  */
 
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import configStore from './store/ConfigStore';
+import configStore from './commons/configStore';
 import Promise from 'promise-polyfill';
 
 //低版本的浏览器不支持promise
@@ -146,7 +146,7 @@ let help = (location, callback) => {
 
 render((
     <Provider store={store}>
-        <Router history={browserHistory}>
+        <Router history={hashHistory}>
             <Route path="/" getComponent={home}>
                 <IndexRoute getComponent={application}></IndexRoute>
                 <Route path="application">

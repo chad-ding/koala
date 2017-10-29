@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Table, Tooltip } from 'antd';
 import { getParamsList, handleModal } from './action';
-import { cutString } from '../../utils';
+import { cutString } from '../../commons/utils';
 import ParamsModal from './ParamsModal';
 
 class Params extends Component {
