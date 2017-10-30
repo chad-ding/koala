@@ -39,8 +39,20 @@ module.exports = {
             test: /\.css$/,
             loader: 'style-loader!css-loader'
         }, {
-            test: /\.less/,
-            loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'
+            test: /\.less$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'autoprefixer-loader',
+                {
+                    loader: 'less-loader',
+                    options: {
+                        modifyVars: {
+                            'primary-color': '#1DA57A'
+                        }
+                    }
+                }
+            ]
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
