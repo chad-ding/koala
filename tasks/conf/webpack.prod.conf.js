@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const appConf = require('./app.conf');
 const utils = require('../utils');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const theme = require('../../theme').THEME;
 
 const resolve = utils.resolve;
 const assetsPath = utils.assetsPath;
@@ -112,9 +113,7 @@ module.exports = {
                     {
                         loader: 'less-loader',
                         options: {
-                            modifyVars: {
-                                'primary-color': '#1DA57A'
-                            }
+                            modifyVars: theme
                         }
                     }
                 ]
