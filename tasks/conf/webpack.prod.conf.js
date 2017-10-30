@@ -30,6 +30,10 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         app: appConf.entry,
+        common: [ //extract project common function into a independent chunk.
+            `${resolve('src')}/commons/resource`,
+            `${resolve('src')}/commons/utils`
+        ],
         vendor: [ //build the mostly used framework scripts into vendor.
             'react',
             'react-dom',
@@ -179,14 +183,14 @@ module.exports = {
         }),
         // split vendor js into its own file
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'antd'],
+            names: ['vendor', 'antd', 'common'],
             minChunks: Infinity
         }),
         // extract webpack runtime and module manifest to its own file in order to
         // prevent vendor hash from being updated whenever app bundle is updated
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
-            chunks: ['vendor', 'antd']
+            chunks: ['vendor', 'antd', 'common']
         }),
         // copy custom static assets
         new CopyWebpackPlugin([{
@@ -199,7 +203,7 @@ module.exports = {
             // In `server` mode analyzer will start HTTP server to show bundle report.
             // In `static` mode single HTML file with bundle report will be generated.
             // In `disabled` mode you can use this plugin to just generate Webpack Stats JSON file by setting `generateStatsFile` to `true`.
-            analyzerMode: 'disabled',
+            analyzerMode: 'server',
             // Host that will be used in `server` mode to start HTTP server.
             analyzerHost: '127.0.0.1',
             // Port that will be used in `server` mode to start HTTP server.

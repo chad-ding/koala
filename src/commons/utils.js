@@ -17,11 +17,11 @@ export function cutString(str, len){
     let string = str.substr(0, len);
 
     return `${string}...`;
-}
+};
 
 export function isEmpty(obj) {
     return Object.getOwnPropertyNames(obj).length <= 0;
-}
+};
 
 /**
  * 读取UTF8编码的字节，并转为Unicode的字符串
@@ -50,7 +50,7 @@ export function readUTF(word) {
         }
     }
     return UTF;
-}
+};
 
 /**
  * 将字典转化为GET中query的模式
@@ -70,7 +70,7 @@ export function dictToString(dict, split = '&') {
         }
     }
     return result;
-}
+};
 
 /**
  * 将字典转化为POST中query json的模式
@@ -83,7 +83,7 @@ export function dictToJson(dict) {
         console.log(error);
     }
     return result;
-}
+};
 
 /**
  * 获取屏幕宽度
@@ -91,14 +91,14 @@ export function dictToJson(dict) {
 export function getScreenWidth() {
     return document.documentElement.clientWidth;
     // return window.screen.width;
-}
+};
 
 /**
  * 获取屏幕高度
  */
 export function getScreenHeight() {
     return document.documentElement.clientHeight;
-}
+};
 
 /**
  * 离最顶部的高度
@@ -115,7 +115,7 @@ export function getDocumentTop() {
     }
     scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
     return scrollTop;
-}
+};
 
 /**
  * 可视窗口高度
@@ -128,7 +128,7 @@ export function getWindowHeight() {
         windowHeight = document.body.clientHeight;
     }
     return windowHeight;
-}
+};
 
 /**
  * 滚动条总的滚动高度
@@ -145,7 +145,7 @@ export function getScrollHeight() {
     }
     scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
     return scrollHeight;
-}
+};
 
 /**
  * rsa加密
@@ -161,7 +161,7 @@ export function RSAEncrypt(encryptString) {
     encrypt.setPublicKey(PUBLIC_KEY);
     encryptString = encrypt.encrypt(encryptString);
     return encryptString;
-}
+};
 
 /**
  * 设置cookies
@@ -172,7 +172,7 @@ export function setCookies(dict = {}, days = 1) {
     for (let key in dict) {
         document.cookie = `${key}=${dict[key]}; expires=${time.toUTCString()}`;
     }
-}
+};
 
 /**
  * 获取cookies
@@ -191,7 +191,7 @@ export function getCookies(name) {
         }
     }
     return result;
-}
+};
 
 /**
  * 手机格式正则
@@ -204,4 +204,4 @@ export function checkPhone(phone) {
     let reg = new RegExp('^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$');
     let result = reg.exec(phone);
     return result.length > 0;
-}
+};
