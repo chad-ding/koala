@@ -8,7 +8,7 @@ import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import configStore from './commons/configStore';
+import configStore from './configStore';
 import Promise from 'promise-polyfill';
 
 //低版本的浏览器不支持promise
@@ -16,129 +16,129 @@ if (!window.Promise) {
     window.Promise = Promise;
 }
 
-let store = configStore();
+const store = configStore();
 
-let home = (location, callback) => {
+const home = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Home').default);
     }, 'Home');
 };
 
-let application = (location, callback) => {
+const application = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Application').default);
     }, 'Application');
 };
 
-let approval = (location, callback) => {
+const approval = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Approval').default);
     }, 'Approval');
 };
 
-let envList = (location, callback) => {
+const envList = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/EnvList').default);
     }, 'EnvList');
 };
 
-let envItem = (location, callback) => {
+const envItem = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/EnvItem').default);
     }, 'EnvItem');
 };
 
-let envAdd = (location, callback) => {
+const envAdd = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/EnvAdd').default);
     }, 'EnvAdd');
 };
 
-let channelForm = (location, callback) => {
+const channelForm = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/ChannelForm').default);
     }, 'ChannelForm');
 };
 
-let queueForm = (location, callback) => {
+const queueForm = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/QueueForm').default);
     }, 'QueueForm');
 };
 
-let vdpForm = (location, callback) => {
+const vdpForm = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/VdpForm').default);
     }, 'VdpForm');
 };
 
-let sysConfig = (location, callback) => {
+const sysConfig = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/SysConfig').default);
     }, 'SysConfig');
 };
 
-let baseInfo = (location, callback) => {
+const baseInfo = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/BaseInfo').default);
     }, 'BaseInfo');
 };
 
-let dataDic = (location, callback) => {
+const dataDic = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/DataDic').default);
     }, 'DataDic');
 };
 
-let codeGen = (location, callback) => {
+const codeGen = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/CodeGen').default);
     }, 'CodeGen');
 };
 
-let note = (location, callback) => {
+const note = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Note').default);
     }, 'Note');
 };
 
-let role = (location, callback) => {
+const role = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Role').default);
     }, 'Role');
 };
 
-let domain = (location, callback) => {
+const domain = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Domain').default);
     }, 'Domain');
 };
 
-let channel = (location, callback) => {
+const channel = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Channel').default);
     }, 'Channel');
 };
 
-let queue = (location, callback) => {
+const queue = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Queue').default);
     }, 'Queue');
 };
 
-let vdp = (location, callback) => {
+const vdp = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Vdp').default);
     }, 'Vdp');
 };
 
-let dashboard = (location, callback) => {
+const dashboard = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Dashboard').default);
     }, 'Dashboard');
 };
 
-let help = (location, callback) => {
+const help = (location, callback) => {
     require.ensure([], require => {
         callback(null, require('./views/Help').default);
     }, 'Help');
