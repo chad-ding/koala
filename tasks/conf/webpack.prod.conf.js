@@ -11,11 +11,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const resolve = utils.resolve;
 const assetsPath = utils.assetsPath;
 
-const ExtractVendorCSS = new ExtractTextPlugin({//extract library style files into vendor
+const ExtractVendorCSS = new ExtractTextPlugin({ //extract library style files into vendor
     filename: assetsPath('css/vendor.[contenthash].css'),
     allChunks: true
 });
-const ExtractAppCSS = new ExtractTextPlugin({//extract project style files into app
+const ExtractAppCSS = new ExtractTextPlugin({ //extract project style files into app
     filename: assetsPath('css/app.[contenthash].css'),
     allChunks: true
 });
@@ -88,7 +88,14 @@ module.exports = {
             test: /\.css$/,
             use: ExtractVendorCSS.extract({
                 fallback: 'style-loader',
-                use: ['css-loader', 'autoprefixer-loader']
+                use: [{
+                        loader: 'css-loader',
+                        options: {
+                            minimize: true
+                        }
+                    },
+                    'autoprefixer-loader'
+                ]
             })
         }, {
             test: /\.less$/,
@@ -175,8 +182,8 @@ module.exports = {
                 removeComments: true,
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
-                    // more options:
-                    // https://github.com/kangax/html-minifier#options-quick-reference
+                // more options:
+                // https://github.com/kangax/html-minifier#options-quick-reference
             },
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency'
