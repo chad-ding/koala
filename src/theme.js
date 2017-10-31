@@ -4,6 +4,6 @@
  *@Date: 2017-10-30 23:36:24
  */
 
-exports.THEME = {
+module.exports = {
 	'primary-color': '#1DA57A'
 };

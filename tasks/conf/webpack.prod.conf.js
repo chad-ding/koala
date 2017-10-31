@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const appConf = require('./app.conf');
 const utils = require('../utils');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const theme = require('../../theme').THEME;
+const theme = require('../../src/theme');
 
 const resolve = utils.resolve;
 const assetsPath = utils.assetsPath;

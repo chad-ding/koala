@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const appConf = require('./app.conf');
 const utils = require('../utils');
-const theme = require('../../theme').THEME;
+const theme = require('../../src/theme');
 
 const resolve = utils.resolve;
 const assetsPath = utils.assetsPath;
