@@ -9,41 +9,27 @@ import { Input, Checkbox } from 'antd';
 import './style.less';
 
 export default class CheckInput extends Component {
-	constructor(props){
-		super(props);
+    constructor(props) {
+        super(props);
 
-		let value = this.props.value || {};
+        let value = this.props.value || {};
         this.state = {
             checked: value.checked || false,
             text: value.text || ''
         };
-
-		this.handleCheckChange = this.handleCheckChange.bind(this);
-		this.handleInputChange = this.handleInputChange.bind(this);
-	}
-	componentWillReceiveProps(nextProps) {
+    }
+    componentWillReceiveProps(nextProps) {
         if ('value' in nextProps) {
             let value = nextProps.value;
             this.setState(value);
         }
     }
-	handleCheckChange(evt){
-		let checked = evt.target.checked;
-		this.setState({ checked });
-	}
-	handleInputChange(evt){
-		let text = evt.target.value;
-		this.setState({ text });
-	}
-	render(){
-
-		let state = this.state;
-
-		return (
-			<span>
-				<Checkbox size="large" onChange={this.handleCheckChange} checked={state.checked}></Checkbox>
-				<Input size="large" type="text" onChange={this.handleInputChange} value={state.text} className="input-width"></Input>
+    render() {
+        return (
+            <span>
+				<Checkbox onChange={evt => this.setState({checked: evt.target.checked})} size="large" checked={this.state.checked}></Checkbox>
+				<Input onChange={evt => this.setState({text: evt.target.value})} size="large" type="text" value={this.state.text} className="input-width"></Input>
 			</span>
-		);
-	}
+        );
+    }
 };
