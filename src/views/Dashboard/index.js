@@ -10,6 +10,7 @@ import LineChart from '../../components/LineChart';
 import BarChart from '../../components/BarChart';
 import PieChart from '../../components/PieChart';
 import RadarChart from '../../components/RadarChart';
+import TopologicalChart from '../../components/TopologicalChart';
 import { getLineChartData, getBarChartData, getPieChartData, getRadarChartData } from './action';
 import { connect } from 'react-redux';
 
@@ -52,6 +53,11 @@ class Dashboard extends Component {
                     </Col>
                     <Col span={12}>
                         <RadarChart title="AQI" data={this.props.radarData} style={{ width: '100%', height: '400px'}}></RadarChart>
+                    </Col>
+                </Row>
+                <Row gutter={16}>
+                    <Col span={24}>
+                        <TopologicalChart title="拓扑图" data={this.props.barData}></TopologicalChart>
                     </Col>
                 </Row>
             </div>
