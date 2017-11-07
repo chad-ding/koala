@@ -58,6 +58,10 @@ let options = [{
     url: '/api/chart/radar',
     method: 'GET',
     data: '/data/radar_chart_data.json'
+}, {
+    url: '/api/chart/topological',
+    method: 'GET',
+    data: '/data/topological_chart_data.json'
 }];
 
 function getFunction(option) {

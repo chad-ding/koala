@@ -11,7 +11,7 @@ import BarChart from '../../components/BarChart';
 import PieChart from '../../components/PieChart';
 import RadarChart from '../../components/RadarChart';
 import TopologicalChart from '../../components/TopologicalChart';
-import { getLineChartData, getBarChartData, getPieChartData, getRadarChartData } from './action';
+import { getLineChartData, getBarChartData, getPieChartData, getRadarChartData, getTopologicalChartData } from './action';
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
@@ -24,6 +24,7 @@ class Dashboard extends Component {
         dispatch(getBarChartData());
         dispatch(getPieChartData());
         dispatch(getRadarChartData());
+        dispatch(getTopologicalChartData());
     }
     render() {
 
@@ -57,7 +58,7 @@ class Dashboard extends Component {
                 </Row>
                 <Row gutter={16}>
                     <Col span={24}>
-                        <TopologicalChart title="拓扑图" data={this.props.barData}></TopologicalChart>
+                        <TopologicalChart title="拓扑图" data={this.props.topologicalData}></TopologicalChart>
                     </Col>
                 </Row>
             </div>
@@ -70,7 +71,8 @@ function mapStateToProps(state) {
         lineData: state.dashboardReducer.lineData,
         barData: state.dashboardReducer.barData,
         pieData: state.dashboardReducer.pieData,
-        radarData: state.dashboardReducer.radarData
+        radarData: state.dashboardReducer.radarData,
+        topologicalData: state.dashboardReducer.topologicalData
     };
 }
 

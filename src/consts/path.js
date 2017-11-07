@@ -68,3 +68,8 @@ export const RADAR_CHART_PATH = {
     path: '/chart/radar',
     method: 'GET'
 };
+
+export const TOPOLOGICAL_CHART_PATH = {
+    path: '/chart/topological',
+    method: 'GET'
+};
