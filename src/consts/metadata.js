@@ -3,7 +3,7 @@
  *@Date: 2017-06-22 17:08:53
  */
 
-export const BASE_URL = 'http://localhost:9300/api';
+export const BASE_URL = '/api';
 
 export const VARIABLE = [{
     name: '$bo',
