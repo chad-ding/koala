@@ -205,6 +205,10 @@ module.exports = {
             name: 'manifest'
             //chunks: ['vendor', 'antd', 'common']
         }),
+        new webpack.optimize.CommonsChunkPlugin({
+            children: true,
+            minChunks: 5
+        }),
         // copy custom static assets
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../../assets'),
@@ -216,7 +220,7 @@ module.exports = {
             // In `server` mode analyzer will start HTTP server to show bundle report.
             // In `static` mode single HTML file with bundle report will be generated.
             // In `disabled` mode you can use this plugin to just generate Webpack Stats JSON file by setting `generateStatsFile` to `true`.
-            analyzerMode: 'disabled',
+            analyzerMode: 'server',
             // Host that will be used in `server` mode to start HTTP server.
             analyzerHost: '127.0.0.1',
             // Port that will be used in `server` mode to start HTTP server.

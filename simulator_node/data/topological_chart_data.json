@@ -1,0 +1,33 @@
+{
+    "data": [
+    {
+        "id": 0,
+        "category": 0,
+        "name": "负载",
+        "value": 20,
+        "symbolSize": 80
+    },
+    {
+        "id": 1,
+        "category": 1,
+        "name": "中间件",
+        "value": 20,
+        "symbolSize": 70
+    },
+    {
+        "id": 2,
+        "category": 2,
+        "name": "端口号",
+        "value": 20,
+        "symbolSize": 60
+    }],
+    "links": [
+    {
+        "source": 1,
+        "target": 0
+    },
+    {
+        "source": 1,
+        "target": 2
+    }]
+}

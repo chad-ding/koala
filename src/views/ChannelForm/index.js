@@ -115,6 +115,24 @@ class Channel extends Component {
                             <Input placeholder="必须以channel开头，包含数字，字母，'_'和'.'，如channel.cfg_2d" />
                         )}
                     </FormItem>
+                    <FormItem {...formItemLayout} label="区间" hasFeedback>
+                        {getFieldDecorator('range', {
+                            rules: [{
+                                required: true, message: '请输入区间范围!'
+                            }, {
+                                validator: function(rule, value, callback){
+                                    if (value.min <= value.max) {
+                                        callback();
+                                        return;
+                                    }
+                                    callback('请输入正确的数据范围');
+                                }
+                            }],
+                            initialValue: {min: 5, max: 340}
+                        })(
+                            <RangeInput unit="msg/s"></RangeInput>
+                        )}
+                    </FormItem>
                     <FormItem {...formItemLayout} label="存储引擎" hasFeedback>
                         {getFieldDecorator('cluster', {
                             rules: [{

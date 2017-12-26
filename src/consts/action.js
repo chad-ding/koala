@@ -64,3 +64,5 @@ export const GET_BAR_CHART_DATA = Symbol('GET_BAR_CHART_DATA');
 export const GET_PIE_CHART_DATA = Symbol('GET_PIE_CHART_DATA');
 //获取雷达图数据
 export const GET_RADAR_CHART_DATA = Symbol('GET_RADAR_CHART_DATA');
+//获取拓扑图数据
+export const GET_TOPOLOGICAL_CHART_DATA = Symbol('GET_TOPOLOGICAL_CHART_DATA');
