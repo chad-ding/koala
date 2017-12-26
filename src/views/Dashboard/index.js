@@ -10,12 +10,18 @@ import LineChart from '../../components/LineChart';
 import BarChart from '../../components/BarChart';
 import PieChart from '../../components/PieChart';
 import RadarChart from '../../components/RadarChart';
+import HoneycombChart from '../../components/HoneycombChart';
 import { getLineChartData, getBarChartData, getPieChartData, getRadarChartData } from './action';
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            cellData: ['vms1.kafka.fds', 'vms2.kafka.fds', 'vms3.kafka.fds', 'vms4.kafka.fds', 'vms5.kafka.fds', 'vms6.kafka.fds', 'vms7.kafka.fds', 'vms8.kafka.fds', 'vms9.kafka.fds', 'vms10.kafka.fds',
+                        'vms11.kafka.fds', 'vms12.kafka.fds', 'vms13.kafka.fds', 'vms14.kafka.fds', 'vms15.kafka.fds', 'vms16.kafka.fds', 'vms17.kafka.fds', 'vms18.kafka.fds', 'vms19.kafka.fds', 'vms20.kafka.fds']
+        };
     }
     componentDidMount() {
         let { dispatch } = this.props;
@@ -36,6 +42,12 @@ class Dashboard extends Component {
                         <span>系统监控</span>
                     </Breadcrumb.Item>
                 </Breadcrumb>
+                <br/>
+                <Row gutter={16}>
+                    <Col span={24}>
+                        <HoneycombChart title="上证指数" data={this.state.cellData} style={{ width: '100%', height: '600px'}}></HoneycombChart>
+                    </Col>
+                </Row>
                 <br/>
                 <Row gutter={16}>
                     <Col span={12}>
