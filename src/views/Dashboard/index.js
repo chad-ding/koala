@@ -19,8 +19,7 @@ class Dashboard extends Component {
         super(props);
 
         this.state = {
-            cellData: ['vms1.kafka.fds', 'vms2.kafka.fds', 'vms3.kafka.fds', 'vms4.kafka.fds', 'vms5.kafka.fds', 'vms6.kafka.fds', 'vms7.kafka.fds', 'vms8.kafka.fds', 'vms9.kafka.fds', 'vms10.kafka.fds',
-                        'vms11.kafka.fds', 'vms12.kafka.fds', 'vms13.kafka.fds', 'vms14.kafka.fds', 'vms15.kafka.fds', 'vms16.kafka.fds', 'vms17.kafka.fds', 'vms18.kafka.fds', 'vms19.kafka.fds', 'vms20.kafka.fds']
+            cellData: []
         };
     }
     componentDidMount() {
@@ -29,6 +28,13 @@ class Dashboard extends Component {
         dispatch(getBarChartData());
         dispatch(getPieChartData());
         dispatch(getRadarChartData());
+
+        let cellData = [];
+
+        for(let i = 0; i< 100; i++){
+            cellData.push(`节点${i}`);
+        }
+        this.setState({cellData});
     }
     render() {
 
