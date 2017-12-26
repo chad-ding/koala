@@ -110,7 +110,7 @@ class Home extends Component {
                         </Col>
                         <Col span={2}>
                             <Dropdown.Button size="large" overlay={menus}>
-                                <Icon type="laptop"></Icon>操作
+                                <Icon type="locate"></Icon>操作
                             </Dropdown.Button>
                         </Col>
                     </Row>

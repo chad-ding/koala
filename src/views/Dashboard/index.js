@@ -9,10 +9,9 @@ import { Breadcrumb, Icon, Row, Col } from 'antd';
 import LineChart from '../../components/LineChart';
 import BarChart from '../../components/BarChart';
 import PieChart from '../../components/PieChart';
+import TopologicalChart from '../../components/TopologicalChart';
 import RadarChart from '../../components/RadarChart';
 import HoneycombChart from '../../components/HoneycombChart';
-import { getLineChartData, getBarChartData, getPieChartData, getRadarChartData } from './action';
-import TopologicalChart from '../../components/TopologicalChart';
 import { getLineChartData, getBarChartData, getPieChartData, getRadarChartData, getTopologicalChartData } from './action';
 import { connect } from 'react-redux';
 

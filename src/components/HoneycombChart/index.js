@@ -14,7 +14,7 @@ export default class HoneycombChart extends Component {
     }
     static option = {
         grid: {
-            show: true,
+            show: false,
             left: 20,
             top: 20,
             right: 20,
