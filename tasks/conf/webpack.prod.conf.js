@@ -12,13 +12,9 @@ const theme = require('../../src/theme');
 const resolve = utils.resolve;
 const assetsPath = utils.assetsPath;
 
-const ExtractVendorCSS = new ExtractTextPlugin({ //extract library style files into vendor
-    filename: assetsPath('css/vendor.[contenthash].css'),
-    allChunks: true
-});
-const ExtractAppCSS = new ExtractTextPlugin({ //extract project style files into app
-    filename: assetsPath('css/app.[contenthash].css'),
-    allChunks: true
+const ExtractCSS = new ExtractTextPlugin({ //extract library style files into vendor
+    filename: assetsPath('css/[name].[contenthash].css'),
+    allChunks: false
 });
 
 process.noDeprecation = true;
@@ -36,35 +32,48 @@ module.exports = {
             'react-dom',
             'react-redux',
             'react-router',
+            'react-transition-group',
+            'prop-types',
             'redux',
             'redux-thunk',
-            'prop-types',
             'whatwg-fetch',
-            'promise-polyfill'
+            'promise-polyfill',
+            'echarts'
         ],
-        antd: [ //build the mostly used components into a independent chunk,avoid of total package over size.
+        antd: [ //build the mostly used antd components into a independent chunk,avoid of total package over size.
             'antd/lib/button',
             'antd/lib/icon',
+            'antd/lib/date-picker',
             'antd/lib/breadcrumb',
             'antd/lib/form',
             'antd/lib/menu',
             'antd/lib/input',
             'antd/lib/input-number',
             'antd/lib/dropdown',
+            'antd/lib/checkbox',
+            'antd/lib/pagination',
+            'antd/lib/select',
+            'antd/lib/tag',
             'antd/lib/table',
             'antd/lib/tabs',
             'antd/lib/modal',
             'antd/lib/row',
-            'antd/lib/col'
+            'antd/lib/col',
+            'antd/lib/grid',
+            'antd/lib/radio',
+            'antd/lib/steps',
+            'antd/lib/switch',
+            'antd/lib/tooltip'
         ],
         common: [ //extract project common function into a independent chunk.
+            'babel-polyfill',
             `${resolve('src')}/commons/resource`,
             `${resolve('src')}/commons/utils`
         ]
     },
     output: {
         path: appConf.buildRoot,
-        publicPath: appConf.assetsPublicPath,
+        //publicPath: appConf.assetsPublicPath,
         filename: assetsPath('js/[name].[chunkhash].js'),
         chunkFilename: assetsPath('js/[id].[chunkhash].js')
     },
@@ -87,7 +96,7 @@ module.exports = {
             include: [resolve('src'), resolve('test')]
         }, {
             test: /\.css$/,
-            use: ExtractVendorCSS.extract({
+            use: ExtractCSS.extract({
                 fallback: 'style-loader',
                 use: [{
                         loader: 'css-loader',
@@ -100,8 +109,7 @@ module.exports = {
             })
         }, {
             test: /\.less$/,
-            include: resolve('node_modules'),
-            use: ExtractVendorCSS.extract({
+            use: ExtractCSS.extract({
                 fallback: 'style-loader',
                 use: [{
                         loader: 'css-loader',
@@ -116,21 +124,6 @@ module.exports = {
                             modifyVars: theme
                         }
                     }
-                ]
-            })
-        }, {
-            test: /\.less$/,
-            include: resolve('src'),
-            use: ExtractAppCSS.extract({
-                fallback: 'style-loader',
-                use: [{
-                        loader: 'css-loader',
-                        options: {
-                            minimize: true
-                        }
-                    },
-                    'autoprefixer-loader',
-                    'less-loader'
                 ]
             })
         }, {
@@ -171,8 +164,7 @@ module.exports = {
         }),
         // extract css into its own file
         // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-        ExtractVendorCSS,
-        ExtractAppCSS,
+        ExtractCSS,
         // Compress extracted CSS. We are using this plugin so that possible
         // duplicated CSS from different components can be deduped.
         new OptimizeCSSPlugin(),
@@ -207,7 +199,7 @@ module.exports = {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             children: true,
-            minChunks: 5
+            minChunks: 3
         }),
         // copy custom static assets
         new CopyWebpackPlugin([{
@@ -220,7 +212,7 @@ module.exports = {
             // In `server` mode analyzer will start HTTP server to show bundle report.
             // In `static` mode single HTML file with bundle report will be generated.
             // In `disabled` mode you can use this plugin to just generate Webpack Stats JSON file by setting `generateStatsFile` to `true`.
-            analyzerMode: 'server',
+            analyzerMode: 'disabled',
             // Host that will be used in `server` mode to start HTTP server.
             analyzerHost: '127.0.0.1',
             // Port that will be used in `server` mode to start HTTP server.

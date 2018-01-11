@@ -6,6 +6,21 @@
 
 import { JSEncrypt } from 'jsencrypt';
 
+export function isNull(param) {
+
+    if (param === undefined || param === null) {
+        return true;
+    } else if(param instanceof Array){
+        return param.length < 1;
+    }else if (typeof param === 'string'){
+        return param.trim() === '';
+    }else if (typeof param === 'number'){
+        return false;
+    }
+
+    return isEmpty(param);
+};
+
 //对字符串截取给定长度末尾加上...
 export function cutString(str, len){
     if(typeof str != 'string'){

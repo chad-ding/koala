@@ -33,7 +33,7 @@ class Dashboard extends Component {
 
         let cellData = [];
 
-        for(let i = 0; i< 100; i++){
+        for(let i = 0; i< 20; i++){
             cellData.push(`节点${i}`);
         }
         this.setState({cellData});
