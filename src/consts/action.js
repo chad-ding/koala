@@ -4,6 +4,8 @@
  *@Date: 2017-04-06 11:01:45
  */
 
+//重置reducer
+export const RESET_REDUCER = Symbol('RESET_REDUCER');
 //请求成功获取数据
 export const RECEIVE_DATA = Symbol('RECEIVE_DATA');
 //请求失败

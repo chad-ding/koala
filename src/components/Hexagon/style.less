@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+.hexagon {
+    position: absolute;
+    transition-property: left,transform,top,opacity;
+    transition-duration: .6s;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    left: 0;
+    top: 0;
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 0;
+        height: 0;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 0;
+        height: 0;
+    }
+    &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+    p {
+        color: #fff;
+    }
+}

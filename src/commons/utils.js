@@ -6,15 +6,44 @@
 
 import { JSEncrypt } from 'jsencrypt';
 
+export function noop() {};
+
+export function getHashcode(str) {
+    let hash = 0;
+    if (isNull(str)) {
+        return hash;
+    }
+    for (let i = 0; i < str.length; i++) {
+        let code = str.codePointAt(i);
+        hash = ((hash << 5) - hash) + code;
+        hash = hash & hash;
+    }
+    return hash;
+};
+
+export function ipCheck(ip) {
+
+    const regExp = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;
+    if (!regExp.test(ip)) {
+        return false;
+    }
+
+    let ipFragment = ip.split('.');
+
+    return ipFragment.every(item => Number(item) <= 255 && Number(item) >= 0);
+};
+
 export function isNull(param) {
 
     if (param === undefined || param === null) {
         return true;
-    } else if(param instanceof Array){
+    } else if (param instanceof Array) {
         return param.length < 1;
-    }else if (typeof param === 'string'){
+    } else if (typeof param === 'string') {
         return param.trim() === '';
-    }else if (typeof param === 'number'){
+    } else if (typeof param === 'number') {
+        return false;
+    } else if (typeof param === 'function' || 'symbol') {
         return false;
     }
 
@@ -22,10 +51,10 @@ export function isNull(param) {
 };
 
 //对字符串截取给定长度末尾加上...
-export function cutString(str, len){
-    if(typeof str != 'string'){
+export function cutString(str, len) {
+    if (typeof str != 'string') {
         return str;
-    }else if(str.length <= len){
+    } else if (str.length <= len) {
         return str;
     }
 
