@@ -1,148 +1,212 @@
 /**
  *@Author: chad.ding
- *@Copyright: 2008-2018 CHAD
- *@Date: 2017-04-06 16:48:24
+ *@Date: 2017-10-31 17:26:44
  */
 
-import { dictToString } from './utils';
 import 'whatwg-fetch';
-import { REQUEST_FAILED } from '../consts/action';
-import { BASE_URL } from '../consts/metadata';
+import { notification } from 'antd';
+import { dictToString, isEmpty, isNull } from './utils';
+import { REQUEST_FAILED, REQUEST_SUCCESS } from 'consts/action';
+import { BASE_URL } from 'consts/metadata';
 
-const METHOD = {
-    GET: Symbol('GET'),
-    POST: Symbol('POST'),
-    DELETE: Symbol('DELETE')
-};
+notification.config({
+    zIndex: 7,
+    top: 65
+});
 
 const config = {
     headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT'
     },
     mode: 'cors',
     cache: 'default',
     credentials: 'include'
 };
 
-function send(params) {
-    if (params.requests.length > 1) {
-        fetchAllConfig(params);
-    } else {
-        switch (METHOD[params.requests[0].method.toUpperCase()]) {
-            case METHOD.GET:
-                params.requests[0].query = params.requests[0].query === undefined ? '' : ('?' + dictToString(params.requests[0].query));
-                return fetchConfig(params, Object.assign({}, {
-                    method: params.requests[0].method
-                }, config));
-            case METHOD.POST:
-                return fetchConfig(params, Object.assign({}, {
-                    method: params.requests[0].method,
-                    body: JSON.stringify(params.query)
-                }, config));
-            case METHOD.DELETE:
-                params.requests[0].query = params.requests[0].query === undefined ? '' : JSON.stringify(params.requests[0].query);
-                return fetchConfig(params, Object.assign({}, {
-                    method: params.requests[0].method,
-                    body: params.requests[0].query
-                }, config));
-        }
+const METHOD = {
+    GET: Symbol('GET'),
+    POST: Symbol('POST'),
+    PUT: Symbol('PUT'),
+    DELETE: Symbol('DELETE')
+};
+
+function trimParam(param) {
+    if (isNull(param) || typeof param === 'number') {
+        return param;
     }
+
+    if (typeof param === 'string') {
+        return param.trim();
+    }
+
+    let result;
+    if (param instanceof Array) {
+        result = param.map(item => trimParam(item));
+        return result;
+    }
+
+    let propNames = Object.getOwnPropertyNames(param);
+    if (propNames.length < 1) {
+        return param;
+    }
+
+    result = {};
+    for (let propName of propNames) {
+        let value = trimParam(param[propName]);
+        result[propName] = value;
+    }
+
+    return result;
 }
 
-function fetchAllConfig(params) {
-    //使用Promise.all()
-    Promise.all(params.requests.map(request => {
-            let promise = fetch(BASE_URL + request.path + '?' + dictToString(request.query), config);
-            return promise.then(res => res.json());
-        }))
-        .then(json => {
-            params.onSuccess(json);
-        })
-        .catch(error => {
-            console.error(error);
-            params.onFail(error);
-        });
+function send(params) {
+
+    const method = METHOD[params.request.method.toUpperCase()];
+
+    switch (method) {
+        case METHOD.GET:
+            params.request.query = isEmpty(params.request.query) ? '' : ('?' + dictToString(params.request.query));
+            return fetchConfig(params, Object.assign({}, {
+                method: params.request.method
+            }, config));
+        case METHOD.POST:
+            return fetchConfig(params, Object.assign({}, {
+                method: params.request.method,
+                body: JSON.stringify(params.request.query)
+            }, config));
+        case METHOD.DELETE:
+            params.request.query = isEmpty(params.request.query) ? '' : JSON.stringify(params.request.query);
+            return fetchConfig(params, Object.assign({}, {
+                method: params.request.method,
+                body: params.request.query
+            }, config));
+        case METHOD.PUT:
+            params.request.query = isEmpty(params.request.query) ? '' : JSON.stringify(params.request.query);
+            return fetchConfig(params, Object.assign({}, {
+                method: params.request.method,
+                body: params.request.query
+            }, config));
+    }
 }
 
 function fetchConfig(params, config) {
 
-    return fetch(BASE_URL + params.requests[0].path + (config.method !== 'GET' ? '' : params.requests[0].query), config)
+    return fetch(BASE_URL + params.request.path + (config.method.toUpperCase() !== 'GET' ? '' : params.request.query), config)
         .then(checkStatus)
-        .then(res => res.json())
-        .then(json => {
-            params.onSuccess(json);
+        .then(res => {
+            params.onSuccess(res);
+            return res.json();
         })
+        .then(json => params.onReceiveData(json))
         .catch((error) => {
-            console.error(error);
+            notification.error({
+                message: '请求错误',
+                description: error.message
+            });
             params.onFail(error);
         });
 }
 
 function checkStatus(response) {
-    if (response.status >= 200 && response.status <= 304) {
+    if (response.status >= 200 && response.status < 300) {
         return response;
-    } else {
-
-        let error, deffered;
-        if (response.status === 503) {
-            deffered = response.json().then(json => {
-                error = new Error(json.code);
-                error.msg = json.msg;
-
-                return error;
-            });
-        } else {
-
-            error = new Error(response.status);
-            error.msg = response.statusText;
-
-            deffered = new Promise((resolve, reject) => {
-                resolve(error);
-            });
-
-        }
-
-        return deffered.then(function(error) {
-            throw error;
-        });
     }
+
+    return response.json().then((result) => {
+        const error = new Error(result.message || result.error.message);
+        error.response = response;
+        throw error;
+    }, (error) => {
+        notification.error({
+            message: response.status,
+            description: response.statusText
+        });
+        throw error;
+    });
 }
 
 /**
  * 接受数据
  * $param json 接受的数据
  */
-function receiveData(requests, json) {
+function receiveData(request, json) {
     return {
-        type: requests.category,
-        requests,
+        type: request.category,
+        request,
         data: json
+    };
+}
+
+/**
+ * 请求成功
+ */
+
+function requestSuccess(request) {
+    return {
+        type: REQUEST_SUCCESS,
+        category: request.category
     };
 }
 
 /**
  * 请求失败
  */
-function requestFailed(requests, error) {
+function requestFailed(request, error) {
     return {
         type: REQUEST_FAILED,
-        data: {
-            code: error.message,
-            msg: error.msg
-        }
+        category: request.category
     };
 }
 
 /**
  * 发送请求的具体方法
  */
-export function fetchData(...requests) {
-    return dispatch => send({
-        requests,
-        onSuccess: json => dispatch(receiveData(requests[0], json)),
-        onFail: error => dispatch(requestFailed(requests[0], error))
-    });
+export function fetchData(request) {
+
+    let query = Object.assign({}, request.query);
+    request.query = query;
+
+    const regExp = /(\{([a-zA-Z0-9]+)\})/;
+    let path = request.path;
+
+    while (regExp.test(path)) {
+        let value = request.query[RegExp.$2];
+
+        if (isNull(value)) {
+            notification.error({
+                message: '请求参数错误',
+                description: `请提供必须的参数【${RegExp.$2}】`
+            });
+            return;
+        }
+
+        path = path.replace(regExp, value);
+        delete request.query[RegExp.$2];
+    }
+
+    if (!isEmpty(request.query)) {
+        request.query = trimParam(request.query);
+        let queryNames = Object.getOwnPropertyNames(request.query);
+        if (queryNames.length === 1 && request.query[queryNames[0]] instanceof Array) {
+            request.query = request.query[queryNames[0]];
+        }
+    }
+    request.path = path;
+
+    if (request.category) {
+        return dispatch => send({
+            request,
+            onSuccess: response => dispatch(requestSuccess(request, response)),
+            onReceiveData: json => dispatch(receiveData(request, json)),
+            onFail: error => dispatch(requestFailed(request, error))
+        });
+    } else {
+        return send({
+            request,
+            onSuccess: response => requestSuccess(request, response),
+            onReceiveData: json => receiveData(request, json),
+            onFail: error => requestFailed(request, error)
+        });
+    }
+
 };
