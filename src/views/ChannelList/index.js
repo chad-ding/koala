@@ -10,10 +10,19 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getChannelList } from './action';
 import FlowStep from '../../components/FlowStep';
+import { reset } from 'commons/decorators';
 
 import './style.less';
 
-class ChannelList extends Component {
+@connect(state => ({
+    channelList: state.channelListReducer.channelList
+}))
+@reset({
+    channelListReducer: {
+        channelList: []
+    }
+})
+export default class ChannelList extends Component {
     constructor(props) {
         super(props);
     }
@@ -26,7 +35,7 @@ class ChannelList extends Component {
         dispatch(getChannelList(params));
     }
     render() {
-        
+
         let { path } = this.props;
 
         let columns = [{
@@ -104,12 +113,4 @@ class ChannelList extends Component {
             </div>
         );
     }
-}
-
-function mapStateToProps(state) {
-    return {
-        channelList: state.channelListReducer.channelList
-    };
-}
-
-export default connect(mapStateToProps)(ChannelList);
+};

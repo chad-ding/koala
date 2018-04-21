@@ -11,7 +11,11 @@ import { Link } from 'react-router';
 
 import './style.less';
 
-class Vdp extends Component {
+@connect(state => ({
+
+}))
+@Form.create()
+export default class VdpForm extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -197,14 +201,4 @@ class Vdp extends Component {
             </div>
         );
     }
-}
-
-function mapStateToProps(state) {
-    return {
-
-    };
-}
-
-let VdpForm = Form.create()(Vdp);
-
-export default connect(mapStateToProps)(VdpForm);
+};

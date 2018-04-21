@@ -1,20 +1,24 @@
 {
     "presets": [
-        ["env", {"targets": {"browsers": ["Safari >= 7", "Chrome >= 44", "Explorer 11"], "uglify": true}, useBuiltIns: true}],
-        "react"
+        ["env", { "targets": { "browsers": ["Safari >= 7", "Chrome >= 44", "Explorer 11"], "uglify": true }, "useBuiltIns": true }],
+        "react",
+        "flow"
     ],
     "ignore": [
         "node_modules"
     ],
     "plugins": [
-        ["import", [{libraryName: "antd", style: true}]],
+        ["import", [{ "libraryName": "antd", "style": true }]],
         ["transform-runtime"],
         ["transform-do-expressions"],
         ["transform-class-properties"],
         ["transform-es2015-spread"],
         ["transform-es2015-parameters"],
         ["transform-es2015-shorthand-properties"],
-        ["transform-object-rest-spread"]
+        ["transform-object-rest-spread"],
+        ["transform-decorators-legacy"],
+        ["transform-flow-strip-types"],
+        ["transform-flow-comments"]
     ],
     "comments": false
 }

@@ -8,7 +8,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, Input, Button } from 'antd';
 
-class BaseInfoForm extends Component {
+@connect(state => ({
+
+}))
+@Form.create()
+export default class BaseInfoForm extends Component {
     constructor(props) {
         super(props);
     }
@@ -69,13 +73,3 @@ class BaseInfoForm extends Component {
         );
     }
 };
-
-let BaseInfo = Form.create()(BaseInfoForm);
-
-function mapStateToProps(state) {
-    return {
-
-    };
-};
-
-export default connect(mapStateToProps)(BaseInfo);

@@ -12,21 +12,30 @@ import SelectInput from '../../components/SelectInput';
 
 import './style.less';
 
-class Channel extends Component {
+@connect(state => ({
+    ...state.ChannelFormReducer
+}))
+@Form.create()
+export default class ChannelForm extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.checkFlow = this.checkFlow.bind(this);
     }
-    handleSubmit(e){
+    handleSubmit = async(e) => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        let invalid = false;
+        await this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                invalid = true;
             }
         });
+        if (invalid) {
+            console.log('form is invalid');
+            return;
+        }
     }
-    checkFlow(rule, value, callback){
+    checkFlow(rule, value, callback) {
         if (value.number > 0) {
             callback();
             return;
@@ -292,14 +301,4 @@ class Channel extends Component {
             </div>
         );
     }
-}
-
-function mapStateToProps(state) {
-    return {
-        ...state.ChannelFormReducer
-    };
-}
-
-let ChannelForm = Form.create()(Channel);
-
-export default connect(mapStateToProps)(ChannelForm);
+};

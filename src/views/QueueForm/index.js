@@ -11,7 +11,11 @@ import { Link } from 'react-router';
 import ChannelModal from './ChannelModal';
 import { handleModal, subscribe, unsubscribe } from './action';
 
-class Queue extends Component {
+@connect(state => ({
+    subscribedChannel: state.queueFormReducer.subscribedChannel
+}))
+@Form.create()
+export default class QueueForm extends Component {
     constructor(props) {
         super(props);
         this.handleModal = this.handleModal.bind(this);
@@ -248,14 +252,4 @@ class Queue extends Component {
             </div>
         );
     }
-}
-
-function mapStateToProps(state) {
-    return {
-        subscribedChannel: state.queueFormReducer.subscribedChannel
-    };
-}
-
-let QueueForm = Form.create()(Queue);
-
-export default connect(mapStateToProps)(QueueForm);
+};
