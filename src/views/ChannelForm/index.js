@@ -9,6 +9,7 @@ import { Form, Input, Switch, Button, Checkbox, Select, Radio, Slider, InputNumb
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import SelectInput from '../../components/SelectInput';
+import RangeInput from '../../components/RangeInput';
 
 import './style.less';
 

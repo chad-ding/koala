@@ -7,9 +7,9 @@
 //重置reducer
 export const RESET_REDUCER = Symbol('RESET_REDUCER');
 //请求成功获取数据
-export const RECEIVE_DATA = Symbol('RECEIVE_DATA');
+export const REQUEST_SUCCESS = Symbol('REQUEST_SUCCESS');
 //请求失败
-export const REQUEST_FAILED = Symbol('REQUEST_FAILED');
+export const REQUEST_FAILED = Symbol('REQUEST_FAILED'); //请求失败
 //显示/隐藏登录Modal
 export const LOGIN_MODAL_HANDLE = Symbol('LOGIN_MODAL_HANDLE');
 //显示/隐藏系统参数Modal

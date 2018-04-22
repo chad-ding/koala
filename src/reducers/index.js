@@ -22,13 +22,15 @@ import noteReducer from '../views/Note/reducer';
 import envItemReducer from '../views/EnvItem/reducer';
 import dashboardReducer from '../views/Dashboard/reducer';
 
-import { REQUEST_FAILED } from '../consts/action';
+import { REQUEST_FAILED, REQUEST_SUCCESS } from 'consts/action';
 
-function requestReducer(state = { errorInfo: { data: null, counter: 0 } }, action) {
+function requestReducer(state = { failure: { category: null, count: 0 }, success: { category: null, count: 0 } }, action) {
 
     switch (action.type) {
         case REQUEST_FAILED:
-            return Object.assign({}, state, { errorInfo: { data: action.data, counter: state.errorInfo.counter++ } });
+            return Object.assign({}, state, { failure: { category: action.category, count: state.failure.count + 1 } });
+        case REQUEST_SUCCESS:
+            return Object.assign({}, state, { success: { category: action.category, count: state.success.count + 1 } });
         default:
             return state;
     }

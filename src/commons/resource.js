@@ -16,7 +16,7 @@ notification.config({
 
 const config = {
     headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
     },
     mode: 'cors',
     cache: 'default',

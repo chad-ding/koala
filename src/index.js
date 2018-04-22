@@ -144,6 +144,12 @@ const help = (location, callback) => {
     }, 'Help');
 };
 
+const monitor = (location, callback) => {
+    require.ensure([], require => {
+        callback(null, require('./views/Monitor').default);
+    }, 'Monitor');
+};
+
 render((
     <Provider store={store}>
         <Router history={hashHistory}>
@@ -182,6 +188,7 @@ render((
                     <Route path="domain" getComponent={domain}></Route>
                 </Route>
                 <Route path="dashboard" getComponent={dashboard}></Route>
+                <Route path="monitor" getComponent={monitor}></Route>
                 <Route path="help" getComponent={help}></Route>
             </Route>
         </Router>

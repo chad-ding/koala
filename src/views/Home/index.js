@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Layout, Row, Col, Menu, Dropdown, Icon, notification, Input } from 'antd';
+import { Layout, Row, Col, Menu, Dropdown, Icon, Input } from 'antd';
 import { connect } from 'react-redux';
 import Login from './loginModal';
 import { changeTab, handleModal } from './action';
@@ -36,15 +36,6 @@ class Home extends Component {
     }
     componentWillUnmount() {
         console.info('%ckoala app shutdown..', 'color:rgba(187, 0, 0, 1);');
-    }
-    componentWillReceiveProps(nextProps) {
-        if (this.props.errorInfo.counter !== nextProps.errorInfo.counter) {
-            notification.open({
-                message: nextProps.errorInfo.data.code,
-                description: nextProps.errorInfo.data.msg,
-                icon: <Icon type="close-circle-o" className="err-msg-icon" />
-            });
-        }
     }
     showLoginModal() {
         let { dispatch } = this.props;
@@ -91,6 +82,9 @@ class Home extends Component {
                 </Menu.Item>
                 <Menu.Item key="dashboard">
                     <Link to="/dashboard">系统监控</Link>    
+                </Menu.Item>
+                <Menu.Item key="monitor">
+                    <Link to="/monitor">集群</Link>    
                 </Menu.Item>
             </Menu>
         );
@@ -140,7 +134,6 @@ class Home extends Component {
 function mapStateToProps(state) {
     return {
         userInfo: state.homeReducer.userInfo,
-        errorInfo: state.requestReducer.errorInfo,
         tab: state.homeReducer.tab
     };
 }

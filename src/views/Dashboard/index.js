@@ -11,17 +11,12 @@ import BarChart from '../../components/BarChart';
 import PieChart from '../../components/PieChart';
 import TopologicalChart from '../../components/TopologicalChart';
 import RadarChart from '../../components/RadarChart';
-import HoneycombChart from '../../components/HoneycombChart';
 import { getLineChartData, getBarChartData, getPieChartData, getRadarChartData, getTopologicalChartData } from './action';
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            cellData: []
-        };
     }
     componentDidMount() {
         let { dispatch } = this.props;
@@ -30,13 +25,6 @@ class Dashboard extends Component {
         dispatch(getPieChartData());
         dispatch(getRadarChartData());
         dispatch(getTopologicalChartData());
-
-        let cellData = [];
-
-        for(let i = 0; i< 20; i++){
-            cellData.push(`节点${i}`);
-        }
-        this.setState({cellData});
     }
     render() {
 
@@ -50,12 +38,6 @@ class Dashboard extends Component {
                         <span>系统监控</span>
                     </Breadcrumb.Item>
                 </Breadcrumb>
-                <br/>
-                <Row gutter={16}>
-                    <Col span={24}>
-                        <HoneycombChart title="上证指数" data={this.state.cellData} style={{ width: '100%', height: '600px'}}></HoneycombChart>
-                    </Col>
-                </Row>
                 <br/>
                 <Row gutter={16}>
                     <Col span={12}>
